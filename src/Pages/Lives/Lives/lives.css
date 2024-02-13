@@ -1,0 +1,11 @@
+.inputField span {
+    position: absolute;
+    right: 3%;
+    border-radius: 4px;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+.rs-anim-fade.rs-anim-in.placement-bottom-start.rs-picker-date-menu.rs-picker-menu {
+    z-index: 9999999 !important;
+}

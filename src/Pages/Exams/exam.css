@@ -1,0 +1,55 @@
+.inputField {
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.withtext {
+  flex-direction: column;
+}
+
+.inputField:not(.withtext) {
+  align-items: center;
+  width: min(200px, 100%);
+}
+
+form label {
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+.inputField:not(.withtext) > label {
+  padding: 10px;
+  background-color:beige;
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.inputField:not(.withtext) > label.active {
+  background-color:brown;
+  color: white;
+}
+
+.checkedBoxes {
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  padding: 10px 0;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.inputField{
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.inputField input{
+  width: 100%;
+}
+
+.col-lg-6 {
+  width: 100% !important;
+}

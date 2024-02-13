@@ -1,0 +1,41 @@
+.rowgroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.course_table {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: none;
+
+}
+
+.course_table tbody {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.course_table tr {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+  max-width: 100% !important;
+  /* border-radius: 8px; */
+  /* border: 2px solid #ccc; */
+  border-color: #dfdfed;
+}
+
+.course_table>thead {
+  vertical-align: bottom;
+  display: none;
+}
+
+/* .table-bordered {
+  border: none !important;
+} */

@@ -1,0 +1,15 @@
+.selectedques {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.selectedques.active {
+  background-color: green;
+  color: white;
+}

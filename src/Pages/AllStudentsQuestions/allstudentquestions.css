@@ -1,0 +1,26 @@
+.all_st_ques .actions {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.all_st_ques .actions button {
+  width: 100px;
+  padding: 10px;
+  transition: .5s all ease-in-out;
+}
+
+.all_st_ques .actions button:first-of-type {
+  border-radius: 10px 0px 0px 10px;
+}
+
+.all_st_ques .actions button:nth-of-type(2) {
+  border-radius: 0px 10px 10px 0px;
+}
+
+.all_st_ques .actions button.active {
+  color: white;
+  background-color: #3980c0;
+}

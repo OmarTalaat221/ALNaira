@@ -1,0 +1,47 @@
+.filter_stu {
+    margin: 40px 0;
+}
+
+.stu_her {
+    display: flex;
+    gap: 20px;
+}
+
+.courses_student img {
+    height: 150px;
+}
+
+.student_info .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.student_info img {
+    width: 70px;
+}
+.student_info, .courseStudent h2 {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 0.1px solid #adb5bd96;
+}
+
+.courseStudent h2{
+    width: fit-content;
+    margin: auto;
+}
+
+.modal-content .btn.btn-danger {
+    width: 100% !important;
+    margin-top: 33px !important;
+}
+
+.rs-anim-fade.rs-anim-in.placement-bottom-start.rs-picker-select-menu.rs-picker-menu{
+    z-index: 99999999999999999;
+}
+
+.rs-picker.rs-picker-select.rs-picker-default.rs-picker-toggle-wrapper.rs-picker-cleanable {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+}

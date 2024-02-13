@@ -1,0 +1,16 @@
+.upimgdiv {
+  position: relative;
+}
+
+.up_img {
+  position: absolute;
+  width: 40px;
+  top: 40%;
+  right: 10px;
+  cursor: pointer;
+  /* transform: translateY(-50%); */
+}
+
+td img {
+  width: 90px;
+}

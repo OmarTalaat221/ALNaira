@@ -1,0 +1,80 @@
+.courses_student {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100% !important;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  padding: 20px 10px;
+}
+
+.courses_student>div {
+  width: min(300px, 100%);
+  text-align: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  gap: 11px;
+}
+
+
+@media (max-width:767px) {
+  .courses_student>div {
+    width: 48%;
+    text-align: center;
+    background-color: white;
+  }
+}
+
+.sub_status {
+  width: fit-content;
+  padding: 5px 30px;
+  border: 2px solid;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 4px;
+}
+
+.sub_status.active {
+  background: #60c5a826;
+  color: green;
+}
+
+
+.sub_status.canceled {
+  background: #ff545426;
+  color: red;
+}
+
+.footer {
+  position: relative !important;
+  left: 0 !important;
+  display: none !important;
+}
+
+@media (max-width:992px) {
+
+  .sm-body .vertical-menu {
+    left: 0;
+  }
+
+  .vertical-menu {
+    display: block !important;
+    left: -100%;
+    transition: .5s ease-in-out;
+  }
+}
+
+.row> iframe {
+  height: 505px !important;
+}
+
+iframe {
+  height: 505px !important;
+}

@@ -1,0 +1,30 @@
+.univs span {
+  padding: 6px 11px;
+  border: 0.1px solid;
+  transition: .5s ease-in-out;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.univs span.active {
+  background: black;
+  color: white;
+}
+
+.univs {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.ques_data {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
