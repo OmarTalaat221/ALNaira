@@ -46,6 +46,7 @@ const Lessons = () => {
   document.title = "Courses | Matary - React Admin & Dashboard Template";
 
   const location = useLocation();
+  console.log(location);
   // const {state}=location;
   const [videoDuration, setVideoDuration] = useState("");
   const [type_2, setType_2] = useState(false);
@@ -81,6 +82,9 @@ const Lessons = () => {
     const formData = new FormData();
     if (book) {
       formData.append("file_attachment", book);
+      formData.append("unit_id", unitData);
+      formData.append("course_id", location?.state?.coursedata?.course_id);
+      // unitData
       const url = await axios.post(
         "https://drelmatary.net/Matary_site/admin/videos/upload_videos_excel/upload_vid_new.php",
         formData
