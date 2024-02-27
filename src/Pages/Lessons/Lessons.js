@@ -1,64 +1,45 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
-  Row,
-  Col,
-  Container,
-  Modal,
-  TabContent,
-  TabPane,
-  Tooltip,
   Card,
   CardBody,
-  UncontrolledDropdown,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  ModalHeader,
-  ModalBody,
-  Form,
-  Label,
-  Input,
-  FormFeedback,
   CloseButton,
+  Col,
+  Container,
+  DropdownItem,
+  Form,
+  Input,
+  Label,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  Row,
 } from "reactstrap";
-import { Icon } from "@iconify/react";
-import transferUp from "@iconify/icons-mdi/transfer-up";
-import transferDown from "@iconify/icons-mdi/transfer-down";
 import { Form as FormT } from "rsuite";
-import axios from "axios";
 //Import Flatepicker
 import "flatpickr/dist/themes/material_blue.css";
-import Flatpickr from "react-flatpickr";
 
 // Breadcrumb
+import { Fragment, useCallback } from "react";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import CourseListTable from "../Courses/CoursesList/CourseTable/courseListTable";
-import UnitListTable from "../Units/UnitTable/UnitTableList";
-import LessonsTableList from "./LessonsTabel/LessonsTableList";
-import { useCallback } from "react";
-import { Fragment } from "react";
 import Flash_Cards from "../Interactive/flashcards";
 import Tweets from "../Interactive/tweets";
 import WrittenQuestions from "../Interactive/writtenquestion";
 import MCQQuestions from "./mcqquestion";
 // import VideoListTable from "../video/BooksList/VideoTable/bookListTable";
-import { MenuItem, Select } from "@mui/material";
-import { useEffect } from "react";
-import { Loader, Radio, RadioGroup, SelectPicker } from "rsuite";
-import VideoListTable from "../video/VideosList/VideoTable/videoListTable";
-import { ToastContainer, toast } from "react-toastify";
-import Ebooks from "../Interactive/ebooks";
-import { TbFreeRights } from "react-icons/tb";
-import { MdOutlinePaid } from "react-icons/md";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import UniqQuestion from "../UnitQuestion/UniqQuestion";
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { Loader, Radio, RadioGroup, SelectPicker } from "rsuite";
 import { base_url } from "../../constants";
+import Ebooks from "../Interactive/ebooks";
+import UniqQuestion from "../UnitQuestion/UniqQuestion";
+import VideoListTable from "../video/VideosList/VideoTable/videoListTable";
 
 // import CourseListTable from "../CourseTable/courseListTable";
 
 const Lessons = () => {
-  console.log("erer");
   const navigate = useNavigate();
   const localdata = localStorage.getItem("elmatary_admin");
   let adminData = localdata && JSON.parse(localdata);
@@ -90,19 +71,31 @@ const Lessons = () => {
   }
   const [title, setTitle] = useState("Lessons");
   const [type, setType] = useState("Lessons");
+  const [book, setBook] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   document.title = title + " | Matary - React Admin & Dashboard Template";
 
-  const buttons = [
-    { type: "Lessons", title: "Lessons" },
-    // { type: "FlashCards", title: "Flash Cards" },
-    // { type: "Tweets", title: "Tweets" },
-    // { type: "writtenquestion", title: "Written Questions" },
-    // { type: "mcqquestion", title: "MCQ Questions" },
-    // { type: "ebooks", title: "Ebooks" },
-    // {type:"mcqquestion",title:"MCQ Question"}
-    // ebooks
-  ];
+  const uploadPdf = async () => {
+    setLoading(true);
+    const formData = new FormData();
+    if (book) {
+      formData.append("file_attachment", book);
+      const url = await axios.post(
+        "https://drelmatary.net/Matary_site/admin/videos/upload_videos_excel/upload_vid_new.php",
+        formData
+      );
+      console.log(url);
+      if (url == "success") {
+        toast.success("File Uploaded Successfully");
+        getVideos();
+        setModal(false);
+      } else {
+        toast.error(url.message);
+      }
+    }
+    setLoading(false);
+  };
   const [Videos, setVideos] = useState([]);
   const [videoType, setVideoType] = useState("");
   // const [itemTLoader,setItemLoader]=useState(false)
@@ -565,6 +558,12 @@ const Lessons = () => {
     }
   };
 
+  const handleFileSelect = async (event) => {
+    const file = event.target.files[0];
+
+    setBook(file);
+  };
+
   return (
     <React.Fragment>
       <div className="page-content">
@@ -618,23 +617,22 @@ const Lessons = () => {
                                   </button>
                                 </div>
                               </Col>
-                              {/* <Col className="col-sm">
+                              <Col className="col-sm">
                                 <div>
                                   <button
                                     type="button"
                                     className="btn btn-success mb-4"
                                     data-bs-toggle="modal"
                                     data-bs-target="#addVideoModal"
-                                    onClick={
-                                      () => {
-                                        showClearModal()
-                                      }
-                                    }
+                                    onClick={() => {
+                                      setModal(true);
+                                    }}
                                   >
-                                    <i className="mdi mdi-plus me-1"></i> Clear Videos
+                                    <i className="mdi mdi-plus me-1"></i> Upload
+                                    Excel
                                   </button>
                                 </div>
-                              </Col> */}
+                              </Col>
                             </Row>
                           </div>
                         </div>
@@ -1010,6 +1008,52 @@ const Lessons = () => {
               Clear{" "}
             </button>
           </form>
+        </Modal>
+        <Modal isOpen={modal} toggle={toggle}>
+          <ModalHeader toggle={toggle} tag="h4">
+            Add Videos
+          </ModalHeader>
+          <ModalBody>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault();
+                uploadPdf(e);
+                return false;
+              }}
+            >
+              <Row>
+                <Col md={12}>
+                  <div className="mb-3">
+                    <Label className="form-label"> file</Label>
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "100%",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      {" "}
+                      <input
+                        type="file"
+                        id="pdfInput"
+                        onChange={handleFileSelect}
+                      />{" "}
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <div className="text-end">
+                    <button type="submit" className="btn btn-success save-user">
+                      Save
+                    </button>
+                  </div>
+                </Col>
+              </Row>
+            </Form>
+          </ModalBody>
         </Modal>
         <ToastContainer />
       </div>

@@ -15,8 +15,8 @@ import { useEffect } from "react";
 const AddVideo = () => {
   document.title = "Add Video | Matary - React Admin & Dashboard Template";
   // console.log('test')
-  const localdata=localStorage.getItem('elmatary_admin');
-  let adminData=localdata&&JSON.parse(localdata);
+  const localdata = localStorage.getItem("elmatary_admin");
+  let adminData = localdata && JSON.parse(localdata);
   const [col1, setcol1] = useState(true);
   const [col2, setcol2] = useState(false);
   const [col3, setcol3] = useState(false);
@@ -24,7 +24,7 @@ const AddVideo = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const [videoDuration, setVideoDuration] = useState(null);
   const [videoSwitchOn, setVideoSwitchOn] = useState(null);
-  const [youtube_id,setyoutube_id]=useState('')
+  const [youtube_id, setyoutube_id] = useState("");
   const duration = useRef();
 
   const getDuration = () => {
@@ -39,9 +39,9 @@ const AddVideo = () => {
   const getName = () => {
     setVideoSwitchOn(
       videoUrl && videoUrl?.length
-        ? videoUrl?.split(".html")[0]+".m3u8"
+        ? videoUrl?.split(".html")[0] + ".m3u8"
         : null
-    )
+    );
     setVideoName(
       videoUrl && videoUrl?.length
         ? videoUrl
@@ -51,15 +51,21 @@ const AddVideo = () => {
     );
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     getName();
-  },[videoUrl])
+  }, [videoUrl]);
 
   useEffect(() => {
     if (duration && duration.current) {
-    getDuration();
+      getDuration();
     }
-    console.log(videoSwitchOn, videoName, videoDuration, videoUrl, duration.current);
+    console.log(
+      videoSwitchOn,
+      videoName,
+      videoDuration,
+      videoUrl,
+      duration.current
+    );
   }, [videoSwitchOn]);
 
   const t_col1 = () => {
@@ -114,19 +120,20 @@ const AddVideo = () => {
       video_duration: formRef.current.video_duration.value,
       // vimeo_data: formRef.current.vimeo_data.value,
       // publitio_data: formRef.current.publitio_data.value,
-      admin_id:adminData.admin_id,
-      youtube_id:formRef.current.youtube_id.value,
-      access_token:adminData.access_token,
+      admin_id: adminData.admin_id,
+      youtube_id: formRef.current.youtube_id.value,
+      access_token: adminData.access_token,
+      loom_url: formRef.current.loom_url.value,
     };
     try {
       const units = await axios.post(
-        base_url+"/admin/videos/insert_video.php",
+        base_url + "/admin/videos/insert_video.php",
         send_data
       );
       console.log(units);
-      if(units.message=='Session Expired'){
-        localStorage.removeItem('elmatary_admin');
-        navigate('/login',{replace:true})
+      if (units.message == "Session Expired") {
+        localStorage.removeItem("elmatary_admin");
+        navigate("/login", { replace: true });
       }
       if (units.status == "success") {
         toast.success("Video Added Successfully");
@@ -152,7 +159,14 @@ const AddVideo = () => {
           <Breadcrumbs title="Ecommerce" breadcrumbItem="Add Video" />
           <Row>
             {videoUrl && videoUrl.length ? (
-              <iframe ref={duration} src={"https://elmatary.com/El_Matary_Platform/platform/publitio_player?q=" + videoUrl} width="370"></iframe>
+              <iframe
+                ref={duration}
+                src={
+                  "https://elmatary.com/El_Matary_Platform/platform/publitio_player?q=" +
+                  videoUrl
+                }
+                width="370"
+              ></iframe>
             ) : null}
             <Col lg={12}>
               <div className="custom-accordion" id="addvideo-accordion">
@@ -200,10 +214,11 @@ const AddVideo = () => {
                             className="form-control"
                             required
                             value={videoName}
-                            onChange={(e)=> setVideoName(e.currentTarget.value)}
+                            onChange={(e) =>
+                              setVideoName(e.currentTarget.value)
+                            }
                           />
                         </div>
-
                         <div className="mb-0">
                           <label className="form-label" htmlFor="videodesc">
                             Video Duration
@@ -215,10 +230,11 @@ const AddVideo = () => {
                             rows="4"
                             name="video_duration"
                             value={videoDuration}
-                            onChange={(e)=> setVideoDuration(e.currentTarget.value)}
+                            onChange={(e) =>
+                              setVideoDuration(e.currentTarget.value)
+                            }
                           />
                         </div>
-
                         <div className="mb-0">
                           <label className="form-label" htmlFor="videodesc">
                             Youtube Link
@@ -231,8 +247,18 @@ const AddVideo = () => {
                             name="youtube_id"
                           />
                         </div>
-
-
+                        <div className="mb-0">
+                          <label className="form-label" htmlFor="loom_url">
+                            Loom URL
+                          </label>
+                          <input
+                            className="form-control"
+                            id="loom_url"
+                            placeholder="Enter Link"
+                            rows="4"
+                            name="loom_url"
+                          />
+                        </div>{" "}
                       </form>
                     </div>
                   </Collapse>
