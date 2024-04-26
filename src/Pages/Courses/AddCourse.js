@@ -45,15 +45,15 @@ const AddCourse = () => {
     };
     const [category, setCategory] = useState(false);
 
-    // const getCategories = async () => {
-    //     const getcategories = await axios.get(base_url+"/admin/courses/select_category.php");
-    //     console.log(getcategories)
-    //     setCategory(getcategories);
-    // }
+    const getCategories = async () => {
+        const getcategories = await axios.get(base_url+"/admin/courses/select_category.php");
+        console.log(getcategories)
+        setCategory(getcategories);
+    }
 
-    // useEffect(() => {
-    //     getCategories();
-    // }, [])
+    useEffect(() => {
+        getCategories();
+    }, [])
 
     const [selectedFiles, setselectedFiles] = useState([]);
 

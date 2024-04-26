@@ -45,11 +45,11 @@ const AddCourse = () => {
 
     const getCategories = async () => {
         const getcategories = await axios.get("https://elmatary.com/El_Matary_Platform/platform/admin/courses/select_category.php");
-        console.log(getcategories)
         setCategory(getcategories);
     }
 
     useEffect(() => {
+    
         getCategories();
     }, [])
 
