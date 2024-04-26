@@ -637,8 +637,8 @@ const Videos = () => {
                   margin: "10px 0",
                 }}
                 type="text"
-                name="youtube_id"
-                id="youtube_id"
+                name="loom_url"
+                id="loom_url"
                 placeholder="Enter Loom Link"
                 defaultValue={item?.loom_url}
               />
