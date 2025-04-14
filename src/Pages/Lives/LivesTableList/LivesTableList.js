@@ -3,9 +3,9 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  UncontrolledDropdown
+  UncontrolledDropdown,
 } from "reactstrap";
-import axios from 'axios';
+import axios from "axios";
 // import TableContainer from "./../../../../components/Common/TableContainer";
 // import { CourseData } from "../../../../CommonData/Data/Course";
 import { useNavigate } from "react-router-dom";
@@ -22,11 +22,11 @@ const LivesTableList = ({ lives }) => {
     {
       Header: "Live ID",
       accessor: "live_id",
-      Filter: false
+      Filter: false,
     },
     {
       Header: "title",
-      accessor: "title"
+      accessor: "title",
       //   Filter: false,
     },
     // {
@@ -37,39 +37,39 @@ const LivesTableList = ({ lives }) => {
     {
       Header: "university name",
       accessor: "university_name",
-      Filter: false
+      Filter: false,
     },
     {
       Header: "grade name",
       accessor: "grade_name",
-      Filter: false
+      Filter: false,
     },
     {
       Header: "Course name",
       accessor: "course_name",
-      Filter: false
+      Filter: false,
     },
     {
       Header: "start date",
       Cell: (cell) => {
         return (
           <span>
-            {moment(cell.cell.row.original.start_date).format('Y-M-D H:m:s')}
+            {moment(cell.cell.row.original.start_date).format("Y-M-D H:m:s")}
           </span>
         );
       },
-      Filter: false
+      Filter: false,
     },
     {
       Header: "start time",
       Cell: (cell) => {
         return (
           <span>
-            {moment(cell.cell.row.original.start_time).format('Y-M-D H:m:s')}
+            {moment(cell.cell.row.original.start_time).format("Y-M-D H:m:s")}
           </span>
         );
       },
-      Filter: false
+      Filter: false,
     },
     // {
     //   Header: "status",
@@ -91,7 +91,7 @@ const LivesTableList = ({ lives }) => {
               width: "100%",
               display: "flex",
               gap: "10px",
-              alignItems: "center"
+              alignItems: "center",
             }}
             text={cell.cell.row.original?.channel_id}
             onCopy={() => toast.success("Copied")}
@@ -101,7 +101,7 @@ const LivesTableList = ({ lives }) => {
                 width: "100%",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center"
+                alignItems: "center",
               }}
             >
               <b
@@ -116,7 +116,7 @@ const LivesTableList = ({ lives }) => {
           </CopyToClipboard>
         );
       },
-      Filter: false
+      Filter: false,
     },
     // {
     //   Header: "ended",
@@ -139,7 +139,7 @@ const LivesTableList = ({ lives }) => {
             className="btn btn-primary"
             onClick={() => {
               navigate("/livemcqquestion", {
-                state: { live_id: cell.cell.row.original.live_id }
+                state: { live_id: cell.cell.row.original.live_id },
               });
               // navigate("/live",{state:{channel_id:cell.cell.row.original?.channel_id,live_id:cell.cell.row.original?.live_id}})
             }}
@@ -148,7 +148,7 @@ const LivesTableList = ({ lives }) => {
           </button>
         );
       },
-      Filter: false
+      Filter: false,
     },
     {
       Header: "Go Live",
@@ -158,12 +158,12 @@ const LivesTableList = ({ lives }) => {
             className="btn btn-primary"
             onClick={async () => {
               await axios.post(
-                "https://elmatary.com/El_Matary_Platform/platform/admin/live_poll/start_meeting.php",
+                "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/live_poll/start_meeting.php",
                 {
-                  live_id: cell.cell.row.original?.live_id
+                  live_id: cell.cell.row.original?.live_id,
                 }
               );
-              toast.done("Meeting Started")
+              toast.done("Meeting Started");
               // navigate("/live", {
               //   state: {
               //     channel_id: cell.cell.row.original?.channel_id,
@@ -176,7 +176,7 @@ const LivesTableList = ({ lives }) => {
           </button>
         );
       },
-      Filter: false
+      Filter: false,
     },
     {
       Header: "Action",
@@ -204,22 +204,22 @@ const LivesTableList = ({ lives }) => {
             </UncontrolledDropdown>
           </>
         );
-      }
-    }
+      },
+    },
   ];
   const hadleendlive = (live_id) => {
     const data_send = {
-      live_id
+      live_id,
     };
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/live/updat_live_end.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/live/updat_live_end.php",
         JSON.stringify(data_send)
       )
       .then((res) => {
-        if (res.status == 'success') {
+        if (res.status == "success") {
           toast.success(res.message);
-        } else if (res.status == 'error') {
+        } else if (res.status == "error") {
           toast.error(res.message);
         } else {
           toast.error("Something Went Error");

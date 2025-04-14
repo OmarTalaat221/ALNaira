@@ -5,7 +5,7 @@ import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const UiGrid = () => {
-  document.title = "Grid | Matary - React Admin & Dashboard Template";
+  document.title = "Grid | ALNaierh  ";
 
   return (
     <React.Fragment>
@@ -17,8 +17,10 @@ const UiGrid = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Grid Options</h4>
-                  <p className="card-title-desc">See how aspects of the Bootstrap grid
-                    system work across multiple devices with a handy table.</p>
+                  <p className="card-title-desc">
+                    See how aspects of the Bootstrap grid system work across
+                    multiple devices with a handy table.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
@@ -28,39 +30,51 @@ const UiGrid = () => {
                         <tr>
                           <th scope="col"></th>
                           <th scope="col" className="text-center">
-                            xs<br />
+                            xs
+                            <br />
                             <span className="fw-normal">&lt;576px</span>
                           </th>
                           <th scope="col" className="text-center">
-                            sm<br />
+                            sm
+                            <br />
                             <span className="fw-normal">≥576px</span>
                           </th>
                           <th scope="col" className="text-center">
-                            md<br />
+                            md
+                            <br />
                             <span className="fw-normal">≥768px</span>
                           </th>
                           <th scope="col" className="text-center">
-                            lg<br />
+                            lg
+                            <br />
                             <span className="fw-normal">≥992px</span>
                           </th>
                           <th scope="col" className="text-center">
-                            xl<br />
+                            xl
+                            <br />
                             <span className="fw-normal">≥1200px</span>
                           </th>
                           <th scope="col" className="text-center">
-                            xxl<br />
+                            xxl
+                            <br />
                             <span className="fw-normal">≥1400px</span>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th className="text-nowrap" scope="row">Grid behavior</th>
+                          <th className="text-nowrap" scope="row">
+                            Grid behavior
+                          </th>
                           <td>Horizontal at all times</td>
-                          <td colSpan="5">Collapsed to start, horizontal above breakpoints</td>
+                          <td colSpan="5">
+                            Collapsed to start, horizontal above breakpoints
+                          </td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">Max container width</th>
+                          <th className="text-nowrap" scope="row">
+                            Max container width
+                          </th>
                           <td>None (auto)</td>
                           <td>540px</td>
                           <td>720px</td>
@@ -69,36 +83,64 @@ const UiGrid = () => {
                           <td>1320px</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">Class prefix</th>
-                          <td><code>.col-</code></td>
-                          <td><code>.col-sm-</code></td>
-                          <td><code>.col-md-</code></td>
-                          <td><code>.col-lg-</code></td>
-                          <td><code>.col-xl-</code></td>
-                          <td><code>.col-xxl-</code></td>
+                          <th className="text-nowrap" scope="row">
+                            Class prefix
+                          </th>
+                          <td>
+                            <code>.col-</code>
+                          </td>
+                          <td>
+                            <code>.col-sm-</code>
+                          </td>
+                          <td>
+                            <code>.col-md-</code>
+                          </td>
+                          <td>
+                            <code>.col-lg-</code>
+                          </td>
+                          <td>
+                            <code>.col-xl-</code>
+                          </td>
+                          <td>
+                            <code>.col-xxl-</code>
+                          </td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row"># of columns</th>
+                          <th className="text-nowrap" scope="row">
+                            # of columns
+                          </th>
                           <td colSpan="6">12</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">Gutter width</th>
-                          <td colSpan="6">24px (12px on each side of a column)</td>
+                          <th className="text-nowrap" scope="row">
+                            Gutter width
+                          </th>
+                          <td colSpan="6">
+                            24px (12px on each side of a column)
+                          </td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">Custom gutters</th>
+                          <th className="text-nowrap" scope="row">
+                            Custom gutters
+                          </th>
                           <td colSpan="6">Yes</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">Nestable</th>
+                          <th className="text-nowrap" scope="row">
+                            Nestable
+                          </th>
                           <td colSpan="6">Yes</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">Offsets</th>
+                          <th className="text-nowrap" scope="row">
+                            Offsets
+                          </th>
                           <td colSpan="6">Yes</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">Column ordering</th>
+                          <th className="text-nowrap" scope="row">
+                            Column ordering
+                          </th>
                           <td colSpan="6">Yes</td>
                         </tr>
                       </tbody>
@@ -114,7 +156,10 @@ const UiGrid = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Grid Example</h4>
-                  <p className="card-title-desc">Use flexbox alignment utilities to vertically and horizontally align columns</p>
+                  <p className="card-title-desc">
+                    Use flexbox alignment utilities to vertically and
+                    horizontally align columns
+                  </p>
                 </CardHeader>
 
                 <CardBody>
@@ -296,14 +341,22 @@ const UiGrid = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Alignment</h4>
-                  <p className="card-title-desc">Use flexbox alignment utilities to vertically and horizontally align columns</p>
+                  <p className="card-title-desc">
+                    Use flexbox alignment utilities to vertically and
+                    horizontally align columns
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div>
-                    <h5 className="font-size-13 mb-3">Vertical alignment (align-items-start)</h5>
+                    <h5 className="font-size-13 mb-3">
+                      Vertical alignment (align-items-start)
+                    </h5>
                     <div className="bg-soft-light p-3 text-center">
-                      <Row className="align-items-start" style={{minHeight: "6rem"}}>
+                      <Row
+                        className="align-items-start"
+                        style={{ minHeight: "6rem" }}
+                      >
                         <Col sm={4}>
                           <div className="grid-example">
                             <code>col-sm-4</code>
@@ -326,7 +379,10 @@ const UiGrid = () => {
                   <div className="mt-4">
                     <h5 className="font-size-13 mb-2">Align Items Center</h5>
                     <div className="bg-soft-light p-3 text-center">
-                      <div className="row align-items-center" style={{minHeight: "6rem"}}>
+                      <div
+                        className="row align-items-center"
+                        style={{ minHeight: "6rem" }}
+                      >
                         <Col sm={4}>
                           <div className="grid-example">
                             <code>col-sm-4</code>
@@ -349,7 +405,10 @@ const UiGrid = () => {
                   <div className="mt-4">
                     <h5 className="font-size-13 mb-2">Align Items End</h5>
                     <div className="bg-soft-light p-3 text-center">
-                      <div className="row align-items-end" style={{minHeight: "6rem"}}>
+                      <div
+                        className="row align-items-end"
+                        style={{ minHeight: "6rem" }}
+                      >
                         <Col sm={4}>
                           <div className="grid-example">
                             <code>col-sm-4</code>
@@ -372,7 +431,7 @@ const UiGrid = () => {
                   <div className="mt-4">
                     <h5 className="font-size-13 mb-2">Align Self</h5>
                     <div className="bg-soft-light p-3 text-center">
-                      <Row style={{minHeight: "9rem"}}>
+                      <Row style={{ minHeight: "9rem" }}>
                         <Col className="col-4 align-self-start">
                           <div className="grid-example">
                             <code>align-self-start</code>
@@ -428,12 +487,17 @@ const UiGrid = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Stacks</h4>
-                  <p className="card-title-desc">Shorthand helpers that build on top of our flexbox utilities to make component layout faster and easier than ever.</p>
+                  <p className="card-title-desc">
+                    Shorthand helpers that build on top of our flexbox utilities
+                    to make component layout faster and easier than ever.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div>
-                    <h5 className="font-size-13 mb-3">Vertical Stacks (<code>.vstack</code>)</h5>
+                    <h5 className="font-size-13 mb-3">
+                      Vertical Stacks (<code>.vstack</code>)
+                    </h5>
                     <div className="bg-soft-light p-3 text-center">
                       <div className="vstack gap-3">
                         <div className="grid-example">First item</div>
@@ -444,7 +508,9 @@ const UiGrid = () => {
                   </div>
 
                   <div className="mt-4">
-                    <h5 className="font-size-13 mb-3">Horizontal Stacks (<code>.hstack</code>)</h5>
+                    <h5 className="font-size-13 mb-3">
+                      Horizontal Stacks (<code>.hstack</code>)
+                    </h5>
                     <div className="bg-soft-light p-3 text-center">
                       <div className="hstack gap-3">
                         <div className="grid-example">First item</div>
@@ -455,7 +521,10 @@ const UiGrid = () => {
                   </div>
 
                   <div className="mt-4">
-                    <h5 className="font-size-13 mb-3">Horizontal Stacks (<code>.hstack</code>) with Vertical Rule (<code>.vr</code>)</h5>
+                    <h5 className="font-size-13 mb-3">
+                      Horizontal Stacks (<code>.hstack</code>) with Vertical
+                      Rule (<code>.vr</code>)
+                    </h5>
                     <div className="bg-soft-light p-3 text-center">
                       <div className="hstack gap-3">
                         <div className="grid-example">First item</div>
@@ -473,7 +542,7 @@ const UiGrid = () => {
         </Container>
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default UiGrid;

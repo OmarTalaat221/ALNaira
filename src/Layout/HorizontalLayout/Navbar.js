@@ -9,12 +9,9 @@ import withRouter from "../../components/Common/withRouter";
 import { withTranslation } from "react-i18next";
 
 // Redux Store
-import {
-  toggleLeftmenu,
-} from "../../store/actions";
+import { toggleLeftmenu } from "../../store/actions";
 
 // Import Img
-import logo from "../../assets/images/logo-sm.svg";
 
 // Import Dropdown
 import ProfileMenu from "../../components/Common/TopbarDropdown/ProfileMenu";
@@ -26,14 +23,15 @@ import { Collapse, Row, Col } from "reactstrap";
 
 //redux
 import { useDispatch } from "react-redux";
-import { changeTheme } from '../../store/actions';
-import { themeModeTypes } from '../../constants/layout';
+import { changeTheme } from "../../store/actions";
+import { themeModeTypes } from "../../constants/layout";
 import classname from "classnames";
 
-
 const Navbar = (props) => {
-
   const dispatch = useDispatch();
+
+  const logo =
+    "https://res.cloudinary.com/dkc5klynm/image/upload/v1744534696/logo_alnaireh-01_doesvn.png";
 
   const [bootstrap, setbootstrap] = useState(false);
   const [app, setapp] = useState(false);
@@ -68,7 +66,7 @@ const Navbar = (props) => {
     }
   });
 
-  const removeActivation = items => {
+  const removeActivation = (items) => {
     for (var i = 0; i < items.length; ++i) {
       var item = items[i];
       const parent = items[i].parentElement;
@@ -112,27 +110,24 @@ const Navbar = (props) => {
 
   return (
     <React.Fragment>
-      <header id="page-topbar" className="ishorizontal-topbar">
+      <header id="page-topbar bg-[#3b3835]" className="ishorizontal-topbar">
         <div className="navbar-header">
           <div className="d-flex">
             <div className="navbar-brand-box">
               <Link to="/" className="logo logo-dark">
                 <span className="logo-sm">
-                  <img src={logo} alt="" height="22" />
+                  <img src={logo} alt="" className="h-[22px]" />
                 </span>
                 <span className="logo-lg">
-                  <img src={logo} alt="" height="22" />{" "}
-                  <span className="logo-txt">Matary</span>
+                  <img src={logo} alt="" className="h-[22px]" />{" "}
+                  <span className="logo-txt">ALNaierh</span>
                 </span>
               </Link>
 
-              <Link to="/" className="logo logo-light">
-                <span className="logo-sm">
-                  <img src={logo} alt="" height="22" />
-                </span>
-                <span className="logo-lg">
-                  <img src={logo} alt="" height="22" />{" "}
-                  <span className="logo-txt">Matary</span>
+              <Link to="/" className="logo logo-light h-full ">
+                <span className="logo-lg h-full flex items-center">
+                  <img src={logo} alt="" className="h-[22px]" />{" "}
+                  <span className="logo-txt">ALNaierh</span>
                 </span>
               </Link>
             </div>
@@ -164,7 +159,6 @@ const Navbar = (props) => {
                         className="nav-link dropdown-toggle arrow-none"
                         role="button"
                         id="topnav-dashboard"
-
                         to="/dashboard"
                       >
                         <i className="bx bx-tachometer me-2"></i>
@@ -897,8 +891,16 @@ const Navbar = (props) => {
                 className="btn header-item light-dark"
                 id="mode-setting-btn"
               >
-                <FeatherIcon icon="moon" className="icon-sm layout-mode-dark" onClick={() => dispatch(changeTheme(themeModeTypes.DARK))} />
-                <FeatherIcon icon="sun" className="icon-sm layout-mode-light" onClick={() => dispatch(changeTheme(themeModeTypes.LIGHT))} />
+                <FeatherIcon
+                  icon="moon"
+                  className="icon-sm layout-mode-dark"
+                  onClick={() => dispatch(changeTheme(themeModeTypes.DARK))}
+                />
+                <FeatherIcon
+                  icon="sun"
+                  className="icon-sm layout-mode-light"
+                  onClick={() => dispatch(changeTheme(themeModeTypes.LIGHT))}
+                />
               </button>
             </div>
 

@@ -1,10 +1,13 @@
-@import"./icons.scss";
-@import"./mermaid.min.css";
+@import "./icons.scss";
+@import "./mermaid.min.css";
 
 //import scss light mode
-@import"./app.scss";
-@import"./bootstrap.scss";
+@import "./app.scss";
+@import "./bootstrap.scss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 // rtl Direction
 // @import "./custom/rtl/bootstrap-rtl";
 // @import "./custom/rtl/components-rtl";
@@ -16,8 +19,6 @@
 // @import "./custom/rtl/structure-rtl";
 // @import "./custom/rtl/text-rtl";
 
-
 .flatpickr-weekday {
-    background: #3980c0;
+  background: #3980c0;
 }
-

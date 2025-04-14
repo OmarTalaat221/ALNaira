@@ -16,9 +16,9 @@ import {
   DropdownToggle,
   Input,
   CloseButton,
-  Spinner
+  Spinner,
 } from "reactstrap";
-import Select from 'react-select';
+import Select from "react-select";
 //Import Flatepicker
 import "flatpickr/dist/themes/material_blue.css";
 import Flatpickr from "react-flatpickr";
@@ -35,17 +35,17 @@ import moment from "moment";
 // import CourseListTable from "../CourseTable/courseListTable";
 
 const Exam = () => {
-  document.title = "Courses | Matary - React Admin & Dashboard Template";
+  document.title = "Courses | ALNaierh  ";
 
   // console.log(course_id)
 
   const navigate = useNavigate();
 
   const [examdata, setexamdata] = useState({
-    exam_name: '',
-    timer: '',
-    end_date: '',
-    start_date: ''
+    exam_name: "",
+    timer: "",
+    end_date: "",
+    start_date: "",
   });
   const [courses, setcourses] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,17 +75,21 @@ const Exam = () => {
 
   const getExams = () => {
     const data_send = {
-      course_id: "1"
+      course_id: "1",
     };
     // console.log(data_send)
 
     axios
-      .get(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/select_all_exams.php"
+      .post(
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/select_all_exams.php",
+        {
+          admin_id: adminData.admin_id,
+          access_token: adminData.access_token,
+        }
       )
       .then((res) => {
-        console.log(res);
-        setexams(res.message);
+        console.log("res?.data?.message", res);
+        setexams(res?.message);
         setselectedexam(res?.message[0]?.exam_id);
       })
       .catch((err) => console.log(err));
@@ -93,33 +97,40 @@ const Exam = () => {
 
   const getcourses = () => {
     axios
-      .get(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/courses/select_courses.php"
+      .post(
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/select_courses.php",
+        {
+          admin_id: adminData.admin_id,
+          access_token: adminData.access_token,
+        }
       )
       .then((res) => {
         // console.log(res);
-        setcourses(res);
-        setexamdata({ ...examdata, course_id: res[0].course_id });
+        setcourses(res?.message);
+        setexamdata({ ...examdata, course_id: res?.message[0]?.course_id });
       });
   };
-
+  const localdata = localStorage.getItem("elmatary_admin");
+  let adminData = localdata && JSON.parse(localdata);
   const handleaddexam = () => {
     setaddloading(true);
     const datasend = {
       ...examdata,
-      course_id: "1"
+      course_id: "1",
+      admin_id: adminData.admin_id,
+      access_token: adminData.access_token,
     };
     console.log(datasend);
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/insert_exam.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/add_exam.php",
         datasend
       )
       .then((res) => {
         console.log("res", res);
-        if (res.status == 'success') {
+        if (res.status == "success") {
           toast.success("exam has added successfully");
-        } else if (res.status == 'error') {
+        } else if (res.status == "error") {
           toast.error(res.message);
         } else {
           toast.error("SomeThing Went Error");
@@ -151,18 +162,20 @@ const Exam = () => {
     const data_send = {
       exam_id: selectedexam,
       courses_data,
-      timer: ExamdataNewTime
+      timer: ExamdataNewTime,
+      admin_id: adminData.admin_id,
+      access_token: adminData.access_token,
     };
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/assign_exam_to_course.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/assign_exam_to_course.php",
         JSON.stringify(data_send)
       )
       .then((res) => {
         console.log(res);
-        if (res.status == 'success') {
+        if (res.status == "success") {
           toast.success(res.message);
-        } else if (res.status == 'error') {
+        } else if (res.status == "error") {
           toast.error(res.message);
         } else {
           toast.error("Something Went Error");
@@ -241,7 +254,7 @@ const Exam = () => {
               padding: "15px",
               display: "flex",
               flexDirection: "column",
-              gap: "13px"
+              gap: "13px",
             }}
             onSubmit={(e) => {
               e.preventDefault();
@@ -260,7 +273,7 @@ const Exam = () => {
                 style={{
                   width: "100%",
                   padding: "10px",
-                  borderRadius: "4px"
+                  borderRadius: "4px",
                 }}
                 type="text"
                 name="exam_name"
@@ -325,7 +338,7 @@ const Exam = () => {
                   style={{
                     padding: "10px",
                     borderRadius: "4px",
-                    display: "none"
+                    display: "none",
                   }}
                   type="checkbox"
                   name="exam_istimed"
@@ -344,7 +357,7 @@ const Exam = () => {
                       sx={{ mb: 1 }}
                       alignItems="center"
                       style={{
-                        padding: "0.47rem 0.75rem"
+                        padding: "0.47rem 0.75rem",
                       }}
                     >
                       <Slider
@@ -375,7 +388,7 @@ const Exam = () => {
                     padding: "10px",
                     borderRadius: "4px",
 
-                    display: "none"
+                    display: "none",
                   }}
                   type="checkbox"
                   name="exam_isDeadLined"
@@ -393,7 +406,9 @@ const Exam = () => {
                         // console.log(moment(e.timeStamp).format('Y-M-D H:m:s'))
                         setexamdata({
                           ...examdata,
-                          start_date: moment(Date.now()).format('Y-M-D H:m:s')
+                          start_date: moment(e.target.value).format(
+                            "Y-M-D H:m:s"
+                          ),
                         });
                       }}
                       type="date"
@@ -414,7 +429,7 @@ const Exam = () => {
                     padding: "10px",
                     borderRadius: "4px",
 
-                    display: "none"
+                    display: "none",
                   }}
                   type="checkbox"
                   name="exam_end"
@@ -433,7 +448,9 @@ const Exam = () => {
                         // console.log(moment(Date.now()).format('Y-M-D H:m:s'));
                         setexamdata({
                           ...examdata,
-                          end_date: moment(Date.now()).format('Y-M-D H:m:s')
+                          end_date: moment(e.target.value).format(
+                            "Y-M-D H:m:s"
+                          ),
                         });
                       }}
                       type="date"
@@ -445,10 +462,10 @@ const Exam = () => {
             {addloading ? (
               <div
                 style={{
-                  textAlign: 'end'
+                  textAlign: "end",
                 }}
               >
-                <Spinner style={{ color: 'blue' }} />
+                <Spinner style={{ color: "blue" }} />
               </div>
             ) : (
               <button
@@ -469,7 +486,7 @@ const Exam = () => {
               padding: "15px",
               display: "flex",
               flexDirection: "column",
-              gap: "13px"
+              gap: "13px",
             }}
             onSubmit={(e) => {
               e.preventDefault();
@@ -504,29 +521,29 @@ const Exam = () => {
               </select>
             </div>
 
-              <div className="inputField withtext">
-                    <label htmlFor="time">Minutes</label>
-                    <Stack
-                      spacing={2}
-                      direction="row"
-                      sx={{ mb: 1 }}
-                      alignItems="center"
-                      style={{
-                        padding: "0.47rem 0.75rem"
-                      }}
-                    >
-                      <Slider
-                        aria-label="time"
-                        min={0}
-                        max={200}
-                        valueLabelDisplay="auto"
-                        onChange={(e) => {
-                          // console.log(e.target.value)
-                          setexamdataNewTime(e.target.value );
-                        }}
-                      />
-                    </Stack>
-                  </div>
+            <div className="inputField withtext">
+              <label htmlFor="time">Minutes</label>
+              <Stack
+                spacing={2}
+                direction="row"
+                sx={{ mb: 1 }}
+                alignItems="center"
+                style={{
+                  padding: "0.47rem 0.75rem",
+                }}
+              >
+                <Slider
+                  aria-label="time"
+                  min={0}
+                  max={200}
+                  valueLabelDisplay="auto"
+                  onChange={(e) => {
+                    // console.log(e.target.value)
+                    setexamdataNewTime(e.target.value);
+                  }}
+                />
+              </Stack>
+            </div>
 
             <div className="inputField withtext">
               <label htmlFor="exam_name">Course</label>
@@ -538,17 +555,24 @@ const Exam = () => {
                 // defaultValue={[...courses]}
                 isMulti
                 name="colors"
-                options={courses.map((item) => {
-                  // console.log(item)
-                  return { label: `${item.course_name}(${item.university_name} / ${item.grade_name})`, value: item.course_id };
-                })}
+                options={
+                  courses && courses?.length
+                    ? courses?.map((item) => {
+                        // console.log(item)
+                        return {
+                          label: `${item?.course_name}(${item?.university_name} / ${item?.grade_name})`,
+                          value: item?.course_id,
+                        };
+                      })
+                    : []
+                }
                 className="basic-multi-select"
                 classNamePrefix="select"
               />
             </div>
-            <div style={{ marginTop: '30px', textAlign: 'end' }}>
+            <div style={{ marginTop: "30px", textAlign: "end" }}>
               {assignloading ? (
-                <Spinner style={{ color: 'blue' }} />
+                <Spinner style={{ color: "blue" }} />
               ) : (
                 <button className="btn btn-success">assign</button>
               )}

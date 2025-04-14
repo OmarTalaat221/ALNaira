@@ -1,1 +1,2 @@
-export const base_url = "https://drelmatary.net/Matary_site";
+export const base_url =
+  "https://camp-coding.online/Teacher_App_2025/elnaira_jor";

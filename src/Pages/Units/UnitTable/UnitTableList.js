@@ -145,25 +145,25 @@ const UnitListTable = ({ courseData, setshowconf, setrowdata }) => {
       }
     },
 
-    // {
-    //     Header: 'Questions',
-    //     Cell: (cell) => {
-    //         return <button className="btn btn-success" onClick={
-    //             () => {
-    //                 const item = cell.cell.row.original;
-    //                 const send_data = {
-    //                   status: item.hidden,
-    //                   unit_id: item.unit_id
-    //                 }
-    //                 setshowconf(true);
-    //                 setrowdata(send_data)
-    //                 navigate("/unitquestion",{state:{unitdata:item}})
-    //             }
-    //         }>
-    //             Questions
-    //         </button>
-    //     }
-    // },
+    {
+        Header: 'Questions',
+        Cell: (cell) => {
+            return <button className="btn btn-success" onClick={
+                () => {
+                    const item = cell.cell.row.original;
+                    const send_data = {
+                      status: item.hidden,
+                      unit_id: item.unit_id
+                    }
+                    setshowconf(true);
+                    setrowdata(send_data)
+                    navigate("/unitquestion",{state:{unitdata:item}})
+                }
+            }>
+                Questions
+            </button>
+        }
+    },
 
     {
       Header: "View Unit",

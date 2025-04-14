@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
 import * as Yup from "yup";
@@ -33,8 +33,7 @@ import {
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import TableContainer from '../../../components/Common/TableContainer';
-
+import TableContainer from "../../../components/Common/TableContainer";
 
 // Column
 import {
@@ -44,14 +43,14 @@ import {
   Rating,
   WalletBalances,
   JoiningDate,
-} from './Books_1CustCol';
+} from "./Books_1CustCol";
 
-const Books_1 = props => {
-  document.title = "Customers | Matary - React Admin & Dashboard Template";
+const Books_1 = (props) => {
+  document.title = "Customers | ALNaierh  ";
 
   const dispatch = useDispatch();
 
-  const { customers } = useSelector(state => ({
+  const { customers } = useSelector((state) => ({
     customers: state.Ecommerce.customers,
   }));
 
@@ -65,13 +64,13 @@ const Books_1 = props => {
     enableReinitialize: true,
 
     initialValues: {
-      username: (customer && customer.username) || '',
-      phone: (customer && customer.phone) || '',
-      email: (customer && customer.email) || '',
-      address: (customer && customer.address) || '',
-      rating: (customer && customer.rating) || '',
-      walletBalance: (customer && customer.walletBalance) || '',
-      joiningDate: (customer && customer.joiningDate) || '',
+      username: (customer && customer.username) || "",
+      phone: (customer && customer.phone) || "",
+      email: (customer && customer.email) || "",
+      address: (customer && customer.address) || "",
+      rating: (customer && customer.rating) || "",
+      walletBalance: (customer && customer.walletBalance) || "",
+      joiningDate: (customer && customer.joiningDate) || "",
     },
     validationSchema: Yup.object({
       username: Yup.string().required("Please Enter Your Name"),
@@ -125,83 +124,85 @@ const Books_1 = props => {
     }
   }, [modal]);
 
-  const handleCustomerClick = useCallback((arg) => {
-    const customer = arg;
+  const handleCustomerClick = useCallback(
+    (arg) => {
+      const customer = arg;
 
-    setCustomer({
-      id: customer.id,
-      username: customer.username,
-      phone: customer.phone,
-      email: customer.email,
-      address: customer.address,
-      rating: customer.rating,
-      walletBalance: customer.walletBalance,
-      joiningDate: customer.joiningDate,
-    });
+      setCustomer({
+        id: customer.id,
+        username: customer.username,
+        phone: customer.phone,
+        email: customer.email,
+        address: customer.address,
+        rating: customer.rating,
+        walletBalance: customer.walletBalance,
+        joiningDate: customer.joiningDate,
+      });
 
-    setIsEdit(true);
-    toggle();
-  },[toggle]);
+      setIsEdit(true);
+      toggle();
+    },
+    [toggle]
+  );
 
   // Customber Column
   const columns = useMemo(
     () => [
-
       {
-        Header: '#',
+        Header: "#",
         Cell: () => {
           return <input type="checkbox" />;
-        }
+        },
       },
       {
-        Header: 'Username',
-        accessor: 'username',
+        Header: "Username",
+        accessor: "username",
         filterable: true,
         Cell: (cellProps) => {
           return <UserName {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Phone / Email',
-        accessor: 'phone',
+        Header: "Phone / Email",
+        accessor: "phone",
         filterable: true,
         Cell: (cellProps) => {
           return <PhoneEmail {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Address',
-        accessor: 'address',
+        Header: "Address",
+        accessor: "address",
         filterable: true,
         Cell: (cellProps) => {
           return <Address {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Rating',
-        accessor: 'rating',
+        Header: "Rating",
+        accessor: "rating",
         filterable: true,
         Cell: (cellProps) => {
           return <Rating {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Wallet Balances',
-        accessor: 'walletBalance',
+        Header: "Wallet Balances",
+        accessor: "walletBalance",
         filterable: true,
         Cell: (cellProps) => {
           return <WalletBalances {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Joining Date',
-        accessor: 'joiningDate',
+        Header: "Joining Date",
+        accessor: "joiningDate",
         Cell: (cellProps) => {
           return <JoiningDate {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Action',
+        Header: "Action",
         Cell: (cellProps) => {
           return (
             <div className="d-flex gap-3">
@@ -211,8 +212,7 @@ const Books_1 = props => {
                 onClick={() => {
                   const customerData = cellProps.row.original;
                   handleCustomerClick(customerData);
-                }
-                }
+                }}
               >
                 <i className="mdi mdi-pencil font-size-18" id="edittooltip" />
                 <UncontrolledTooltip placement="top" target="edittooltip">
@@ -234,7 +234,7 @@ const Books_1 = props => {
               </Link>
             </div>
           );
-        }
+        },
       },
     ],
     [handleCustomerClick]
@@ -303,9 +303,7 @@ const Books_1 = props => {
 
                   <Modal isOpen={modal} toggle={toggle}>
                     <ModalHeader toggle={toggle} tag="h4">
-                      {!!isEdit
-                        ? "Edit Customer"
-                        : "Add Customer"}
+                      {!!isEdit ? "Edit Customer" : "Add Customer"}
                     </ModalHeader>
                     <ModalBody>
                       <Form
@@ -326,11 +324,17 @@ const Books_1 = props => {
                                 onBlur={validation.handleBlur}
                                 value={validation.values.username || ""}
                                 invalid={
-                                  validation.touched.username && validation.errors.username ? true : false
+                                  validation.touched.username &&
+                                  validation.errors.username
+                                    ? true
+                                    : false
                                 }
                               />
-                              {validation.touched.username && validation.errors.username ? (
-                                <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
+                              {validation.touched.username &&
+                              validation.errors.username ? (
+                                <FormFeedback type="invalid">
+                                  {validation.errors.username}
+                                </FormFeedback>
                               ) : null}
                             </div>
 
@@ -343,11 +347,17 @@ const Books_1 = props => {
                                 onBlur={validation.handleBlur}
                                 value={validation.values.phone || ""}
                                 invalid={
-                                  validation.touched.phone && validation.errors.phone ? true : false
+                                  validation.touched.phone &&
+                                  validation.errors.phone
+                                    ? true
+                                    : false
                                 }
                               />
-                              {validation.touched.phone && validation.errors.phone ? (
-                                <FormFeedback type="invalid">{validation.errors.phone}</FormFeedback>
+                              {validation.touched.phone &&
+                              validation.errors.phone ? (
+                                <FormFeedback type="invalid">
+                                  {validation.errors.phone}
+                                </FormFeedback>
                               ) : null}
                             </div>
 
@@ -360,11 +370,17 @@ const Books_1 = props => {
                                 onBlur={validation.handleBlur}
                                 value={validation.values.email || ""}
                                 invalid={
-                                  validation.touched.email && validation.errors.email ? true : false
+                                  validation.touched.email &&
+                                  validation.errors.email
+                                    ? true
+                                    : false
                                 }
                               />
-                              {validation.touched.email && validation.errors.email ? (
-                                <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
+                              {validation.touched.email &&
+                              validation.errors.email ? (
+                                <FormFeedback type="invalid">
+                                  {validation.errors.email}
+                                </FormFeedback>
                               ) : null}
                             </div>
 
@@ -378,11 +394,17 @@ const Books_1 = props => {
                                 onBlur={validation.handleBlur}
                                 value={validation.values.address || ""}
                                 invalid={
-                                  validation.touched.address && validation.errors.address ? true : false
+                                  validation.touched.address &&
+                                  validation.errors.address
+                                    ? true
+                                    : false
                                 }
                               />
-                              {validation.touched.address && validation.errors.address ? (
-                                <FormFeedback type="invalid">{validation.errors.address}</FormFeedback>
+                              {validation.touched.address &&
+                              validation.errors.address ? (
+                                <FormFeedback type="invalid">
+                                  {validation.errors.address}
+                                </FormFeedback>
                               ) : null}
                             </div>
 
@@ -395,16 +417,24 @@ const Books_1 = props => {
                                 onBlur={validation.handleBlur}
                                 value={validation.values.rating || ""}
                                 invalid={
-                                  validation.touched.rating && validation.errors.rating ? true : false
+                                  validation.touched.rating &&
+                                  validation.errors.rating
+                                    ? true
+                                    : false
                                 }
                               />
-                              {validation.touched.rating && validation.errors.rating ? (
-                                <FormFeedback type="invalid">{validation.errors.rating}</FormFeedback>
+                              {validation.touched.rating &&
+                              validation.errors.rating ? (
+                                <FormFeedback type="invalid">
+                                  {validation.errors.rating}
+                                </FormFeedback>
                               ) : null}
                             </div>
 
                             <div className="mb-3">
-                              <Label className="form-label">Wallet Balance</Label>
+                              <Label className="form-label">
+                                Wallet Balance
+                              </Label>
                               <Input
                                 name="walletBalance"
                                 type="text"
@@ -412,11 +442,17 @@ const Books_1 = props => {
                                 onBlur={validation.handleBlur}
                                 value={validation.values.walletBalance || ""}
                                 invalid={
-                                  validation.touched.walletBalance && validation.errors.walletBalance ? true : false
+                                  validation.touched.walletBalance &&
+                                  validation.errors.walletBalance
+                                    ? true
+                                    : false
                                 }
                               />
-                              {validation.touched.walletBalance && validation.errors.walletBalance ? (
-                                <FormFeedback type="invalid">{validation.errors.walletBalance}</FormFeedback>
+                              {validation.touched.walletBalance &&
+                              validation.errors.walletBalance ? (
+                                <FormFeedback type="invalid">
+                                  {validation.errors.walletBalance}
+                                </FormFeedback>
                               ) : null}
                             </div>
 
@@ -429,11 +465,17 @@ const Books_1 = props => {
                                 onBlur={validation.handleBlur}
                                 value={validation.values.joiningDate || ""}
                                 invalid={
-                                  validation.touched.joiningDate && validation.errors.joiningDate ? true : false
+                                  validation.touched.joiningDate &&
+                                  validation.errors.joiningDate
+                                    ? true
+                                    : false
                                 }
                               />
-                              {validation.touched.joiningDate && validation.errors.joiningDate ? (
-                                <FormFeedback type="invalid">{validation.errors.joiningDate}</FormFeedback>
+                              {validation.touched.joiningDate &&
+                              validation.errors.joiningDate ? (
+                                <FormFeedback type="invalid">
+                                  {validation.errors.joiningDate}
+                                </FormFeedback>
                               ) : null}
                             </div>
                           </Col>
@@ -453,7 +495,6 @@ const Books_1 = props => {
                       </Form>
                     </ModalBody>
                   </Modal>
-
                 </CardBody>
               </Card>
             </Col>

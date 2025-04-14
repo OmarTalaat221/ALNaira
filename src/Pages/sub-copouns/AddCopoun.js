@@ -14,9 +14,9 @@ import { DatePicker, Loader } from "rsuite";
 import { base_url } from "../../constants";
 
 const AddCopoun = () => {
-  document.title = "Add Copoun | Matary - ";
-  const localdata=localStorage.getItem('elmatary_admin');
-  let adminData=localdata&&JSON.parse(localdata);
+  document.title = "Add Copoun | ALNaierh - ";
+  const localdata = localStorage.getItem("elmatary_admin");
+  let adminData = localdata && JSON.parse(localdata);
   const [col1, setcol1] = useState(true);
   const [col2, setcol2] = useState(false);
   const [col3, setcol3] = useState(false);
@@ -53,12 +53,13 @@ const AddCopoun = () => {
   const [Courses, setCourses] = useState(false);
 
   const getCourses = async () => {
-    const data_send={
-      admin_id:adminData.admin_id,
-      access_token:adminData.access_token,
-    }
+    const data_send = {
+      admin_id: adminData.admin_id,
+      access_token: adminData.access_token,
+    };
     const courses = await axios.post(
-      base_url+"/admin/courses/select_courses.php",JSON.stringify(data_send)
+      base_url + "/admin/courses/select_courses.php",
+      JSON.stringify(data_send)
     );
 
     const co = courses.message.map((item) => {
@@ -85,10 +86,10 @@ const AddCopoun = () => {
   const copounDate = useRef();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [addLoading,setAddLoading]=useState(false)
+  const [addLoading, setAddLoading] = useState(false);
   const addCopoun = async (e) => {
     setLoading(true);
-    setAddLoading(true)
+    setAddLoading(true);
     e.preventDefault();
     // alert("Submitted")
     const data_send = {
@@ -102,27 +103,34 @@ const AddCopoun = () => {
           : null,
       phone_number: copounDate.current.phone_number.value,
       end_date: copounDate.current.end_date.value,
-      admin_id:adminData.admin_id,
-      access_token:adminData.access_token,
+      admin_id: adminData.admin_id,
+      access_token: adminData.access_token,
     };
-    console.log(data_send)
+    console.log(data_send);
 
     const allPropertiesNotEmpty = Object.values(data_send).every(
       (value) => value !== null && value !== undefined && value !== ""
     );
 
     if (allPropertiesNotEmpty) {
-    const link =base_url+`/admin/subscription/new_create_cources_cards.php?courses_ids=${data_send.subjects}&card_count=${data_send.copoun_quantity}&title=${data_send.copoun_name}&support_no=${data_send.phone_number}&end_date=${data_send.end_date}`
+      const link =
+        base_url +
+        `/admin/subscription/new_create_cources_cards.php?courses_ids=${data_send.subjects}&card_count=${data_send.copoun_quantity}&title=${data_send.copoun_name}&support_no=${data_send.phone_number}&end_date=${data_send.end_date}`;
 
-      const url = await axios.post(base_url+"/admin/subscription/new_create_cources_cards.php",JSON.stringify(data_send))
-      .then((res)=>{
-        // console.log(link)
-        // window.open(link);
-        window.open(link, "_blank");
-        // window.open(link?.split("king_mo_reda")[1]?.split(".xlsx")[0] + ".xlsx");
-      }).finally(()=>{
-        setAddLoading(false)
-      })
+      const url = await axios
+        .post(
+          base_url + "/admin/subscription/new_create_cources_cards.php",
+          JSON.stringify(data_send)
+        )
+        .then((res) => {
+          // console.log(link)
+          // window.open(link);
+          window.open(link, "_blank");
+          // window.open(link?.split("king_mo_reda")[1]?.split(".xlsx")[0] + ".xlsx");
+        })
+        .finally(() => {
+          setAddLoading(false);
+        });
       // if(url.status=='success'){
       //   // console.log(link)
       //   window.open(link?.split("king_mo_reda")[1]?.split(".xlsx")[0] + ".xlsx");
@@ -130,30 +138,30 @@ const AddCopoun = () => {
       //   // setLoading(!loading)
       // }
       // console.log(url)
-      setAddLoading(false)
-
+      setAddLoading(false);
     } else {
       toast.error("Add All Card Data");
     }
     setLoading(false);
-    setAddLoading(false)
+    setAddLoading(false);
   };
 
   const [univs, setUnivs] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState();
   const getUnivs = async () => {
-    const data_send={
-      admin_id:adminData.admin_id,
-      access_token:adminData.access_token,
-    }
+    const data_send = {
+      admin_id: adminData.admin_id,
+      access_token: adminData.access_token,
+    };
     const selct_univs = await axios.post(
-      base_url+"/admin/universities/select_universities_grade.php",JSON.stringify(data_send)
-      );
-      if(selct_univs.message=='Session Expired'){
-        localStorage.removeItem('elmatary_admin');
-        navigate('/login',{replace:true})
-      }
-      console.log(selct_univs)
+      base_url + "/admin/universities/select_universities_grade.php",
+      JSON.stringify(data_send)
+    );
+    if (selct_univs.message == "Session Expired") {
+      localStorage.removeItem("elmatary_admin");
+      navigate("/login", { replace: true });
+    }
+    console.log(selct_univs);
     setUnivs(selct_univs.message);
   };
 

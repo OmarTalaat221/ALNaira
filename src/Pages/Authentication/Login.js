@@ -1,8 +1,20 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
-import { Row, Col, CardBody, Card, Alert, Container, Form, Input, FormFeedback, Label, Spinner } from "reactstrap";
-import 'react-toastify/dist/ReactToastify.css';
+import {
+  Row,
+  Col,
+  CardBody,
+  Card,
+  Alert,
+  Container,
+  Form,
+  Input,
+  FormFeedback,
+  Label,
+  Spinner,
+} from "reactstrap";
+import "react-toastify/dist/ReactToastify.css";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 
@@ -22,7 +34,6 @@ import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props
 import { loginUser, socialLogin } from "../../store/actions";
 
 // import images
-import logo from "../../assets/images/logo-sm.png";
 
 //Import config
 import { facebook, google } from "../../config";
@@ -30,17 +41,17 @@ import axios from "axios";
 import { base_url } from "../../constants";
 import { toast } from "react-toastify";
 
-const Login = props => {
-  console.log('yes')
-  document.title = "Login | Matary - React Admin & Dashboard Template";
-  const navigate=useNavigate()
-  const [loginData,setLoadingData]=useState({
-    user_email:'',
-    password:'',
-  })
-  const [showErrMsg,setShowErrMsg]=useState(false);
-  const [errMsg,setErrMsg]=useState('');
-  const [loading,setLoading]=useState(false);
+const Login = (props) => {
+  console.log("yes");
+  document.title = "Login | ALNaierh  ";
+  const navigate = useNavigate();
+  const [loginData, setLoadingData] = useState({
+    user_email: "",
+    password: "",
+  });
+  const [showErrMsg, setShowErrMsg] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const validation = useFormik({
@@ -48,8 +59,8 @@ const Login = props => {
     enableReinitialize: true,
 
     initialValues: {
-      email: "admin@Themesdesign.com" || '',
-      password: "123456" || '',
+      email: "admin@Themesdesign.com" || "",
+      password: "123456" || "",
     },
     validationSchema: Yup.object({
       email: Yup.string().required("Please Enter Your Email"),
@@ -57,10 +68,10 @@ const Login = props => {
     }),
     onSubmit: (values) => {
       dispatch(loginUser(values, props.router.navigate));
-    }
+    },
   });
 
-  const { error } = useSelector(state => ({
+  const { error } = useSelector((state) => ({
     error: state.login.error,
   }));
 
@@ -90,7 +101,7 @@ const Login = props => {
   };
 
   //handleGoogleLoginResponse
-  const googleResponse = response => {
+  const googleResponse = (response) => {
     signIn(response, "google");
   };
 
@@ -98,69 +109,69 @@ const Login = props => {
   // const twitterResponse = e => {}
 
   //handleFacebookLoginResponse
-  const facebookResponse = response => {
+  const facebookResponse = (response) => {
     signIn(response, "facebook");
   };
 
-  const handleLogin=()=>{
-    if(loginData.user_email==''){
-      toast.warn('Enter User Email');
-      return
+  const handleLogin = () => {
+    if (loginData.user_email == "") {
+      toast.warn("Enter User Email");
+      return;
     }
-    if(loginData.password==''){
-      toast.warn('Enter Password');
-      return
+    if (loginData.password == "") {
+      toast.warn("Enter Password");
+      return;
     }
     setLoading(true);
-    const data_send={
-      ...loginData
-    }
-    console.log(data_send)
-    axios.post(base_url+"/admin/auth/admin_login.php",JSON.stringify(data_send))
-    .then((res)=>{
-      console.log(res)
-      toast.success(res.message)
-      if(res.status=='success'){
-        toast.success('Login Successfully');
-        localStorage.setItem('elmatary_admin',JSON.stringify(res.message));
-        navigate('/dashboard',{replace:true})
-      }
-      else if(res.status=='faild'){
-        toast.error(res.massage)
-        // console.log('faild')
-        // setShowErrMsg(true);
-        // setErrMsg(res.massage)
-      }
-      else {
-        toast.error('Something Went Error')
-      }
-    }).catch(e=>console.log(e))
-    .finally(()=>{
-      setLoading(false)
-    })
-  }
+    const data_send = {
+      ...loginData,
+    };
+    console.log(data_send);
+    axios
+      .post(base_url + "/admin/auth/admin_login.php", JSON.stringify(data_send))
+      .then((res) => {
+        console.log(res);
+        toast.success(res.message);
+        if (res.status == "success") {
+          toast.success("Login Successfully");
+          localStorage.setItem("elmatary_admin", JSON.stringify(res.message));
+          navigate("/dashboard", { replace: true });
+        } else if (res.status == "faild") {
+          toast.error(res.massage);
+          // console.log('faild')
+          // setShowErrMsg(true);
+          // setErrMsg(res.massage)
+        } else {
+          toast.error("Something Went Error");
+        }
+      })
+      .catch((e) => console.log(e))
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   // const navigate=useNavigate()
 
-  useEffect(()=>{
-    if(showErrMsg){
+  useEffect(() => {
+    if (showErrMsg) {
       setTimeout(() => {
         setShowErrMsg(false);
       }, 2000);
     }
-  },[showErrMsg])
-  let localdata=localStorage.getItem("elmatary_admin");
+  }, [showErrMsg]);
+  let localdata = localStorage.getItem("elmatary_admin");
   // let adminData=
-  if(localdata){
-    console.log('y1')
-    navigate('/dashboard',{replace:true})
+  if (localdata) {
+    console.log("y1");
+    navigate("/dashboard", { replace: true });
   }
-  useEffect(()=>{
-    if(localdata){
-    console.log('y2')
-      navigate('/dashboard',{replace:true})
+  useEffect(() => {
+    if (localdata) {
+      console.log("y2");
+      navigate("/dashboard", { replace: true });
     }
-  },[])
+  }, []);
   return (
     <React.Fragment>
       <div className="authentication-bg min-vh-100">
@@ -170,27 +181,41 @@ const Login = props => {
             <Row className="justify-content-center my-auto">
               <Col md={8} lg={6} xl={5}>
                 <div className="text-center mb-4">
-                  <Link to="/">
-                    <img src={require("../../assets/images/log.png")} alt="" height="22" /> <span className="logo-txt text-light" >Matary</span>
+                  <Link to="/" className="flex items-center justify-center">
+                    <img
+                      src={
+                        "https://res.cloudinary.com/dkc5klynm/image/upload/v1744534696/logo_alnaireh-01_doesvn.png"
+                      }
+                      alt=""
+                      height="22"
+                      className="h-[22px]"
+                    />{" "}
+                    <span className="logo-txt text-light">ALNaierh</span>
                   </Link>
                 </div>
                 <Card>
                   <CardBody className="p-4">
                     <div className="text-center mt-2">
                       <h5 className="text-primary">Welcome Back !</h5>
-                      <p className="text-muted">Sign in to continue to Matary.</p>
+                      <p className="text-muted">
+                        Sign in to continue to ALNaierh.
+                      </p>
                     </div>
                     <div className="p-2 mt-4">
                       <Form
                         className="form-horizontal"
                         onSubmit={(e) => {
                           e.preventDefault();
-                          handleLogin()
+                          handleLogin();
                           // validation.handleSubmit();
                           // return false;
                         }}
                       >
-                        {error ? <Alert color="danger"><div>{error}</div></Alert> : null}
+                        {error ? (
+                          <Alert color="danger">
+                            <div>{error}</div>
+                          </Alert>
+                        ) : null}
                         <div className="mb-3">
                           <Label className="form-label">Email</Label>
                           <Input
@@ -198,8 +223,11 @@ const Login = props => {
                             className="form-control"
                             placeholder="Enter email"
                             type="email"
-                            onChange={(e)=>{
-                              setLoadingData({...loginData,user_email:e.target.value});
+                            onChange={(e) => {
+                              setLoadingData({
+                                ...loginData,
+                                user_email: e.target.value,
+                              });
                             }}
                             // onChange={validation.handleChange}
                             // onBlur={validation.handleBlur}
@@ -208,8 +236,11 @@ const Login = props => {
                             //   validation.touched.email && validation.errors.email ? true : false
                             // }
                           />
-                          {validation.touched.email && validation.errors.email ? (
-                            <FormFeedback type="invalid"><div>{validation.errors.email}</div></FormFeedback>
+                          {validation.touched.email &&
+                          validation.errors.email ? (
+                            <FormFeedback type="invalid">
+                              <div>{validation.errors.email}</div>
+                            </FormFeedback>
                           ) : null}
                         </div>
 
@@ -219,9 +250,14 @@ const Login = props => {
                             name="password"
                             // value={validation.values.password || ""}
                             type="password"
-                            onChange={(e)=>{
-                              setLoadingData({...loginData,password:e.target.value});
+                            onChange={(e) => {
+                              setLoadingData({
+                                ...loginData,
+                                password: e.target.value,
+                              });
                             }}
+                            placeholder="Enter Password"
+
                             // placeholder="Enter Password"
                             // onChange={validation.handleChange}
                             // onBlur={validation.handleBlur}
@@ -229,29 +265,27 @@ const Login = props => {
                             //   validation.touched.password && validation.errors.password ? true : false
                             // }
                           />
-                          {validation.touched.password && validation.errors.password ? (
-                            <FormFeedback type="invalid"><div> {validation.errors.password} </div></FormFeedback>
+                          {validation.touched.password &&
+                          validation.errors.password ? (
+                            <FormFeedback type="invalid">
+                              <div> {validation.errors.password} </div>
+                            </FormFeedback>
                           ) : null}
                         </div>
 
                         <div>
-                          {
-                            showErrMsg?
-                            (
-                              <p
-                                style={{
-                                  textAlign:'center',
-                                  color:'red',
-                                  fontWeight:'500',
-                                  fontSize:'22px'
-                                }}
-                              >
-                                {errMsg}
-                              </p>
-                            )
-                            :
-                            (null)
-                          }
+                          {showErrMsg ? (
+                            <p
+                              style={{
+                                textAlign: "center",
+                                color: "red",
+                                fontWeight: "500",
+                                fontSize: "22px",
+                              }}
+                            >
+                              {errMsg}
+                            </p>
+                          ) : null}
                         </div>
 
                         <div className="mt-3 text-end">
@@ -260,12 +294,9 @@ const Login = props => {
                             className="btn btn-primary btn-block"
                             type="submit"
                           >
-                            {
-                              loading?<Spinner/>:'Log In'
-                            }
+                            {loading ? <Spinner /> : "Log In"}
                           </button>
                         </div>
-
                       </Form>
                     </div>
                   </CardBody>

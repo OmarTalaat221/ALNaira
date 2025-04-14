@@ -1,5 +1,16 @@
 import React, { useEffect } from "react";
-import { Row, Col, CardBody, Card, Alert, Container, Input, Label, Form, FormFeedback } from "reactstrap";
+import {
+  Row,
+  Col,
+  CardBody,
+  Card,
+  Alert,
+  Container,
+  Input,
+  Label,
+  Form,
+  FormFeedback,
+} from "reactstrap";
 
 // Formik Validation
 import * as Yup from "yup";
@@ -15,11 +26,12 @@ import { Link } from "react-router-dom";
 
 // import images
 import profileImg from "../../assets/images/auth-bg-1.jpg";
-import logoImg from "../../assets/images/logo-sm.png";
 
-const Register = props => {
-  document.title = "Register | Matary - React Admin & Dashboard Template";
+const Register = (props) => {
+  document.title = "Register | ALNaierh  ";
 
+  const logoImg =
+    "https://res.cloudinary.com/dkc5klynm/image/upload/v1744534696/logo_alnaireh-01_doesvn.png";
   const dispatch = useDispatch();
 
   const validation = useFormik({
@@ -27,9 +39,9 @@ const Register = props => {
     enableReinitialize: true,
 
     initialValues: {
-      email: '',
-      username: '',
-      password: '',
+      email: "",
+      username: "",
+      password: "",
     },
     validationSchema: Yup.object({
       email: Yup.string().required("Please Enter Your Email"),
@@ -38,10 +50,10 @@ const Register = props => {
     }),
     onSubmit: (values) => {
       dispatch(registerUser(values));
-    }
+    },
   });
 
-  const { user, registrationError } = useSelector(state => ({
+  const { user, registrationError } = useSelector((state) => ({
     user: state.account.user,
     registrationError: state.account.registrationError,
   }));
@@ -57,7 +69,6 @@ const Register = props => {
 
   return (
     <React.Fragment>
-      
       <div className="account-pages my-5 pt-sm-5">
         <Container>
           <Row className="justify-content-center">
@@ -84,7 +95,7 @@ const Register = props => {
                           <img
                             src={logoImg}
                             alt=""
-                            className="rounded-circle"
+                            className="rounded-circle h-[34px]"
                             height="34"
                           />
                         </span>
@@ -107,7 +118,9 @@ const Register = props => {
                       ) : null}
 
                       {registrationError && registrationError ? (
-                        <Alert color="danger"><div>{registrationError}</div></Alert>
+                        <Alert color="danger">
+                          <div>{registrationError}</div>
+                        </Alert>
                       ) : null}
 
                       <div className="mb-3">
@@ -122,11 +135,15 @@ const Register = props => {
                           onBlur={validation.handleBlur}
                           value={validation.values.email || ""}
                           invalid={
-                            validation.touched.email && validation.errors.email ? true : false
+                            validation.touched.email && validation.errors.email
+                              ? true
+                              : false
                           }
                         />
                         {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid"><div>{validation.errors.email}</div></FormFeedback>
+                          <FormFeedback type="invalid">
+                            <div>{validation.errors.email}</div>
+                          </FormFeedback>
                         ) : null}
                       </div>
 
@@ -140,11 +157,17 @@ const Register = props => {
                           onBlur={validation.handleBlur}
                           value={validation.values.username || ""}
                           invalid={
-                            validation.touched.username && validation.errors.username ? true : false
+                            validation.touched.username &&
+                            validation.errors.username
+                              ? true
+                              : false
                           }
                         />
-                        {validation.touched.username && validation.errors.username ? (
-                          <FormFeedback type="invalid"><div>{validation.errors.username}</div></FormFeedback>
+                        {validation.touched.username &&
+                        validation.errors.username ? (
+                          <FormFeedback type="invalid">
+                            <div>{validation.errors.username}</div>
+                          </FormFeedback>
                         ) : null}
                       </div>
                       <div className="mb-3">
@@ -157,11 +180,17 @@ const Register = props => {
                           onBlur={validation.handleBlur}
                           value={validation.values.password || ""}
                           invalid={
-                            validation.touched.password && validation.errors.password ? true : false
+                            validation.touched.password &&
+                            validation.errors.password
+                              ? true
+                              : false
                           }
                         />
-                        {validation.touched.password && validation.errors.password ? (
-                          <FormFeedback type="invalid"><div>{validation.errors.password}</div></FormFeedback>
+                        {validation.touched.password &&
+                        validation.errors.password ? (
+                          <FormFeedback type="invalid">
+                            <div>{validation.errors.password}</div>
+                          </FormFeedback>
                         ) : null}
                       </div>
 

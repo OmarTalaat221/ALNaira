@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row, Card, CardBody } from "reactstrap";
 
-import logosm from "../../assets/images/logo-sm.svg";
-
 const EmailVerification = () => {
-  document.title = "Email Verification | Matary - React Admin & Dashboard Template";
+  document.title = "Email Verification | ALNaierh  ";
+
+  const logosm =
+    "https://res.cloudinary.com/dkc5klynm/image/upload/v1744534696/logo_alnaireh-01_doesvn.png";
 
   return (
     <React.Fragment>
@@ -17,7 +18,7 @@ const EmailVerification = () => {
               <Col md={8} lg={6} xl={5}>
                 <div className="text-center mb-4">
                   <Link to="/">
-                    <img src={logosm} alt="" height="22" />{" "}
+                    <img src={logosm} alt="" height="22" className="h-[22px]" />{" "}
                     <span className="logo-txt">Matary</span>
                   </Link>
                 </div>
@@ -34,8 +35,8 @@ const EmailVerification = () => {
                         <h4>Verify your email</h4>
                         <p>
                           We have sent you verification email{" "}
-                          <span className="fw-bold">example@abc.com</span>, Please
-                          check it
+                          <span className="fw-bold">example@abc.com</span>,
+                          Please check it
                         </p>
                         <div className="mt-4">
                           <Link to="/" className="btn btn-primary w-10">

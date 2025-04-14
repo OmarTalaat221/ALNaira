@@ -13,7 +13,7 @@ import {
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
-  DropdownToggle
+  DropdownToggle,
 } from "reactstrap";
 
 import "./style.css";
@@ -31,7 +31,7 @@ import { Loader } from "rsuite";
 import { AiOutlineConsoleSql } from "react-icons/ai";
 
 const Courses = () => {
-  document.title = "Courses | Matary - React Admin & Dashboard Template";
+  document.title = "Courses | ALNaierh  ";
   const navigate = useNavigate();
   const location = useLocation();
   const [Courses, setCourses] = useState(false);
@@ -41,10 +41,15 @@ const Courses = () => {
   const getCourses = async () => {
     setLoading(true);
     const courses = await axios.get(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/courses/select_courses.php"
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/select_courses.php"
     );
     console.log(courses);
-    setCourses([...courses.filter((item)=>item.grade_id == location?.state?.grade_id && location?.state?.univ_id)]);
+    setCourses([
+      ...courses.filter(
+        (item) =>
+          item.grade_id == location?.state?.grade_id && location?.state?.univ_id
+      ),
+    ]);
     setFilteredCourses([...courses]);
     setLoading(false);
   };
@@ -52,15 +57,15 @@ const Courses = () => {
   const showHideCourse = async (send_data) => {
     console.log(send_data);
     const courses = await axios.post(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/courses/show_hide_course.php",
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/show_hide_course.php",
       JSON.stringify(send_data)
     );
     // console.log(courses);
-    if (courses.status == 'success') {
+    if (courses.status == "success") {
       toast.success(courses.message);
       getCourses();
       console.log("getCourses");
-    } else if (courses.status == 'error') {
+    } else if (courses.status == "error") {
       toast.error(courses.message);
     } else {
       toast.error("Something Went Error");
@@ -69,7 +74,7 @@ const Courses = () => {
 
   const getUnivs = async () => {
     const selct_univs = await axios.get(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/universities/select_universities_grade.php"
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/universities/select_universities_grade.php"
     );
     setUnivs(selct_univs.message);
   };
@@ -190,7 +195,7 @@ const Courses = () => {
                               }}
                             >
                               <i className="mdi mdi-plus me-1"></i>
-                              Add Course
+                              Add Enrollment
                             </button>
                           </div>
                         </Col>

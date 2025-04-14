@@ -5,7 +5,7 @@ import {
   DropdownToggle,
   UncontrolledDropdown,
 } from "reactstrap";
-import axios from 'axios';
+import axios from "axios";
 // import TableContainer from "./../../../../components/Common/TableContainer";
 // import { CourseData } from "../../../../CommonData/Data/Course";
 import { useNavigate } from "react-router-dom";
@@ -53,8 +53,10 @@ const LivesTableList = ({ lives }) => {
       Header: "start date",
       Cell: (cell) => {
         return (
-          <span>{moment(cell.cell.row.original.start_date).format('Y-M-D H:m:s')}</span>
-        )
+          <span>
+            {moment(cell.cell.row.original.start_date).format("Y-M-D H:m:s")}
+          </span>
+        );
       },
       Filter: false,
     },
@@ -62,17 +64,17 @@ const LivesTableList = ({ lives }) => {
       Header: "start time",
       Cell: (cell) => {
         return (
-          <span>{moment(cell.cell.row.original.start_time).format('Y-M-D H:m:s')}</span>
-        )
+          <span>
+            {moment(cell.cell.row.original.start_time).format("Y-M-D H:m:s")}
+          </span>
+        );
       },
       Filter: false,
     },
     {
       Header: "status",
       Cell: (cell) => {
-        return (
-          <span>{console.log(cell.cell.row.original.start_time)}</span>
-        )
+        return <span>{console.log(cell.cell.row.original.start_time)}</span>;
       },
       Filter: false,
     },
@@ -80,14 +82,37 @@ const LivesTableList = ({ lives }) => {
       Header: "copy",
       Cell: (cell) => {
         return (
-          <CopyToClipboard style={{ padding: "0 14px", cursor: "pointer", width: "100%", display: "flex", gap: "10px", alignItems: "center" }} text={cell.cell.row.original?.channel_id} onCopy={() => toast.success("Copied")}>
-          <span style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <b style={{ fontSize: "22px", fontWeight: "700", color: "green" }}>{cell.cell.row.original?.channel_id}</b>
-            <em><ContentCopyOutlined /></em>
-          </span>
-        </CopyToClipboard>
-
-        )
+          <CopyToClipboard
+            style={{
+              padding: "0 14px",
+              cursor: "pointer",
+              width: "100%",
+              display: "flex",
+              gap: "10px",
+              alignItems: "center",
+            }}
+            text={cell.cell.row.original?.channel_id}
+            onCopy={() => toast.success("Copied")}
+          >
+            <span
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <b
+                style={{ fontSize: "22px", fontWeight: "700", color: "green" }}
+              >
+                {cell.cell.row.original?.channel_id}
+              </b>
+              <em>
+                <ContentCopyOutlined />
+              </em>
+            </span>
+          </CopyToClipboard>
+        );
       },
       Filter: false,
     },
@@ -108,12 +133,20 @@ const LivesTableList = ({ lives }) => {
       Header: "Poll",
       Cell: (cell) => {
         return (
-          <button className="btn btn-primary"
-            onClick={()=>{
-              navigate("/live",{state:{channel_id:cell.cell.row.original?.channel_id,live_id:cell.cell.row.original?.live_id}})
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              navigate("/live", {
+                state: {
+                  channel_id: cell.cell.row.original?.channel_id,
+                  live_id: cell.cell.row.original?.live_id,
+                },
+              });
             }}
-          >poll</button>
-        )
+          >
+            poll
+          </button>
+        );
       },
       Filter: false,
     },
@@ -134,8 +167,8 @@ const LivesTableList = ({ lives }) => {
               <DropdownMenu className="dropdown-menu-end">
                 <DropdownItem>start</DropdownItem>
                 <DropdownItem
-                  onClick={()=>{
-                    hadleendlive(cell.cell.row.original?.live_id)
+                  onClick={() => {
+                    hadleendlive(cell.cell.row.original?.live_id);
                   }}
                 >
                   end
@@ -147,23 +180,26 @@ const LivesTableList = ({ lives }) => {
       },
     },
   ];
-  const hadleendlive=(live_id)=>{
-    const data_send={
-      live_id
-    }
-    axios.post("https://elmatary.com/El_Matary_Platform/platform/admin/live/updat_live_end.php",JSON.stringify(data_send))
-    .then((res)=>{
-      if(res.status=='success'){
-        toast.success(res.message);
-      }
-      else if(res.status=='error'){
-        toast.error(res.message);
-      }
-      else {
-        toast.error("Something Went Error");
-      }
-    }).catch(err=>console.log(err))
-  }
+  const hadleendlive = (live_id) => {
+    const data_send = {
+      live_id,
+    };
+    axios
+      .post(
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/live/updat_live_end.php",
+        JSON.stringify(data_send)
+      )
+      .then((res) => {
+        if (res.status == "success") {
+          toast.success(res.message);
+        } else if (res.status == "error") {
+          toast.error(res.message);
+        } else {
+          toast.error("Something Went Error");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <React.Fragment>
       <TableContainer

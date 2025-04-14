@@ -17,7 +17,7 @@ export const GET_EVENTS = "/events";
 export const ADD_NEW_EVENT = "/add/event";
 export const UPDATE_EVENT = "/update/event";
 export const DELETE_EVENT = "/delete/event";
-export const GET_CATEGORIES = "/categories";
+export const GET_CATEGORIES = "/companies";
 
 //PRODUCTS
 export const GET_PRODUCTS = "/products";
@@ -43,6 +43,6 @@ export const GET_SHOPS = "/shops";
 
 //COMMENTS
 export const GET_PRODUCT_COMMENTS = "/comments-product";
-export const ON_LIKNE_COMMENT = "/comments-product-action"
+export const ON_LIKNE_COMMENT = "/comments-product-action";
 export const ON_ADD_REPLY = "/comments-product-add-reply";
 export const ON_ADD_COMMENT = "/comments-product-add-comment";

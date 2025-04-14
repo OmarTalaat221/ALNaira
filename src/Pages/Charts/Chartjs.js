@@ -13,91 +13,89 @@ import RadarChart from "./AllCharts/chartjs/radarchart";
 import PolarChart from "./AllCharts/chartjs/polarchart";
 
 const ChartjsCharts = () => {
-    document.title = "Chartjs | Matary - React Admin & Dashboard Template";
+  document.title = "Chartjs | ALNaierh  ";
 
-    return (
-        <React.Fragment>
-            <div className="page-content">
-                <Container fluid={true}>
+  return (
+    <React.Fragment>
+      <div className="page-content">
+        <Container fluid={true}>
+          <Breadcrumbs title="Charts" breadcrumbItem="Chartjs" />
 
-                    <Breadcrumbs title="Charts" breadcrumbItem="Chartjs" />
+          <Row>
+            <Col xl={6}>
+              <Card>
+                <CardHeader>
+                  <h4 className="card-title mb-0">Line Chart</h4>
+                </CardHeader>
+                <CardBody>
+                  <LineChart />
+                </CardBody>
+              </Card>
+            </Col>
 
-                    <Row>
-                        <Col xl={6}>
-                            <Card>
-                                <CardHeader>
-                                    <h4 className="card-title mb-0">Line Chart</h4>
-                                </CardHeader>
-                                <CardBody>
-                                    <LineChart />
-                                </CardBody>
-                            </Card>
-                        </Col>
+            <Col xl={6}>
+              <Card>
+                <CardHeader>
+                  <h4 className="card-title mb-0">Bar Chart</h4>
+                </CardHeader>
+                <CardBody>
+                  <BarChart />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
 
-                        <Col xl={6}>
-                            <Card>
-                                <CardHeader>
-                                    <h4 className="card-title mb-0">Bar Chart</h4>
-                                </CardHeader>
-                                <CardBody>
-                                    <BarChart />
-                                </CardBody>
-                            </Card>
-                        </Col>
-                    </Row>
+          <Row>
+            <Col xl={6}>
+              <Card>
+                <CardHeader>
+                  <h4 className="card-title mb-0">Pie Chart</h4>
+                </CardHeader>
+                <CardBody>
+                  <PieChart />
+                </CardBody>
+              </Card>
+            </Col>
 
-                    <Row>
-                        <Col xl={6}>
-                            <Card>
-                                <CardHeader>
-                                    <h4 className="card-title mb-0">Pie Chart</h4>
-                                </CardHeader>
-                                <CardBody>
-                                    <PieChart />
-                                </CardBody>
-                            </Card>
-                        </Col>
+            <Col xl={6}>
+              <Card>
+                <CardHeader>
+                  <h4 className="card-title mb-0">Donut Chart</h4>
+                </CardHeader>
+                <CardBody>
+                  <DountChart />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
 
-                        <Col xl={6}>
-                            <Card>
-                                <CardHeader>
-                                    <h4 className="card-title mb-0">Donut Chart</h4>
-                                </CardHeader>
-                                <CardBody>
-                                    <DountChart />
-                                </CardBody>
-                            </Card>
-                        </Col>
-                    </Row>
+          <Row>
+            <Col xl={6}>
+              <Card>
+                <CardHeader>
+                  <h4 className="card-title mb-0">Polar Chart</h4>
+                </CardHeader>
+                <CardBody>
+                  <PolarChart />
+                </CardBody>
+              </Card>
+            </Col>
 
-                    <Row>
-                        <Col xl={6}>
-                            <Card>
-                                <CardHeader>
-                                    <h4 className="card-title mb-0">Polar Chart</h4>
-                                </CardHeader>
-                                <CardBody>
-                                    <PolarChart />
-                                </CardBody>
-                            </Card>
-                        </Col>
-
-                        <Col xl={6}>
-                            <Card>
-                                <CardHeader>
-                                    <h4 className="card-title mb-0">Radar Chart</h4>
-                                </CardHeader>
-                                <CardBody>
-                                    <RadarChart />
-                                </CardBody>
-                            </Card>
-                        </Col>
-                    </Row>
-
-                </Container>
-            </div>
-        </React.Fragment>
-    )
-}
+            <Col xl={6}>
+              <Card>
+                <CardHeader>
+                  <h4 className="card-title mb-0">Radar Chart</h4>
+                </CardHeader>
+                <CardBody>
+                  <RadarChart />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default ChartjsCharts;

@@ -8,7 +8,7 @@ import {
   changeTopbarTheme,
   changeLayoutWidth,
   showRightSidebarAction,
-  changeTheme
+  changeTheme,
 } from "../../store/actions";
 
 //redux
@@ -22,14 +22,14 @@ import RightSidebar from "../../components/Common/RightSideBar";
 const Layout = (props) => {
   const dispatch = useDispatch();
 
-  const { topbarTheme, layoutWidth, showRightSidebar, themeMode } =
-    useSelector((state) => ({
+  const { topbarTheme, layoutWidth, showRightSidebar, themeMode } = useSelector(
+    (state) => ({
       topbarTheme: state.Layout.topbarTheme,
       layoutWidth: state.Layout.layoutWidth,
       showRightSidebar: state.Layout.showRightSidebar,
       themeMode: state.Layout.themeMode,
-    }));
-
+    })
+  );
 
   /*
   document title
@@ -38,13 +38,12 @@ const Layout = (props) => {
     const title = props.router.location.pathname;
     let currentage = title.charAt(1).toUpperCase() + title.slice(2);
 
-    document.title = currentage + " | Matary - React Admin & Dashboard Template";
+    document.title = currentage + " | ALNaierh  ";
   }, [props.router.location.pathname]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   //hides right sidebar on body click
   const hideRightbar = useCallback(
@@ -53,11 +52,10 @@ const Layout = (props) => {
       var rightbartoggle = document.getElementById("right-bar-toggle");
       //if clicked in inside right bar, then do nothing
       if ((rightbar && rightbar.contains(event.target)) || rightbartoggle) {
-        return
+        return;
       } else {
         //if clicked in outside of rightbar then fire action for hide rightbar
         dispatch(showRightSidebarAction(false));
-
       }
     },
     [dispatch]
@@ -93,8 +91,6 @@ const Layout = (props) => {
     }
   }, [dispatch, topbarTheme]);
 
-
-
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const openMenu = () => {
     setIsMenuOpened(!isMenuOpened);
@@ -102,7 +98,6 @@ const Layout = (props) => {
 
   return (
     <React.Fragment>
-
       <div id="layout-wrapper">
         <Navbar
           theme={topbarTheme}
@@ -115,7 +110,6 @@ const Layout = (props) => {
       </div>
 
       {showRightSidebar ? <RightSidebar /> : <RightSidebar />}
-
     </React.Fragment>
   );
 };

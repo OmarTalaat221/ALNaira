@@ -13,7 +13,7 @@ import { Radio, RadioGroup } from "rsuite";
 import { Loader, SelectPicker } from "rsuite";
 import { useEffect } from "react";
 const AddVideo = () => {
-  document.title = "Add Video | Matary - React Admin & Dashboard Template";
+  document.title = "Add Video | ALNaierh  ";
   // console.log('test')
   const localdata = localStorage.getItem("elmatary_admin");
   let adminData = localdata && JSON.parse(localdata);

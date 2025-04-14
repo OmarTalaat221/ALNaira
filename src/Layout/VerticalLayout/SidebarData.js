@@ -1,3 +1,6 @@
+const localdata = localStorage.getItem("elmatary_admin");
+let adminData = localdata && JSON.parse(localdata);
+console.log(adminData);
 const SidebarData = [
   {
     label: "Menu",
@@ -11,15 +14,15 @@ const SidebarData = [
     bgcolor: "bg-success",
     badgeValue: "5+",
   },
+  // {
+  //   label: "Courses",
+  //   isMainMenu: true,
+  // },
   {
-    label: "Courses",
-    isMainMenu: true,
-  },
-  {
-    label: "Courses",
+    label: "Enrollments",
     icon: "bx bx-store icon nav-icon",
     subItem: [
-      { sublabel: "Courses", link: "/courses-list" },
+      { sublabel: "Enrollments", link: "/enrollments" },
       // { sublabel: "Product Detail", link: "/ecommerce-product-detail/1" },
       // { sublabel: "Orders", link: "/ecommerce-orders" },
       // { sublabel: "Customers", link: "/ecommerce-customers" },
@@ -68,11 +71,11 @@ const SidebarData = [
     ],
   },
   {
-    label: "Universities",
+    label: "Companies",
     icon: "bx bx-store icon nav-icon",
     subItem: [
-      { sublabel: "Universities", link: "/universities" },
-      // { sublabel: "Grades", link: "/grade" },
+      { sublabel: "Companies", link: "/companies" },
+      // { sublabel: "Categories", link: "/categories" },
       // { sublabel: "Product Detail", link: "/ecommerce-product-detail/1" },
       // { sublabel: "Orders", link: "/ecommerce-orders" },
       // { sublabel: "Customers", link: "/ecommerce-customers" },
@@ -82,8 +85,8 @@ const SidebarData = [
       // { sublabel: "Add Product", link: "/ecommerce-add-product" },
     ],
   },
-//  { path: "/grade", component: <Grade /> },
-  // { path: "/universities", component: <Universities />}
+  //  { path: "/categories", component: <Grade /> },
+  // { path: "/companies", component: <Universities />}
   // {
   //   label: "Interactive",
   //   icon: "bx bx-store icon nav-icon",
@@ -92,44 +95,46 @@ const SidebarData = [
   //   ],
   // },
 
-  {
-    label: "Subscription",
-    icon: "bx bx-store icon nav-icon",
-    subItem: [
-      { sublabel: "create copouns", link: "/copouns-list/add-copoun" },
-      // { sublabel: "Ended Subscription", link: "/endedsubscription" },
-      // { sublabel: "Canceled Subscription", link: "/canceledsubscription" },
-      // { sublabel: "Daily Income", link: "/dailyIncome" },
-      // { sublabel: "Product Detail", link: "/ecommerce-product-detail/1" },
-      // { sublabel: "Orders", link: "/ecommerce-orders" },
-      // { sublabel: "Customers", link: "/ecommerce-customers" },
-      // { sublabel: "Cart", link: "/ecommerce-cart" },
-      // { sublabel: "Checkout", link: "/ecommerce-checkout" },
-      // { sublabel: "Shops", link: "/ecommerce-shops" },
-      // { sublabel: "Add Product", link: "/ecommerce-add-product" },
-    ],
-  },
-  {
-    label: "Student Questions",
-    icon: "bx bx-store icon nav-icon",
-    subItem: [
-      { sublabel: "Questions", link: "/allstudentsqueries" },
-      // { sublabel: "Daily Income", link: "/dailyIncome" },
-      // { sublabel: "Product Detail", link: "/ecommerce-product-detail/1" },
-      // { sublabel: "Orders", link: "/ecommerce-orders" },
-      // { sublabel: "Customers", link: "/ecommerce-customers" },
-      // { sublabel: "Cart", link: "/ecommerce-cart" },
-      // { sublabel: "Checkout", link: "/ecommerce-checkout" },
-      // { sublabel: "Shops", link: "/ecommerce-shops" },
-      // { sublabel: "Add Product", link: "/ecommerce-add-product" },
-    ],
-  },
-
   // {
-  //   label: "Students",
+  //   label: "Subscription",
   //   icon: "bx bx-store icon nav-icon",
   //   subItem: [
-  //     { sublabel: "List Students", link: "/students" },
+  //     { sublabel: "create copouns", link: "/copouns-list/add-copoun" },
+  //     { sublabel: "Manual Subscription", link: "/man-sub" },
+
+  //     // { sublabel: "Ended Subscription", link: "/endedsubscription" },
+  //     // { sublabel: "Canceled Subscription", link: "/canceledsubscription" },
+  //     // { sublabel: "Daily Income", link: "/dailyIncome" },
+  //     // { sublabel: "Product Detail", link: "/ecommerce-product-detail/1" },
+  //     // { sublabel: "Orders", link: "/ecommerce-orders" },
+  //     // { sublabel: "Customers", link: "/ecommerce-customers" },
+  //     // { sublabel: "Cart", link: "/ecommerce-cart" },
+  //     // { sublabel: "Checkout", link: "/ecommerce-checkout" },
+  //     // { sublabel: "Shops", link: "/ecommerce-shops" },
+  //     // { sublabel: "Add Product", link: "/ecommerce-add-product" },
+  //   ],
+  // },
+  // {
+  //   label: "Student Questions",
+  //   icon: "bx bx-store icon nav-icon",
+  //   subItem: [
+  //     { sublabel: "Questions", link: "/allstudentsqueries" },
+  //     // { sublabel: "Daily Income", link: "/dailyIncome" },
+  //     // { sublabel: "Product Detail", link: "/ecommerce-product-detail/1" },
+  //     // { sublabel: "Orders", link: "/ecommerce-orders" },
+  //     // { sublabel: "Customers", link: "/ecommerce-customers" },
+  //     // { sublabel: "Cart", link: "/ecommerce-cart" },
+  //     // { sublabel: "Checkout", link: "/ecommerce-checkout" },
+  //     // { sublabel: "Shops", link: "/ecommerce-shops" },
+  //     // { sublabel: "Add Product", link: "/ecommerce-add-product" },
+  //   ],
+  // },
+
+  {
+    label: "Employees",
+    icon: "bx bx-store icon nav-icon",
+    subItem: [{ sublabel: "List Employees", link: "/students" }],
+  },
   //     { sublabel: "Don't Marry", link: "/DoNotMarry" },
   //     // { sublabel: "Ended Subscription", link: "/endedsubscription" },
   //     // { sublabel: "Canceled Subscription", link: "/canceledsubscription" },
@@ -143,7 +148,22 @@ const SidebarData = [
   //     // { sublabel: "Add Product", link: "/ecommerce-add-product" },
   //   ],
   // },
-
+  adminData?.admin_id == 26
+    ? {
+        label: "Admins",
+        icon: "bx bx-store icon nav-icon",
+        subItem: [
+          { sublabel: "Admins", link: "/Admins" },
+          // { sublabel: "Product Detail", link: "/ecommerce-product-detail/1" },
+          // { sublabel: "Orders", link: "/ecommerce-orders" },
+          // { sublabel: "Customers", link: "/ecommerce-customers" },
+          // { sublabel: "Cart", link: "/ecommerce-cart" },
+          // { sublabel: "Checkout", link: "/ecommerce-checkout" },
+          // { sublabel: "Shops", link: "/ecommerce-shops" },
+          // { sublabel: "Add Product", link: "/ecommerce-add-product" },
+        ],
+      }
+    : {},
   // {
   //   label: "Exam",
   //   icon: "bx bx-store icon nav-icon",
@@ -158,7 +178,6 @@ const SidebarData = [
   //     // { sublabel: "Add Product", link: "/ecommerce-add-product" },
   //   ],
   // },
-
 
   // {
   //   label: "Reports",

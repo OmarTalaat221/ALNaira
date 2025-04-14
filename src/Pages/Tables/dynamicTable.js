@@ -11,7 +11,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { data, columns } from "./advanceTdata";
 
 const DynamicTable = ({ data, columns, title, tableHeaderTitle }) => {
-  document.title = title + " | Matary - React Admin & Dashboard Template";
+  document.title = title + " | ALNaierh  ";
 
   return (
     <React.Fragment>

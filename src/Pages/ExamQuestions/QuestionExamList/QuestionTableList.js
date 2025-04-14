@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   CloseButton,
   DropdownItem,
@@ -9,18 +9,18 @@ import {
   Input,
   Spinner,
   Label,
-} from 'reactstrap';
+} from "reactstrap";
 // import TableContainer from "./../../../../components/Common/TableContainer";
 // import { CourseData } from "../../../../CommonData/Data/Course";
-import { useNavigate } from 'react-router-dom';
-import TableContainer from '../../../components/Common/TableContainer';
-import axios from 'axios';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Loader } from 'rsuite';
-import { toast } from 'react-toastify';
-import { MenuItem, Select } from '@mui/material';
-import Confirm from '../../../components/ConfComp/Confirm';
-import { Icon } from '@iconify/react';
+import { useNavigate } from "react-router-dom";
+import TableContainer from "../../../components/Common/TableContainer";
+import axios from "axios";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Loader } from "rsuite";
+import { toast } from "react-toastify";
+import { MenuItem, Select } from "@mui/material";
+import Confirm from "../../../components/ConfComp/Confirm";
+import { Icon } from "@iconify/react";
 const QuestionTableList = ({ Questions, updatemcq }) => {
   const navigate = useNavigate();
   const [showconf, setshowconf] = useState(false);
@@ -42,15 +42,15 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
       },
     },
     {
-      Header: 'question id',
-      accessor: 'question_id',
+      Header: "question id",
+      accessor: "question_id",
     },
     {
-      Header: 'question name',
-      accessor: 'question_text',
+      Header: "question name",
+      accessor: "question_text",
     },
     {
-      Header: 'question answers',
+      Header: "question answers",
       Cell: (cell) => {
         return (
           <ul>
@@ -58,10 +58,10 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
               return (
                 <li
                   style={{
-                    color: item.answer_score == "true" ? 'green' : 'red',
+                    color: item.answer_check ? "green" : "red",
                   }}
                 >
-                  {item.answer_value}
+                  {item.answer_text}
                 </li>
               );
             })}
@@ -71,13 +71,13 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
     },
 
     {
-      Header: 'Status',
+      Header: "Status",
       Cell: (cell) => {
         switch (cell.cell.row.original.hidden) {
-          case 'no':
+          case "no":
             return (
               <div
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
                 onClick={() => {
                   setshowconf(true);
                   setrowdata({
@@ -97,10 +97,10 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
               </div>
             );
 
-          case 'yes':
+          case "yes":
             return (
               <div
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
                 onClick={() => {
                   setshowconf(true);
                   setrowdata({
@@ -129,7 +129,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
       },
     },
     {
-      Header: 'Update',
+      Header: "Update",
       Cell: (cell) => {
         return (
           <button
@@ -147,11 +147,10 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
               ) {
                 let obj = {
                   id: i + 1,
-                  answer: cell.cell.row.original?.answers[i].answer_value,
-                  checked:
-                    cell.cell.row.original?.answers[i].answer_score == "true"
-                      ? true
-                      : false,
+                  answer: cell.cell.row.original?.answers[i].answer_text,
+                  checked: cell.cell.row.original?.answers[i].answer_check
+                    ? true
+                    : false,
                 };
                 alldatapushed.push(obj);
                 // console.log(alldatapushed)
@@ -173,14 +172,14 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
     //     return (
 
     //         cell.cell.row.original.answers.filter((it)=>{
-    //           if(it.answer_score=="true"){
+    //           if(it.answer_check=="true"){
     //             return {...it}
     //           }
     //           else return null
     //         })
     //         .map((item)=>{
     //           return(
-    //             <p style={{ padding:'3px' }}>{item.answer_value}</p>
+    //             <p style={{ padding:'3px' }}>{item.answer_text}</p>
     //           )
     //         })
 
@@ -248,7 +247,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
     // console.log(e);
     const list = [...answerlist];
     console.log(answerlist);
-    list[i]['answer'] = e.target.value;
+    list[i]["answer"] = e.target.value;
     setanswersArray(list);
     setanswerlist(list);
   };
@@ -259,7 +258,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
     formdata.append("image", img);
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/image_uplouder.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/image_uplouder.php",
         formdata
       )
       .then((res) => {
@@ -274,7 +273,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
   const getvideos = () => {
     axios
       .get(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/videos/select_videos.php"
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/videos/select_videos.php"
       )
       .then((res) => {
         // console.log(res);
@@ -290,13 +289,13 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
     console.log(data_send);
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/unit/make_copy_from_unit_and_alldata.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/unit/make_copy_from_unit_and_alldata.php",
         JSON.stringify(data_send)
       )
       .then((res) => {
-        if (res.status == 'success') {
+        if (res.status == "success") {
           toast.success("Success");
-        } else if (res.status == 'error') {
+        } else if (res.status == "error") {
           toast.error(res.message);
         } else {
           toast.error("Something Went Error");
@@ -311,7 +310,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
   const [book_url, setBookUrl] = useState(false);
   const getCourses = async () => {
     const courses = await axios.get(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/courses/select_courses.php"
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/select_courses.php"
     );
     setCourses([...courses]);
   };
@@ -325,7 +324,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
   //     course_id: selectedCourse
   //   };
   //   try {
-  //     const units = await axios.post("https://elmatary.com/El_Matary_Platform/platform/admin/courses/select_course_units.php", send_data);
+  //     const units = await axios.post("https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/select_course_units.php", send_data);
   //     console.log(units);
   //     console.log(selectedCourse);
   //     setUnits([...units]);
@@ -338,7 +337,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
   // }, [selectedCourse])
   const showHideQuestions = async (send_data) => {
     const questions_1 = await axios.post(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/mcq/update_mcq_hidden.php",
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/mcq/update_mcq_hidden.php",
       send_data
     );
     if (questions_1.status == "success") {
@@ -374,19 +373,19 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
       valid_answer,
       exam_id: rowdata.exam_id,
       course_id: rowdata.course_id,
-      question_image_url: '',
-      help_text: '',
-      help_pdf: '',
-      help_video: '',
+      question_image_url: "",
+      help_text: "",
+      help_pdf: "",
+      help_video: "",
     };
     console.log(data_send);
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/insert_question.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/insert_question.php",
         JSON.stringify(data_send)
       )
       .then((res) => {
-        if (res.status == 'success') {
+        if (res.status == "success") {
           updatemcq();
           toast.success("Question has added successfully");
         } else if (res.status == "error") {
@@ -423,7 +422,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
     if (book) {
       formData.append("file_attachment", book);
       const url = await axios.post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/uploud_pdf.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/uploud_pdf.php",
         formData
       );
       console.log(url);
@@ -526,8 +525,8 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
             showHideQuestions(send_data);
             setshowconf(false);
           }}
-          status={rowdata.hidden == 'no' ? 'hide' : 'show'}
-          comp={'question'}
+          status={rowdata.hidden == "no" ? "hide" : "show"}
+          comp={"question"}
         />
       ) : null}
       <Modal title="add question" isOpen={isModalOpen}>
@@ -603,7 +602,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
               />
             )}
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <Label className="form-label">ebook file</Label>
             <div
               className="form-control"
@@ -651,7 +650,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
                 );
               })}
             </select>
-          </div>
+          </div> */}
 
           {/* <div className="inputField withtext">
               <label htmlFor="help_text">Help Video</label>
@@ -671,9 +670,9 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
           <div className="add_answer_question">
             <label
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
             >
               <span>Add Answer</span>
@@ -681,10 +680,10 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
                 onClick={() => {
                   setanswerlist([
                     ...answerlist,
-                    { id: answerlist.length + 1, answer: '' },
+                    { id: answerlist.length + 1, answer: "" },
                   ]);
                 }}
-                style={{ cursor: 'pointer', fontSize: '26px' }}
+                style={{ cursor: "pointer", fontSize: "26px" }}
               >
                 +
               </span>
@@ -694,9 +693,9 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
               return (
                 <div
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
                   }}
                 >
                   <textarea
@@ -704,7 +703,7 @@ const QuestionTableList = ({ Questions, updatemcq }) => {
                     onChange={(e) => {
                       handlesavetxt(e, index);
                     }}
-                    style={{ marginBottom: '10px', width: '90%' }}
+                    style={{ marginBottom: "10px", width: "90%" }}
                     className="form-control"
                   ></textarea>
                   <input

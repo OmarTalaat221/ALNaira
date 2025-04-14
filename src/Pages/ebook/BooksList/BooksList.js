@@ -24,11 +24,8 @@ import Flatpickr from "react-flatpickr";
 import Breadcrumbs from "../../../components/Common/Breadcrumb";
 import BookListTable from "./BookTable/bookListTable";
 
-
 const Books = () => {
-  document.title = "Books | Matary - React Admin & Dashboard Template";
-
- 
+  document.title = "Books | ALNaierh  ";
 
   const navigate = useNavigate();
 
@@ -53,7 +50,7 @@ const Books = () => {
                               data-bs-toggle="modal"
                               data-bs-target="#addBookModal"
                               onClick={() => {
-                                navigate("add-book")
+                                navigate("add-book");
                               }}
                             >
                               <i className="mdi mdi-plus me-1"></i> Add Book
@@ -107,7 +104,6 @@ const Books = () => {
           </Row>
         </Container>
       </div>
-
     </React.Fragment>
   );
 };

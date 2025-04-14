@@ -9,7 +9,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { useEffect } from "react";
 
 const AddMaterial = () => {
-  document.title = "Add Material On Session | Matary - React Admin & Dashboard Template";
+  document.title = "Add Material On Session | ALNaierh  ";
 
   const [col1, setcol1] = useState(true);
   const [col2, setcol2] = useState(false);

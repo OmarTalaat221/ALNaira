@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   CloseButton,
   DropdownItem,
@@ -6,24 +6,24 @@ import {
   DropdownToggle,
   Input,
   Modal,
-  UncontrolledDropdown
-} from 'reactstrap';
+  UncontrolledDropdown,
+} from "reactstrap";
 // import TableContainer from "./../../../../components/Common/TableContainer";
 // import { CourseData } from "../../../../CommonData/Data/Course";
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import TableContainer from '../../../components/Common/TableContainer';
-import axios from 'axios';
-import { Loader } from 'rsuite';
-import { toastPlacements } from 'rsuite/esm/toaster/ToastContainer';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { toast } from 'react-toastify';
-import '../unit.css';
-import Confirm from '../../../components/ConfComp/Confirm';
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import TableContainer from "../../../components/Common/TableContainer";
+import axios from "axios";
+import { Loader } from "rsuite";
+import { toastPlacements } from "rsuite/esm/toaster/ToastContainer";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { toast } from "react-toastify";
+import "../unit.css";
+import Confirm from "../../../components/ConfComp/Confirm";
 const UnitListTable = ({
   grades,
   universitydata,
   showHideUnit,
-  updatedata
+  updatedata,
 }) => {
   const navigate = useNavigate();
   const [iseditmodel, setiseditmodel] = useState(false);
@@ -32,7 +32,7 @@ const UnitListTable = ({
   const handledeltegrade = (data) => {
     const data_send = {
       university_id: universitydata.university_id,
-      grade_id: data.grade_id
+      grade_id: data.grade_id,
     };
     axios.post("");
   };
@@ -42,12 +42,12 @@ const UnitListTable = ({
     const data_send = {
       // university_id:universitydata.university_id,
       grade_id: data.grade_id,
-      hidden_value: data.hidden == 'no' ? 'yes' : 'no'
+      hidden_value: data.hidden == "no" ? "yes" : "no",
     };
     // console.log(data_send);
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/universities/update_grade_hidden.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/universities/update_grade_hidden.php",
         JSON.stringify(data_send)
       )
       .then((res) => {
@@ -67,10 +67,10 @@ const UnitListTable = ({
     const send_data = {
       // university_id:universitydata.university_id,
       grade_name: rowdata.grade_name,
-      grade_id: rowdata.grade_id
+      grade_id: rowdata.grade_id,
     };
     const units = await axios.post(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/universities/update_grade.php",
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/universities/update_grade.php",
       send_data
     );
     // console.log(units);
@@ -90,43 +90,43 @@ const UnitListTable = ({
       Header: "No",
       Cell: (cell) => {
         return <b>{cell.cell.row.index + 1}</b>;
-      }
+      },
     },
     {
-      Header: 'grade name',
-      accessor: 'grade_name',
-      Filter: false
+      Header: "grade name",
+      accessor: "grade_name",
+      Filter: false,
     },
     {
-      Header: 'Status',
+      Header: "Status",
       Cell: (cell) => {
         switch (cell.cell.row.original.hidden) {
-          case 'yes':
+          case "yes":
             return (
               <AiFillEyeInvisible
                 onClick={() => {
                   setshowconf(true);
                   setrowdata({
                     ...cell.cell.row.original,
-                    number: cell.cell.row.index + 1
+                    number: cell.cell.row.index + 1,
                   });
                   // handleupdateshowhid(cell.cell.row.original);
                 }}
-                style={{ cursor: 'pointer', fontSize: '22px' }}
+                style={{ cursor: "pointer", fontSize: "22px" }}
               />
             );
-          case 'no':
+          case "no":
             return (
               <AiFillEye
                 onClick={() => {
                   setshowconf(true);
                   setrowdata({
                     ...cell.cell.row.original,
-                    number: cell.cell.row.index + 1
+                    number: cell.cell.row.index + 1,
                   });
                   // handleupdateshowhid(cell.cell.row.original);
                 }}
-                style={{ cursor: 'pointer', fontSize: '22px' }}
+                style={{ cursor: "pointer", fontSize: "22px" }}
               />
             );
 
@@ -137,10 +137,10 @@ const UnitListTable = ({
               </span>
             );
         }
-      }
+      },
     },
     {
-      Header: 'Courses',
+      Header: "Courses",
       Cell: (cell) => {
         return (
           <>
@@ -150,8 +150,8 @@ const UnitListTable = ({
                 navigate("/CoursesShowExams", {
                   state: {
                     grade_id: cell.cell.row.original.grade_id,
-                    univ_id: universitydata.university_id
-                  }
+                    univ_id: universitydata.university_id,
+                  },
                 });
               }}
             >
@@ -159,10 +159,10 @@ const UnitListTable = ({
             </button>
           </>
         );
-      }
+      },
     },
     {
-      Header: 'Action',
+      Header: "Action",
       Cell: (cell) => {
         return (
           <>
@@ -177,8 +177,8 @@ const UnitListTable = ({
             </button>
           </>
         );
-      }
-    }
+      },
+    },
   ];
 
   return (
@@ -203,7 +203,7 @@ const UnitListTable = ({
           style={{
             padding: "15px",
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
           }}
           onSubmit={(e) => {
             e.preventDefault();
@@ -221,7 +221,7 @@ const UnitListTable = ({
               style={{
                 width: "100%",
                 padding: "10px",
-                borderRadius: "4px"
+                borderRadius: "4px",
               }}
               value={rowdata?.grade_name}
               type="text"
@@ -252,14 +252,14 @@ const UnitListTable = ({
           confirmoper={() => {
             const send_data = {
               hidden_value: rowdata.hidden == "no" ? "yes" : "no",
-              book_id: rowdata.book_id
+              book_id: rowdata.book_id,
             };
             // handleupdateshow(rowdata)
             handleupdateshowhid(rowdata);
             setshowconf(false);
           }}
-          status={rowdata.hidden == 'no' ? 'hide' : 'show'}
-          comp={'grade'}
+          status={rowdata.hidden == "no" ? "hide" : "show"}
+          comp={"grade"}
         />
       ) : null}
     </React.Fragment>

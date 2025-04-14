@@ -13,8 +13,8 @@ import { useEffect } from "react";
 import { base_url } from "../../constants";
 
 const AddCourse = () => {
-  document.title = "Add Course | Matary - React Admin & Dashboard Template";
-  const localdata = localStorage.getItem('elmatary_admin');
+  document.title = "Add Course | ALNaierh  ";
+  const localdata = localStorage.getItem("elmatary_admin");
   let adminData = localdata && JSON.parse(localdata);
   const [universities, setuniversities] = useState([]);
   const [grades, setgrades] = useState([]);
@@ -132,13 +132,13 @@ const AddCourse = () => {
   }, [selecteduni]);
 
   const image = useRef();
-  // https://elmatary.com/El_Matary_Platform/platform/admin/image_uplouder.php
+  // https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/image_uplouder.php
   const [course_photo_url, set_course_photo_url] = useState(false);
   const uploadImage = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const url = await axios.post(
-      "https://camp-coding.tech/dr_elmatary/admin/image_uplouder.php",
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/image_uploader.php",
       formData
     );
     console.log(url);
@@ -148,6 +148,8 @@ const AddCourse = () => {
   const courseDate = useRef();
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState(false);
+  const [free, setFree] = useState(0);
+
   const addCourse = async (e) => {
     // e.preventDefault();
     const data_send = {
@@ -160,6 +162,7 @@ const AddCourse = () => {
       grade_id: selectedgrade,
       admin_id: adminData.admin_id,
       access_token: adminData.access_token,
+      free: free,
     };
     console.log(data_send);
     if (
@@ -174,10 +177,10 @@ const AddCourse = () => {
       console.log(url);
       if (url.status == "success") {
         toast.success(url.message);
-        navigate("/courses-list");
-      } else if (url.message == 'Session Expired') {
-        localStorage.removeItem('elmatary_admin');
-        navigate('/login', { replace: true });
+        navigate("/enrollments");
+      } else if (url.message == "Session Expired") {
+        localStorage.removeItem("elmatary_admin");
+        navigate("/login", { replace: true });
       } else {
         toast.error(url.message);
       }
@@ -271,7 +274,7 @@ const AddCourse = () => {
                                                         </div>
                                                     </div>
                                                 </Row> */}
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                           <label htmlFor="category_id" className="form-label">
                             Category
                           </label>
@@ -295,7 +298,18 @@ const AddCourse = () => {
                               })}
                             </select>
                           ) : null}
-                        </div>
+                        </div> */}
+                        <div className="mb-3">
+                          <label htmlFor="category_id" className="form-label">
+                            Free
+                          </label>
+                          <input
+                            type="checkbox"
+                            name=""
+                            id=""
+                            onChange={(e) => setFree(e.target.checked ? 1 : 0)}
+                          />
+                        </div>{" "}
                         <Row>
                           <div className="col-md-6">
                             <div className="mb-3">
@@ -356,7 +370,6 @@ const AddCourse = () => {
                             </div>
                           </div>
                         </Row>
-
                         <div className="mb-0">
                           <label className="form-label" htmlFor="coursedesc">
                             Course Description

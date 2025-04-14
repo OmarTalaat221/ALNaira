@@ -88,10 +88,9 @@ const ExamListTable = ({ exams, course_id }) => {
                 <i className="bx bx-dots-horizontal-rounded"></i>
               </DropdownToggle>
               <DropdownMenu className="dropdown-menu-end">
-                <DropdownItem>Edit</DropdownItem>
+                {/* <DropdownItem>Edit</DropdownItem> */}
                 <DropdownItem
                   onClick={() => {
-                    console.log(cell.cell.row.original);
                     const examdata = { ...cell.cell.row.original };
                     navigate("/publicexamquestion", {
                       state: { examdata },

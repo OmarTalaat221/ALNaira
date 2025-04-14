@@ -37,7 +37,7 @@ import { base_url } from "../../../constants";
 
 const Videos = () => {
   console.log("testoo");
-  document.title = "Videos | Matary - React Admin & Dashboard Template";
+  document.title = "Videos | ALNaierh  ";
 
   const localdata = localStorage.getItem("elmatary_admin");
   let adminData = localdata && JSON.parse(localdata);
@@ -186,7 +186,7 @@ const Videos = () => {
         : item.video_duration,
       youtube_id: e.currentTarget.youtube_id.value
         ? e.currentTarget.youtube_id.value
-        : item.youtube_id,
+        : item?.youtube_id,
       loom_url: e.currentTarget.loom_url.value
         ? e.currentTarget.loom_url.value
         : item.loom_url,

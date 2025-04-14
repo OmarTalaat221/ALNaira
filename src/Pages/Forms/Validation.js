@@ -21,20 +21,19 @@ import { useFormik } from "formik";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const FormValidations = () => {
-  document.title = "Form Validation | Matary - React Admin & Dashboard Template";
+  document.title = "Form Validation | ALNaierh  ";
 
-
-  // Form validation 
+  // Form validation
   const validation = useFormik({
     // enableReinitialize : use this flag when initial values needs to be changed
     enableReinitialize: true,
 
     initialValues: {
-      firstname: '',
-      lastname: '',
-      city: '',
-      state: '',
-      zip: '',
+      firstname: "",
+      lastname: "",
+      city: "",
+      state: "",
+      zip: "",
     },
     validationSchema: Yup.object({
       firstname: Yup.string().required("Please Enter Your First Name"),
@@ -45,7 +44,7 @@ const FormValidations = () => {
     }),
     onSubmit: (values) => {
       console.log("values", values);
-    }
+    },
   });
 
   const [formValidation, setValidation] = useState({
@@ -123,7 +122,8 @@ const FormValidations = () => {
                     HTML5 form validation–available in all our supported
                     browsers.
                   </p>
-                  <Form className="needs-validation"
+                  <Form
+                    className="needs-validation"
                     onSubmit={(e) => {
                       e.preventDefault();
                       validation.handleSubmit();
@@ -144,11 +144,17 @@ const FormValidations = () => {
                             onBlur={validation.handleBlur}
                             value={validation.values.firstname || ""}
                             invalid={
-                              validation.touched.firstname && validation.errors.firstname ? true : false
+                              validation.touched.firstname &&
+                              validation.errors.firstname
+                                ? true
+                                : false
                             }
                           />
-                          {validation.touched.firstname && validation.errors.firstname ? (
-                            <FormFeedback type="invalid">{validation.errors.firstname}</FormFeedback>
+                          {validation.touched.firstname &&
+                          validation.errors.firstname ? (
+                            <FormFeedback type="invalid">
+                              {validation.errors.firstname}
+                            </FormFeedback>
                           ) : null}
                         </FormGroup>
                       </Col>
@@ -165,11 +171,17 @@ const FormValidations = () => {
                             onBlur={validation.handleBlur}
                             value={validation.values.lastname || ""}
                             invalid={
-                              validation.touched.lastname && validation.errors.lastname ? true : false
+                              validation.touched.lastname &&
+                              validation.errors.lastname
+                                ? true
+                                : false
                             }
                           />
-                          {validation.touched.lastname && validation.errors.lastname ? (
-                            <FormFeedback type="invalid">{validation.errors.lastname}</FormFeedback>
+                          {validation.touched.lastname &&
+                          validation.errors.lastname ? (
+                            <FormFeedback type="invalid">
+                              {validation.errors.lastname}
+                            </FormFeedback>
                           ) : null}
                         </FormGroup>
                       </Col>
@@ -187,11 +199,15 @@ const FormValidations = () => {
                             onBlur={validation.handleBlur}
                             value={validation.values.city || ""}
                             invalid={
-                              validation.touched.city && validation.errors.city ? true : false
+                              validation.touched.city && validation.errors.city
+                                ? true
+                                : false
                             }
                           />
                           {validation.touched.city && validation.errors.city ? (
-                            <FormFeedback type="invalid">{validation.errors.city}</FormFeedback>
+                            <FormFeedback type="invalid">
+                              {validation.errors.city}
+                            </FormFeedback>
                           ) : null}
                         </FormGroup>
                       </Col>
@@ -208,11 +224,17 @@ const FormValidations = () => {
                             onBlur={validation.handleBlur}
                             value={validation.values.state || ""}
                             invalid={
-                              validation.touched.state && validation.errors.state ? true : false
+                              validation.touched.state &&
+                              validation.errors.state
+                                ? true
+                                : false
                             }
                           />
-                          {validation.touched.state && validation.errors.state ? (
-                            <FormFeedback type="invalid">{validation.errors.state}</FormFeedback>
+                          {validation.touched.state &&
+                          validation.errors.state ? (
+                            <FormFeedback type="invalid">
+                              {validation.errors.state}
+                            </FormFeedback>
                           ) : null}
                         </FormGroup>
                       </Col>
@@ -229,11 +251,15 @@ const FormValidations = () => {
                             onBlur={validation.handleBlur}
                             value={validation.values.zip || ""}
                             invalid={
-                              validation.touched.zip && validation.errors.zip ? true : false
+                              validation.touched.zip && validation.errors.zip
+                                ? true
+                                : false
                             }
                           />
                           {validation.touched.zip && validation.errors.zip ? (
-                            <FormFeedback type="invalid">{validation.errors.zip}</FormFeedback>
+                            <FormFeedback type="invalid">
+                              {validation.errors.zip}
+                            </FormFeedback>
                           ) : null}
                         </FormGroup>
                       </Col>
@@ -280,7 +306,7 @@ const FormValidations = () => {
                     className="needs-validation"
                     method="post"
                     id="tooltipForm"
-                    onSubmit={e => {
+                    onSubmit={(e) => {
                       handleSubmit(e);
                     }}
                   >
@@ -295,7 +321,7 @@ const FormValidations = () => {
                             className="form-control"
                             id="validationTooltip01"
                             placeholder="First name"
-                            onChange={event => {
+                            onChange={(event) => {
                               onChangeValidation("fnm", event.target.value);
                             }}
                             valid={validation["fnm"] === true}
@@ -328,7 +354,7 @@ const FormValidations = () => {
                             className="form-control"
                             id="validationTooltip02"
                             placeholder="Last name"
-                            onChange={event =>
+                            onChange={(event) =>
                               onChangeValidation("lnm", event.target.value)
                             }
                             valid={validation["lnm"] === true}
@@ -371,7 +397,7 @@ const FormValidations = () => {
                               className="form-control"
                               id="validationTooltipUsername"
                               placeholder="Username"
-                              onChange={event =>
+                              onChange={(event) =>
                                 onChangeValidation("unm", event.target.value)
                               }
                               valid={validation["unm"] === true}
@@ -406,7 +432,7 @@ const FormValidations = () => {
                             className="form-control"
                             id="validationTooltip03"
                             placeholder="City"
-                            onChange={event =>
+                            onChange={(event) =>
                               onChangeValidation("city", event.target.value)
                             }
                             valid={validation["city"] === true}
@@ -438,7 +464,7 @@ const FormValidations = () => {
                             className="form-control"
                             id="validationTooltip04"
                             placeholder="State"
-                            onChange={event =>
+                            onChange={(event) =>
                               onChangeValidation("stateV", event.target.value)
                             }
                             valid={validation["stateV"] === true}

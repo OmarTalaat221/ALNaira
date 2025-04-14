@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from "react";
 import {
   CloseButton,
   DropdownItem,
@@ -8,18 +8,18 @@ import {
   Modal,
   ModalBody,
   ModalHeader,
-  UncontrolledDropdown
-} from 'reactstrap';
+  UncontrolledDropdown,
+} from "reactstrap";
 import TableContainer from "../../../../components/Common/TableContainer";
 import { CourseData } from "../../../../CommonData/Data/Course";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import Select from "react-select";
-import './courselist.css';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { BiEdit } from 'react-icons/bi';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import "./courselist.css";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { BiEdit } from "react-icons/bi";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
   const navigate = useNavigate();
   const [showcourseedit, setshowcourseedit] = useState(false);
@@ -33,7 +33,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
 
   const getCategories = async () => {
     const getcategories = await axios.get(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/courses/select_category.php"
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/select_category.php"
     );
     console.log(getcategories);
     setCategory(getcategories);
@@ -51,7 +51,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
 
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/image_uplouder.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/image_uplouder.php",
         formdata
       )
       .then((res) => {
@@ -63,23 +63,23 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
           course_id: rowdata.course_id,
           grade_id: selectedGrade,
           university_id: selectedUniv,
-          category_id: selectedCategory
+          category_id: selectedCategory,
         };
         axios
           .post(
-            "https://elmatary.com/El_Matary_Platform/platform/admin/courses/edit_course.php",
+            "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/edit_course.php",
             JSON.stringify(data_send)
           )
           .then((res) => {
             console.log(res);
-            if (res.status == 'success') {
+            if (res.status == "success") {
               setshowcourseedit(false);
               toast.success(res.message);
               setrowdata(false);
               getCourses();
               setSelectedGrade(false);
               setSelectedUniv(false);
-            } else if (res.status == 'error') {
+            } else if (res.status == "error") {
               toast.error(res.message);
             } else {
               toast.error("Something Went Error");
@@ -98,7 +98,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
   }, [rowdata]);
   const columns = [
     {
-      accessor: 'course_photo_url',
+      accessor: "course_photo_url",
       Cell: (cell) => {
         return (
           <>
@@ -108,16 +108,16 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
                   console.log(cell.cell.row.original);
                   navigate("/publicexamsshowexams", {
                     state: {
-                      coursedata: cell.cell.row.original
-                    }
+                      coursedata: cell.cell.row.original,
+                    },
                   });
                 }}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  width: '100%',
-                  cursor: 'pointer',
-                  justifyContent: 'center'
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                  cursor: "pointer",
+                  justifyContent: "center",
                 }}
               >
                 <span id="id" style={{ display: "none" }}>
@@ -140,34 +140,34 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
               <div
                 onClick={() => {
                   navigate("/publicexamsshowexams", {
-                    state: { coursedata: cell.cell.row.original }
+                    state: { coursedata: cell.cell.row.original },
                   });
                 }}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderBottom: '1px solid #ccc',
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderBottom: "1px solid #ccc",
                   flexDirection: "column",
-                  cursor: 'pointer',
-                  padding: '10px 0px',
-                  gap: '4px'
+                  cursor: "pointer",
+                  padding: "10px 0px",
+                  gap: "4px",
                 }}
                 className="course_name"
               >
                 <span
                   style={{
-                    fontSize: '20px',
-                    fontWeight: '700'
+                    fontSize: "20px",
+                    fontWeight: "700",
                   }}
                 >
                   {cell.cell.row.original.course_name || "No Name"}
                 </span>
                 <span
                   style={{
-                    fontSize: '16px',
-                    fontWeight: '500',
-                    display: "block"
+                    fontSize: "16px",
+                    fontWeight: "500",
+                    display: "block",
                   }}
                 >
                   {cell.cell.row.original?.university_name || "No University"}/
@@ -177,16 +177,16 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
             </div>
             <div
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-around',
-                margin: "20px 0"
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-around",
+                margin: "20px 0",
               }}
             >
               <button
                 onClick={() => {
                   navigate("/publicexamsshowexams", {
-                    state: { coursedata: cell.cell.row.original }
+                    state: { coursedata: cell.cell.row.original },
                   });
                 }}
                 className="btn btn-primary"
@@ -196,8 +196,8 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
             </div>
           </>
         );
-      }
-    }
+      },
+    },
   ];
   const [universities, setuniversities] = useState([]);
   const [grades, setgrades] = useState([]);
@@ -205,7 +205,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
   const getuniversities = () => {
     axios
       .get(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/universities/select_universities_grade.php"
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/universities/select_universities_grade.php"
       )
       .then((res) => {
         setuniversities(res.message);
@@ -239,24 +239,24 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
     const data_send = {
       course_id: rowdata.course_id,
       grade_id: selectedGrade,
-      university_id: selectedUniv
+      university_id: selectedUniv,
     };
     console.log(data_send);
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/courses/make_copy_from_course.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/make_copy_from_course.php",
         JSON.stringify(data_send)
       )
       .then((res) => {
         console.log(res);
-        if (res.status == 'success') {
+        if (res.status == "success") {
           setshowcourseedit(false);
           toast.success(res.message);
           setrowdata(false);
           getCourses();
           setSelectedGrade(false);
           setSelectedUniv(false);
-        } else if (res.status == 'error') {
+        } else if (res.status == "error") {
           toast.error(res.message);
         } else {
           toast.error("Something Went Error");
@@ -285,7 +285,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
               display: "flex",
               justifyContent: "space-between",
               width: "100%",
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
             <h4>Update Course Data</h4>
@@ -302,7 +302,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
             style={{
               padding: "15px",
               display: "flex",
-              flexDirection: "column"
+              flexDirection: "column",
             }}
             onSubmit={(e) => {
               e.preventDefault();
@@ -316,7 +316,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
                 style={{
                   width: "100%",
                   borderRadius: "4px",
-                  margin: "10px 0"
+                  margin: "10px 0",
                 }}
                 onChange={(e) => {
                   setrowdata({ ...rowdata, course_name: e.target.value });
@@ -335,7 +335,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
                 style={{
                   width: "100%",
                   borderRadius: "4px",
-                  margin: "10px 0"
+                  margin: "10px 0",
                 }}
                 onChange={(e) => {
                   setrowdata({ ...rowdata, course_price: e.target.value });
@@ -378,7 +378,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
                 style={{
                   width: "100%",
                   borderRadius: "4px",
-                  margin: "10px 0"
+                  margin: "10px 0",
                 }}
                 onChange={(e) => {
                   setimage(e.target.files[0]);
@@ -439,7 +439,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
                 style={{
                   width: "100%",
                   borderRadius: "4px",
-                  margin: "10px 0"
+                  margin: "10px 0",
                 }}
                 onChange={(e) => {
                   setrowdata({ ...rowdata, course_content: e.target.value });
@@ -470,7 +470,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
               display: "flex",
               justifyContent: "space-between",
               width: "100%",
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
             <h4>Duplicate</h4>
@@ -487,7 +487,7 @@ const CourseListTable = ({ Courses, showHideCourse, getCourses }) => {
             style={{
               padding: "15px",
               display: "flex",
-              flexDirection: "column"
+              flexDirection: "column",
             }}
             onSubmit={(e) => {
               e.preventDefault();

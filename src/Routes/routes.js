@@ -177,6 +177,9 @@ import Lives from "../Pages/Lives/Lives";
 import CoursesQueries from "../Pages/Courses/CoursesList/CourseTable/CourseQueries";
 import AllStudentsQueries from "../Pages/AllStudentsQuestions/AllStudentsQuestions";
 import VideosQueries from "../Pages/VideosQueries/VideosQueries";
+import MCQQuestions from "../Pages/Lessons/mcqquestion";
+import Admins from "../Pages/Admins/Admins";
+import ManualSubscription from "../Pages/manuaml-subscription";
 
 // import DailyIncome from "../Pages/subscription/dailyIncome";
 
@@ -208,7 +211,7 @@ const authProtectedRoutes = [
   // { path: "/ecommerce-add-product", component: <AddProduct /> },
   // Courses
 
-  { path: "/courses-list", component: <Courses /> },
+  { path: "/enrollments", component: <Courses /> },
   { path: "/coursesqueries", component: <CoursesQueries /> },
   { path: "/allstudentsqueries", component: <AllStudentsQueries /> },
   { path: "/videoquestions", component: <VideosQueries /> },
@@ -217,7 +220,7 @@ const authProtectedRoutes = [
   // ReportsLessons
   { path: "/copouns-list", component: <Copouns /> },
   { path: "/courses-list/add-course", component: <AddCourse /> },
-  { path: "/copouns-list/add-copoun", component: <AddCopoun /> },
+  { path: "/man-sub", component: <ManualSubscription /> },
 
   // reports-list
   { path: "add-material", component: <AddMaterial /> },
@@ -226,27 +229,28 @@ const authProtectedRoutes = [
   { path: "/lessons", component: <Lessons /> },
   { path: "/e-book/add-book", component: <AddBook /> },
   { path: "/e-book", component: <Books /> },
-  { path: '/addques', component: <AddQuestions /> },
+  { path: "/addques", component: <AddQuestions /> },
   // { path: '/interactive', component: <Interactive /> },
-  { path: '/exam', component: <Exam /> },
-  { path: '/unitquestion', component: <UniqQuestion /> },
-  { path: '/examquestion', component: <ExamQuestion /> },
-  { path: '/studentcouunits', component: <StudenCourseUnit /> },
-  { path: '/questions', component: <Question /> },
-  { path: '/subscription', component: <Subscription /> },
-  { path: '/endedsubscription', component: <EndedSubscription /> },
-  { path: '/studentcourseunitvideos', component: <StudenCourseUnitVideos /> },
+  { path: "/exam", component: <Exam /> },
+  { path: "/unitquestion", component: <MCQQuestions /> },
+
+  { path: "/examquestion", component: <ExamQuestion /> },
+  { path: "/studentcouunits", component: <StudenCourseUnit /> },
+  { path: "/questions", component: <Question /> },
+  { path: "/subscription", component: <Subscription /> },
+  { path: "/endedsubscription", component: <EndedSubscription /> },
+  { path: "/studentcourseunitvideos", component: <StudenCourseUnitVideos /> },
   {
-    path: '/studentcourseunitvideoslist',
-    component: <Studentcourseunitvideoslist />
+    path: "/studentcourseunitvideoslist",
+    component: <Studentcourseunitvideoslist />,
   },
-  { path: '/canceledsubscription', component: <CanceledSubscription /> },
-  { path: '/students', component: <Student /> },
+  { path: "/canceledsubscription", component: <CanceledSubscription /> },
+  { path: "/students", component: <Student /> },
   { path: "/videos", component: <Videos /> },
   { path: "/videos/add-video", component: <AddVideo /> },
   { path: "/videos/unit-videos", component: <UnitVideo /> },
-  { path: "/grade", component: <Grade /> },
-  { path: "/universities", component: <Universities /> },
+  { path: "/categories", component: <Grade /> },
+  { path: "/companies", component: <Universities /> },
   { path: "/StudentCourses", component: <StudentCourses /> },
   { path: "/video/VideoMCQQuestions", component: <VideoMCQQuestions /> },
   { path: "/publicexam", component: <PublicExams /> },
@@ -262,7 +266,7 @@ const authProtectedRoutes = [
   { path: "/CoursesShowExams", component: <CoursesShowExams /> },
 
   { path: "/livemcqquestion", component: <LiveQuesMcq /> },
-  // { path: "/live", component: <LivePage /> },
+  { path: "/Admins", component: <Admins /> },
   { path: "/lives", component: <Lives /> },
   // {path:'/dailyIncome',component:<DailyIncome />},
   // questions
@@ -343,13 +347,13 @@ const authProtectedRoutes = [
   {
     path: "/",
     exact: true,
-    component: <Navigate to="/dashboard" />
+    component: <Navigate to="/dashboard" />,
   },
   {
     path: "*",
     exact: true,
-    component: <Navigate to="/dashboard" />
-  }
+    component: <Navigate to="/dashboard" />,
+  },
 ];
 
 const publicRoutes = [
@@ -373,7 +377,7 @@ const publicRoutes = [
   { path: "/pages-maintenance", component: <MaintenancePage /> },
   { path: "/pages-comingsoon", component: <ComingSoonPage /> },
   { path: "/pages-404", component: <Error404 /> },
-  { path: "/pages-500", component: <Error500 /> }
+  { path: "/pages-500", component: <Error500 /> },
 ];
 
 export { authProtectedRoutes, publicRoutes };

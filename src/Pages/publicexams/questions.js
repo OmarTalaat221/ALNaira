@@ -33,7 +33,7 @@ import CreatableSelect from "react-select/creatable";
 import { UnitData } from "../../CommonData/Data/Units";
 
 const Question = () => {
-  document.title = "Courses | Matary - React Admin & Dashboard Template";
+  document.title = "Courses | ALNaierh  ";
 
   const location = useLocation();
   // const {state}=location;
@@ -84,7 +84,6 @@ const Question = () => {
                             </button>
                           </div>
                         </Col>
-                    
                       </Row>
                     </div>
                   </div>
@@ -150,9 +149,7 @@ const Question = () => {
                 placeholder="unit"
                 required
                 value={selectedUnit}
-                onChange={(selectedOption) =>
-                  setSelectedUnit(selectedOption)
-                }
+                onChange={(selectedOption) => setSelectedUnit(selectedOption)}
                 options={UnitData.map((item, index) => {
                   return { label: item?.unit_name, value: item?.id };
                 })}

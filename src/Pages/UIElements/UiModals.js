@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { Card, CardBody, CardHeader, Col, Container, Modal, Row } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Container,
+  Modal,
+  Row,
+} from "reactstrap";
 
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
-
 const UiModals = () => {
-  document.title = "Modals | Matary - React Admin & Dashboard Template";
-
+  document.title = "Modals | ALNaierh  ";
 
   const [modal_standard, setmodal_standard] = useState(false);
   const [modal_fullscreen, setmodal_fullscreen] = useState(false);
@@ -23,7 +29,6 @@ const UiModals = () => {
   const [modal_getbootstrap, setmodal_getbootstrap] = useState(false);
   const [modal_togSecond, setmodal_togSecond] = useState(false);
   const [modal_togFirst, setmodal_togFirst] = useState(false);
-
 
   function tog_standard() {
     setmodal_standard(!modal_standard);
@@ -83,20 +88,20 @@ const UiModals = () => {
 
   return (
     <React.Fragment>
-
       <div className="page-content">
         <Container fluid={true}>
-
           <Breadcrumbs title="UI Elements" breadcrumbItem="Modals" />
           <Row>
             <Col className="col-12">
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Modals Examples</h4>
-                  <p className="card-title-desc">Modals are streamlined, but flexible
-                    dialog prompts powered by JavaScript. They support a number of use cases
-                    from user notification to completely custom content and feature a
-                    handful of helpful subcomponents, sizes, and more.</p>
+                  <p className="card-title-desc">
+                    Modals are streamlined, but flexible dialog prompts powered
+                    by JavaScript. They support a number of use cases from user
+                    notification to completely custom content and feature a
+                    handful of helpful subcomponents, sizes, and more.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
@@ -105,14 +110,27 @@ const UiModals = () => {
                       <div className="modal-content">
                         <div className="modal-header">
                           <h5 className="modal-title">Modal title</h5>
-                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
                         </div>
                         <div className="modal-body">
                           <p>One fine body&hellip;</p>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="btn btn-primary">Save changes</button>
-                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" className="btn btn-primary">
+                            Save changes
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -127,12 +145,23 @@ const UiModals = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Default Modal</h4>
-                  <p className="card-title-desc">Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.</p>
+                  <p className="card-title-desc">
+                    Toggle a working modal demo by clicking the button below. It
+                    will slide down and fade in from the top of the page.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div>
-                    <button type="button" onClick={() => { tog_standard() }} className="btn btn-primary waves-effect waves-light">Standard modal</button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        tog_standard();
+                      }}
+                      className="btn btn-primary waves-effect waves-light"
+                    >
+                      Standard modal
+                    </button>
                   </div>
                 </CardBody>
               </Card>
@@ -142,12 +171,24 @@ const UiModals = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Fullscreen Modal</h4>
-                  <p className="card-title-desc">Another override is the option to pop up a modal that covers the user viewport, available via modifier classes that are placed a <code>.modal-fullscreen</code>.</p>
+                  <p className="card-title-desc">
+                    Another override is the option to pop up a modal that covers
+                    the user viewport, available via modifier classes that are
+                    placed a <code>.modal-fullscreen</code>.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div>
-                    <button type="button" className="btn btn-primary waves-light" onClick={() => { tog_fullscreen() }} >Fullscreen modal</button>
+                    <button
+                      type="button"
+                      className="btn btn-primary waves-light"
+                      onClick={() => {
+                        tog_fullscreen();
+                      }}
+                    >
+                      Fullscreen modal
+                    </button>
                   </div>
                 </CardBody>
               </Card>
@@ -159,21 +200,48 @@ const UiModals = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Optional Sizes</h4>
-                  <p className="card-title-desc">Modals have three optional sizes, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
+                  <p className="card-title-desc">
+                    Modals have three optional sizes, available via modifier
+                    classes to be placed on a <code>.modal-dialog</code>.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div className="d-flex flex-wrap gap-3">
                     <div>
-                      <button type="button" className="btn btn-primary waves-light" onClick={() => { tog_xlarge() }}>Extra large modal</button>
+                      <button
+                        type="button"
+                        className="btn btn-primary waves-light"
+                        onClick={() => {
+                          tog_xlarge();
+                        }}
+                      >
+                        Extra large modal
+                      </button>
                     </div>
 
                     <div>
-                      <button type="button" className="btn btn-light" onClick={() => { tog_large() }}>Large modal</button>
+                      <button
+                        type="button"
+                        className="btn btn-light"
+                        onClick={() => {
+                          tog_large();
+                        }}
+                      >
+                        Large modal
+                      </button>
                     </div>
 
                     <div>
-                      <button type="button" className="btn btn-success waves-light" onClick={() => { tog_small() }}>Small modal</button>
+                      <button
+                        type="button"
+                        className="btn btn-success waves-light"
+                        onClick={() => {
+                          tog_small();
+                        }}
+                      >
+                        Small modal
+                      </button>
                     </div>
                   </div>
                 </CardBody>
@@ -184,12 +252,23 @@ const UiModals = () => {
               <Card>
                 <CardHeader>
                   <h5 className="card-title">Vertically Centered</h5>
-                  <p className="card-title-desc">Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center the modal.</p>
+                  <p className="card-title-desc">
+                    Add <code>.modal-dialog-centered</code> to{" "}
+                    <code>.modal-dialog</code> to vertically center the modal.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div>
-                    <button type="button" className="btn btn-primary waves-light" onClick={() => { tog_center() }}>Center modal</button>
+                    <button
+                      type="button"
+                      className="btn btn-primary waves-light"
+                      onClick={() => {
+                        tog_center();
+                      }}
+                    >
+                      Center modal
+                    </button>
                   </div>
                 </CardBody>
               </Card>
@@ -201,18 +280,38 @@ const UiModals = () => {
               <Card>
                 <CardHeader>
                   <h5 className="card-title">Scrollable Modal</h5>
-                  <p className="card-title-desc">Scrolling long content modal and You can also create a scrollable modal that allows scroll the modal body by adding <code>.modal-dialog-scrollable</code> to <code>.modal-dialog</code>.</p>
+                  <p className="card-title-desc">
+                    Scrolling long content modal and You can also create a
+                    scrollable modal that allows scroll the modal body by adding{" "}
+                    <code>.modal-dialog-scrollable</code> to{" "}
+                    <code>.modal-dialog</code>.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div className="d-flex flex-wrap gap-3">
-
                     <div>
-                      <button type="button" className="btn btn-primary waves-light" onClick={() => { tog_lgscroll() }}>Long Scrollable Modal</button>
+                      <button
+                        type="button"
+                        className="btn btn-primary waves-light"
+                        onClick={() => {
+                          tog_lgscroll();
+                        }}
+                      >
+                        Long Scrollable Modal
+                      </button>
                     </div>
 
                     <div>
-                      <button type="button" className="btn btn-primary waves-light" onClick={() => { tog_scroll() }}>Scrollable Modal</button>
+                      <button
+                        type="button"
+                        className="btn btn-primary waves-light"
+                        onClick={() => {
+                          tog_scroll();
+                        }}
+                      >
+                        Scrollable Modal
+                      </button>
                     </div>
                   </div>
                 </CardBody>
@@ -223,12 +322,21 @@ const UiModals = () => {
               <Card>
                 <CardHeader>
                   <h5 className="card-title">Static Backdrop</h5>
-                  <p className="card-title-desc">When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it.</p>
+                  <p className="card-title-desc">
+                    When backdrop is set to static, the modal will not close
+                    when clicking outside it. Click the button below to try it.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div>
-                    <button type="button" className="btn btn-primary waves-light" onClick={() => { tog_backdrop() }}>
+                    <button
+                      type="button"
+                      className="btn btn-primary waves-light"
+                      onClick={() => {
+                        tog_backdrop();
+                      }}
+                    >
                       Static backdrop modal
                     </button>
                   </div>
@@ -242,14 +350,42 @@ const UiModals = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Varying Modal Content</h4>
-                  <p className="card-title-desc">Use <code>event.relatedTarget</code> and HTML <code>data-bs-*</code> attributes to vary the contents of the modal depending on which button was clicked.</p>
+                  <p className="card-title-desc">
+                    Use <code>event.relatedTarget</code> and HTML{" "}
+                    <code>data-bs-*</code> attributes to vary the contents of
+                    the modal depending on which button was clicked.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div className="d-flex flex-wrap gap-3">
-                    <button type="button" className="btn btn-primary" onClick={() => { tog_mdo() }}>Open modal for @mdo</button>
-                    <button type="button" className="btn btn-primary" onClick={() => { tog_fat() }}>Open modal for @fat</button>
-                    <button type="button" className="btn btn-primary" onClick={() => { tog_getbootstrap() }}>Open modal for @getbootstrap</button>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => {
+                        tog_mdo();
+                      }}
+                    >
+                      Open modal for @mdo
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => {
+                        tog_fat();
+                      }}
+                    >
+                      Open modal for @fat
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => {
+                        tog_getbootstrap();
+                      }}
+                    >
+                      Open modal for @getbootstrap
+                    </button>
                   </div>
                 </CardBody>
               </Card>
@@ -259,12 +395,24 @@ const UiModals = () => {
               <Card>
                 <CardHeader>
                   <h4 className="card-title">Toggle between modals</h4>
-                  <p className="card-title-desc">Toggle between multiple modals with some clever placement of the <code>data-bs-target</code> and <code>data-bs-toggle</code> attributes.</p>
+                  <p className="card-title-desc">
+                    Toggle between multiple modals with some clever placement of
+                    the <code>data-bs-target</code> and{" "}
+                    <code>data-bs-toggle</code> attributes.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div>
-                    <button type="button" className="btn btn-primary waves-light" onClick={() => { tog_togFirst() }}>Open First Modal</button>
+                    <button
+                      type="button"
+                      className="btn btn-primary waves-light"
+                      onClick={() => {
+                        tog_togFirst();
+                      }}
+                    >
+                      Open First Modal
+                    </button>
                   </div>
                 </CardBody>
               </Card>
@@ -275,17 +423,15 @@ const UiModals = () => {
 
       {/* Standard Modal */}
 
-      <Modal id="myModal"
+      <Modal
+        id="myModal"
         isOpen={modal_standard}
         toggle={() => {
           tog_standard();
         }}
       >
         <div className="modal-header">
-          <h5
-            className="modal-title"
-            id="myModalLabel"
-          >
+          <h5 className="modal-title" id="myModalLabel">
             Default Modal Heading
           </h5>
           <button
@@ -295,41 +441,45 @@ const UiModals = () => {
               setmodal_standard(false);
             }}
             aria-label="Close"
-
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
           <h5>Overflowing text to show scroll behavior</h5>
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Vivamus sagittis lacus vel
-            augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur.
-            Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor
-            fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Vivamus sagittis lacus vel
-            augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur.
-            Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor
-            fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
         </div>
         <div className="modal-footer">
           <button
@@ -341,15 +491,11 @@ const UiModals = () => {
           >
             Close
           </button>
-          <button
-            type="button"
-            className="btn btn-primary "
-          >
+          <button type="button" className="btn btn-primary ">
             Save changes
           </button>
         </div>
       </Modal>
-
 
       {/* Full Screen Modal */}
 
@@ -363,10 +509,7 @@ const UiModals = () => {
         id="exampleModalFullscreen"
       >
         <div className="modal-header">
-          <h5
-            className="modal-title"
-            id="exampleModalFullscreenLabel"
-          >
+          <h5 className="modal-title" id="exampleModalFullscreenLabel">
             Fullscreen Modal
           </h5>
           <button
@@ -376,40 +519,45 @@ const UiModals = () => {
             type="button"
             className="btn-close"
             aria-label="Close"
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
           <h5>Overflowing text to show scroll behavior</h5>
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Vivamus sagittis lacus vel
-            augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur.
-            Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor
-            fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Vivamus sagittis lacus vel
-            augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur.
-            Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor
-            fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
         </div>
         <div className="modal-footer">
           <button
@@ -422,10 +570,7 @@ const UiModals = () => {
           >
             Close
           </button>
-          <button
-            type="button"
-            className="btn btn-primary "
-          >
+          <button type="button" className="btn btn-primary ">
             Save changes
           </button>
         </div>
@@ -441,10 +586,7 @@ const UiModals = () => {
         }}
       >
         <div className="modal-header">
-          <h5
-            className="modal-title"
-            id="myExtraLargeModalLabel"
-          >
+          <h5 className="modal-title" id="myExtraLargeModalLabel">
             Extra large modal
           </h5>
           <button
@@ -454,26 +596,26 @@ const UiModals = () => {
             type="button"
             className="btn-close"
             aria-label="Close"
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Vivamus sagittis lacus vel
-            augue laoreet rutrum faucibus dolor auctor.</p>
-          <p className="mb-0">Aenean lacinia bibendum nulla sed consectetur.
-            Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor
-            fringilla.</p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p className="mb-0">
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
         </div>
       </Modal>
-
 
       {/* Large Modal */}
 
@@ -485,10 +627,7 @@ const UiModals = () => {
         }}
       >
         <div className="modal-header">
-          <h5
-            className="modal-title"
-            id="myLargeModalLabel"
-          >
+          <h5 className="modal-title" id="myLargeModalLabel">
             Large Modal
           </h5>
           <button
@@ -499,23 +638,24 @@ const UiModals = () => {
             className="btn-close"
             data-dismiss="modal"
             aria-label="Close"
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Vivamus sagittis lacus vel
-            augue laoreet rutrum faucibus dolor auctor.</p>
-          <p className="mb-0">Aenean lacinia bibendum nulla sed consectetur.
-            Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor
-            fringilla.</p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p className="mb-0">
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
         </div>
       </Modal>
 
@@ -529,10 +669,7 @@ const UiModals = () => {
         }}
       >
         <div className="modal-header">
-          <h5
-            className="modal-title"
-            id="mySmallModalLabel"
-          >
+          <h5 className="modal-title" id="mySmallModalLabel">
             Small Modal
           </h5>
           <button
@@ -543,26 +680,26 @@ const UiModals = () => {
             className="btn-close"
             data-dismiss="modal"
             aria-label="Close"
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Vivamus sagittis lacus vel
-            augue laoreet rutrum faucibus dolor auctor.</p>
-          <p className="mb-0">Aenean lacinia bibendum nulla sed consectetur.
-            Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor
-            fringilla.</p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p className="mb-0">
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
         </div>
       </Modal>
-
 
       {/* Vertically Centered */}
 
@@ -574,9 +711,7 @@ const UiModals = () => {
         centered
       >
         <div className="modal-header">
-          <h5 className="modal-title">
-            Center Modal
-          </h5>
+          <h5 className="modal-title">Center Modal</h5>
           <button
             type="button"
             onClick={() => {
@@ -585,26 +720,26 @@ const UiModals = () => {
             className="btn-close"
             data-dismiss="modal"
             aria-label="Close"
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
-          <p>Cras mattis consectetur purus sit amet fermentum.
-            Cras justo odio, dapibus ac facilisis in,
-            egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Vivamus sagittis lacus vel
-            augue laoreet rutrum faucibus dolor auctor.</p>
-          <p className="mb-0">Aenean lacinia bibendum nulla sed consectetur.
-            Praesent commodo cursus magna, vel scelerisque
-            nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor
-            fringilla.</p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p className="mb-0">
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
         </div>
       </Modal>
-
 
       {/* Long Scrollable Modal */}
 
@@ -625,53 +760,99 @@ const UiModals = () => {
             className="btn-close"
             data-dismiss="modal"
             aria-label="Close"
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
           <div className="modal-footer">
             <button
               type="button"
@@ -680,16 +861,12 @@ const UiModals = () => {
             >
               Close
             </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-            >
+            <button type="button" className="btn btn-primary">
               Save changes
             </button>
           </div>
         </div>
       </Modal>
-
 
       {/* Scrollable Modal  */}
 
@@ -711,53 +888,99 @@ const UiModals = () => {
             className="btn-close"
             data-dismiss="modal"
             aria-label="Close"
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.</p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+            auctor.
+          </p>
+          <p>
+            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+            cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+            dui. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
           <div className="modal-footer">
             <button
               type="button"
@@ -766,16 +989,12 @@ const UiModals = () => {
             >
               Close
             </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-            >
+            <button type="button" className="btn btn-primary">
               Save changes
             </button>
           </div>
         </div>
       </Modal>
-
 
       {/* Static Backdrop */}
 
@@ -784,25 +1003,42 @@ const UiModals = () => {
         toggle={() => {
           tog_backdrop();
         }}
-        backdrop={'static'}
+        backdrop={"static"}
         id="staticBackdrop"
         centered
       >
         <div className="modal-header">
-          <h5 className="modal-title" id="staticBackdropLabel">Modal title</h5>
-          <button type="button" className="btn-close"
+          <h5 className="modal-title" id="staticBackdropLabel">
+            Modal title
+          </h5>
+          <button
+            type="button"
+            className="btn-close"
             onClick={() => {
               setmodal_backdrop(false);
-            }} aria-label="Close"></button>
+            }}
+            aria-label="Close"
+          ></button>
         </div>
         <div className="modal-body">
-          <p>I will not close if you click outside me. Don't even try to press escape key.</p>
+          <p>
+            I will not close if you click outside me. Don't even try to press
+            escape key.
+          </p>
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-light" onClick={() => {
-            setmodal_backdrop(false);
-          }}>Close</button>
-          <button type="button" className="btn btn-primary">Understood</button>
+          <button
+            type="button"
+            className="btn btn-light"
+            onClick={() => {
+              setmodal_backdrop(false);
+            }}
+          >
+            Close
+          </button>
+          <button type="button" className="btn btn-primary">
+            Understood
+          </button>
         </div>
       </Modal>
 
@@ -816,7 +1052,9 @@ const UiModals = () => {
         id="exampleModal"
       >
         <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">New message to @mdo</h5>
+          <h5 className="modal-title" id="exampleModalLabel">
+            New message to @mdo
+          </h5>
           <button
             type="button"
             className="btn-close"
@@ -829,10 +1067,7 @@ const UiModals = () => {
         <div className="modal-body">
           <form>
             <div className="mb-3">
-              <label
-                htmlFor="recipient-name"
-                className="col-form-label"
-              >
+              <label htmlFor="recipient-name" className="col-form-label">
                 Recipient:
               </label>
               <input
@@ -843,16 +1078,10 @@ const UiModals = () => {
               />
             </div>
             <div className="mb-3">
-              <label
-                htmlFor="message-text"
-                className="col-form-label"
-              >
+              <label htmlFor="message-text" className="col-form-label">
                 Message:
               </label>
-              <textarea
-                className="form-control"
-                id="message-text"
-              ></textarea>
+              <textarea className="form-control" id="message-text"></textarea>
             </div>
           </form>
         </div>
@@ -880,7 +1109,6 @@ const UiModals = () => {
         toggle={() => {
           tog_fat();
         }}
-
       >
         <div className="modal-header">
           <h5 className="modal-title">New message to @fat</h5>
@@ -896,10 +1124,7 @@ const UiModals = () => {
         <div className="modal-body">
           <form>
             <div className="mb-3">
-              <label
-                htmlFor="recipient-name"
-                className="col-form-label"
-              >
+              <label htmlFor="recipient-name" className="col-form-label">
                 Recipient:
               </label>
               <input
@@ -910,16 +1135,10 @@ const UiModals = () => {
               />
             </div>
             <div className="mb-3">
-              <label
-                htmlFor="message-text"
-                className="col-form-label"
-              >
+              <label htmlFor="message-text" className="col-form-label">
                 Message:
               </label>
-              <textarea
-                className="form-control"
-                id="message-text"
-              ></textarea>
+              <textarea className="form-control" id="message-text"></textarea>
             </div>
           </form>
         </div>
@@ -940,7 +1159,6 @@ const UiModals = () => {
         </div>
       </Modal>
 
-
       {/* modal for @getbootstrap */}
 
       <Modal
@@ -948,12 +1166,9 @@ const UiModals = () => {
         toggle={() => {
           tog_getbootstrap();
         }}
-
       >
         <div className="modal-header">
-          <h5 className="modal-title">
-            New message to @getbootstrap
-          </h5>
+          <h5 className="modal-title">New message to @getbootstrap</h5>
           <button
             type="button"
             className="btn-close"
@@ -966,10 +1181,7 @@ const UiModals = () => {
         <div className="modal-body">
           <form>
             <div className="mb-3">
-              <label
-                htmlFor="recipient-name"
-                className="col-form-label"
-              >
+              <label htmlFor="recipient-name" className="col-form-label">
                 Recipient:
               </label>
               <input
@@ -980,16 +1192,10 @@ const UiModals = () => {
               />
             </div>
             <div className="mb-3">
-              <label
-                htmlFor="message-text"
-                className="col-form-label"
-              >
+              <label htmlFor="message-text" className="col-form-label">
                 Message:
               </label>
-              <textarea
-                className="form-control"
-                id="message-text"
-              ></textarea>
+              <textarea className="form-control" id="message-text"></textarea>
             </div>
           </form>
         </div>
@@ -1031,19 +1237,12 @@ const UiModals = () => {
               setmodal_togFirst(false);
             }}
             aria-label="Close"
-
-          >
-
-          </button>
+          ></button>
         </div>
         <div className="modal-body">
-          <p>
-            Show a second modal and hide this one with
-            the button below.
-          </p>
+          <p>Show a second modal and hide this one with the button below.</p>
         </div>
         <div className="modal-footer">
-
           <button
             type="button"
             className="btn btn-primary"
@@ -1066,7 +1265,9 @@ const UiModals = () => {
         centered
       >
         <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+          <h5 className="modal-title" id="exampleModalToggleLabel2">
+            Modal 2
+          </h5>
           <button
             type="button"
             className="btn-close"
@@ -1077,13 +1278,9 @@ const UiModals = () => {
           ></button>
         </div>
         <div className="modal-body">
-          <p>
-            Hide this modal and show the first with the
-            button below.
-          </p>
+          <p>Hide this modal and show the first with the button below.</p>
         </div>
         <div className="modal-footer">
-
           <button
             type="button"
             className="btn btn-primary"
@@ -1096,9 +1293,8 @@ const UiModals = () => {
           </button>
         </div>
       </Modal>
-
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default UiModals;

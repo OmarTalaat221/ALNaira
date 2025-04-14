@@ -1,5 +1,19 @@
 import React, { useState } from "react";
-import { Row, Col, Card, CardBody, Container, Nav, NavItem, NavLink, TabContent, TabPane, Tooltip, Modal, UncontrolledTooltip } from "reactstrap";
+import {
+  Row,
+  Col,
+  Card,
+  CardBody,
+  Container,
+  Nav,
+  NavItem,
+  NavLink,
+  TabContent,
+  TabPane,
+  Tooltip,
+  Modal,
+  UncontrolledTooltip,
+} from "reactstrap";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -27,66 +41,61 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import SwiperCore, {
-    FreeMode, Navigation, Thumbs
-} from 'swiper';
+import SwiperCore, { FreeMode, Navigation, Thumbs } from "swiper";
 
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
-
 const CourseDetail = () => {
+  const location = useLocation();
+  const { coursedata } = location.state;
+  // console.log(coursedata)
+  const navigate = useNavigate();
+  document.title = "Product Detail | ALNaierh  ";
 
-  const location=useLocation();
-  const {coursedata}=location.state;
-    // console.log(coursedata)
-    const navigate=useNavigate()
-    document.title = "Product Detail | Matary - React Admin & Dashboard Template";
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [customActiveTab, setcustomActiveTab] = useState("2");
 
-
-    const [customActiveTab, setcustomActiveTab] = useState("2");
-
-    const toggleCustom = (tab) => {
-        if (customActiveTab !== tab) {
-            setcustomActiveTab(tab);
-        }
-    };
-
-    const [tgrey, settgrey] = useState(false);
-    const [tdark, settdark] = useState(false);
-    const [tpurple, settpurple] = useState(false);
-
-    const [modal_center, setmodal_center] = useState(false);
-
-
-
-    function tog_center() {
-        setmodal_center(!modal_center);
+  const toggleCustom = (tab) => {
+    if (customActiveTab !== tab) {
+      setcustomActiveTab(tab);
     }
+  };
 
-    return (
-        <React.Fragment>
+  const [tgrey, settgrey] = useState(false);
+  const [tdark, settdark] = useState(false);
+  const [tpurple, settpurple] = useState(false);
 
-            <div className="page-content">
-                <Container fluid={true}>
+  const [modal_center, setmodal_center] = useState(false);
 
-                    <Breadcrumbs title="Ecommerce" breadcrumbItem="Course Detail" />
+  function tog_center() {
+    setmodal_center(!modal_center);
+  }
 
-                    <Row>
-                        <Col lg={12}>
-                            <Card>
-                                <CardBody>
-                                    <Row>
-                                        <Col xl={4}>
-                                            <div className="product-detail" dir="ltr">
-                                                {/* <div className="product-wishlist">
+  return (
+    <React.Fragment>
+      <div className="page-content">
+        <Container fluid={true}>
+          <Breadcrumbs title="Ecommerce" breadcrumbItem="Course Detail" />
+
+          <Row>
+            <Col lg={12}>
+              <Card>
+                <CardBody>
+                  <Row>
+                    <Col xl={4}>
+                      <div className="product-detail" dir="ltr">
+                        {/* <div className="product-wishlist">
                                                     <Link to="#">
                                                         <i className="mdi mdi-heart-outline"></i>
                                                     </Link>
                                                 </div> */}
-                                                <img style={{width:'100%'}} src={coursedata.image} alt="" />
-                                                {/* <Swiper navigation={true} thumbs={{ swiper: thumbsSwiper }} className="swiper product-thumbnail-slider rounded border overflow-hidden position-relative">
+                        <img
+                          style={{ width: "100%" }}
+                          src={coursedata.image}
+                          alt=""
+                        />
+                        {/* <Swiper navigation={true} thumbs={{ swiper: thumbsSwiper }} className="swiper product-thumbnail-slider rounded border overflow-hidden position-relative">
                                                     <div className="swiper-wrapper">
 
                                                         <SwiperSlide><img src={img1} alt="" className="img-fluid d-block" /></SwiperSlide>
@@ -96,7 +105,7 @@ const CourseDetail = () => {
                                                         <SwiperSlide><img src={img5} alt="" className="img-fluid d-block" /></SwiperSlide>
                                                     </div>
                                                 </Swiper> */}
-                                                {/* <div className="mt-4">
+                        {/* <div className="mt-4">
                                                     <Swiper onSwiper={setThumbsSwiper} slidesPerView={4} freeMode={true} watchSlidesProgress={true} className="swiper product-nav-slider mt-2 overflow-hidden">
                                                         <div className="swiper-wrapper">
 
@@ -109,7 +118,7 @@ const CourseDetail = () => {
                                                     </Swiper>
                                                 </div> */}
 
-                                                {/* <div className="row text-center mt-3">
+                        {/* <div className="row text-center mt-3">
                                                     <div className="col-sm-6">
                                                         <div className="d-grid">
                                                             <button type="button" className="btn btn-primary waves-effect waves-light mt-2 me-1">
@@ -125,33 +134,52 @@ const CourseDetail = () => {
                                                         </div>
                                                     </div>
                                                 </div> */}
-                                            </div>
-                                        </Col>
-                                        <Col xl={8}>
-                                            <div className="mt-4 mt-xl-3 ps-xl-4">
-                                                <div style={{
-                                                  display:'flex',
-                                                  alignItems:'center',
-                                                  justifyContent:'space-between'
-                                                }}>
-                                                <div>
-                                                  <h4 className="font-size-20 mb-3">{coursedata.CourseName}</h4>
-                                                  <div className="text-muted">
-                                                      <span className="badge bg-success font-size-14 me-1"><i className="mdi mdi-star"></i> 4.2</span> 234 Reviews
-                                                  </div>
-                                                </div>
-                                                <button onClick={()=>{
-                                                  navigate("/units",{state:{data:coursedata}})
-                                                }} className="btn btn-primary"
+                      </div>
+                    </Col>
+                    <Col xl={8}>
+                      <div className="mt-4 mt-xl-3 ps-xl-4">
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <div>
+                            <h4 className="font-size-20 mb-3">
+                              {coursedata.CourseName}
+                            </h4>
+                            <div className="text-muted">
+                              <span className="badge bg-success font-size-14 me-1">
+                                <i className="mdi mdi-star"></i> 4.2
+                              </span>{" "}
+                              234 Reviews
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => {
+                              navigate("/units", {
+                                state: { data: coursedata },
+                              });
+                            }}
+                            className="btn btn-primary"
+                          >
+                            units
+                          </button>
+                        </div>
 
-                                                >units</button>
-                                                </div>
+                        <h5 className="mt-4 pt-2">
+                          {coursedata.CoursePrice}
+                          <span className="text-danger font-size-14 ms-2">
+                            - 20 % Off
+                          </span>
+                        </h5>
 
-                                                <h5 className="mt-4 pt-2">{coursedata.CoursePrice}<span className="text-danger font-size-14 ms-2">- 20 % Off</span></h5>
+                        <p className="mt-4 text-muted">
+                          {coursedata.description}
+                        </p>
 
-                                                <p className="mt-4 text-muted">{coursedata.description}</p>
-
-                                                {/* <div>
+                        {/* <div>
                                                     <Row>
                                                         <Col md={6}>
                                                             <div className="mt-3">
@@ -250,11 +278,11 @@ const CourseDetail = () => {
                                                         </Col>
                                                     </Row>
                                                 </div> */}
-                                            </div>
-                                        </Col>
-                                    </Row>
+                      </div>
+                    </Col>
+                  </Row>
 
-                                    {/* <Row>
+                  {/* <Row>
                                         <Col xl={8}>
                                             <div className="mt-4 pt-3">
                                                 <h5 className="font-size-14 mb-3">Reviews : </h5>
@@ -454,13 +482,13 @@ const CourseDetail = () => {
                                             </div>
                                         </Col>
                                     </Row> */}
-                                </CardBody>
-                            </Card>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-            {/* <Tooltip
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      {/* <Tooltip
                 placement="top"
                 isOpen={tgrey}
                 target="Gray"
@@ -471,7 +499,7 @@ const CourseDetail = () => {
                 Gray
             </Tooltip> */}
 
-            {/* <Tooltip
+      {/* <Tooltip
                 placement="top"
                 isOpen={tdark}
                 target="Dark"
@@ -493,132 +521,114 @@ const CourseDetail = () => {
                 Purple
             </Tooltip> */}
 
+      <Modal
+        isOpen={modal_center}
+        toggle={() => {
+          tog_center();
+        }}
+        centered
+        id="color-img"
+      >
+        <div className="modal-header">
+          <h5 className="modal-title" id="color-imgLabel">
+            Product Images
+          </h5>
+          <button
+            type="button"
+            onClick={() => {
+              setmodal_center(false);
+            }}
+            className="btn-close"
+            data-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div className="modal-body">
+          <div className="product-desc-color">
+            <ul className="list-inline mb-0">
+              <li className="list-inline-item">
+                <Link to="#" className="active" id="Grey">
+                  <div className="product-color-item">
+                    <img src={img1} alt="" className="avatar-md" />
+                  </div>
+                </Link>
+              </li>
+              <li className="list-inline-item">
+                <Link to="#" id="Dark">
+                  <div className="product-color-item">
+                    <img src={img2} alt="" className="avatar-md" />
+                  </div>
+                </Link>
+              </li>
+              <li className="list-inline-item">
+                <Link to="#" id="Purple">
+                  <div className="product-color-item">
+                    <img src={img3} alt="" className="avatar-md" />
+                  </div>
+                </Link>
+              </li>
+              <li className="list-inline-item">
+                <Link to="#" id="Sky">
+                  <div className="product-color-item">
+                    <img src={img4} alt="" className="avatar-md" />
+                  </div>
+                </Link>
+              </li>
+              <li className="list-inline-item">
+                <Link to="#" id="Green">
+                  <div className="product-color-item">
+                    <img src={img5} alt="" className="avatar-md" />
+                  </div>
+                </Link>
+              </li>
+              <li className="list-inline-item">
+                <Link to="#" id="White">
+                  <div className="product-color-item">
+                    <img src={img6} alt="" className="avatar-md" />
+                  </div>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="modal-footer">
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => {
+              setmodal_center(false);
+            }}
+          >
+            Close
+          </button>
+        </div>
 
-            <Modal
-                isOpen={modal_center}
-                toggle={() => {
-                    tog_center();
-                }}
-                centered
-                id="color-img"
-            >
-                <div className="modal-header">
-                    <h5 className="modal-title" id="color-imgLabel">Product Images</h5>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setmodal_center(false);
-                        }}
-                        className="btn-close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                    >
+        <UncontrolledTooltip placement="top" target="Grey">
+          Grey
+        </UncontrolledTooltip>
 
-                    </button>
-                </div>
-                <div className="modal-body">
-                    <div className="product-desc-color">
-                        <ul className="list-inline mb-0">
-                            <li className="list-inline-item">
-                                <Link to="#" className="active" id="Grey">
-                                    <div className="product-color-item">
-                                        <img src={img1} alt="" className="avatar-md" />
-                                    </div>
-                                </Link>
-                            </li>
-                            <li className="list-inline-item">
-                                <Link to="#" id="Dark">
-                                    <div className="product-color-item">
-                                        <img src={img2} alt="" className="avatar-md" />
-                                    </div>
-                                </Link>
-                            </li>
-                            <li className="list-inline-item">
-                                <Link to="#" id="Purple">
-                                    <div className="product-color-item">
-                                        <img src={img3} alt="" className="avatar-md" />
-                                    </div>
-                                </Link>
-                            </li>
-                            <li className="list-inline-item">
-                                <Link to="#" id="Sky">
-                                    <div className="product-color-item">
-                                        <img src={img4} alt="" className="avatar-md" />
-                                    </div>
-                                </Link>
-                            </li>
-                            <li className="list-inline-item">
-                                <Link to="#" id="Green">
-                                    <div className="product-color-item">
-                                        <img src={img5} alt="" className="avatar-md" />
-                                    </div>
-                                </Link>
-                            </li>
-                            <li className="list-inline-item">
-                                <Link to="#" id="White">
-                                    <div className="product-color-item">
-                                        <img src={img6} alt="" className="avatar-md" />
-                                    </div>
-                                </Link>
-                            </li>
+        <UncontrolledTooltip placement="top" target="Dark">
+          Dark
+        </UncontrolledTooltip>
 
-                        </ul>
+        <UncontrolledTooltip placement="top" target="Purple">
+          Purple
+        </UncontrolledTooltip>
 
-                    </div>
+        <UncontrolledTooltip placement="top" target="White">
+          White
+        </UncontrolledTooltip>
 
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" onClick={() => {
-                        setmodal_center(false);
-                    }}>Close</button>
-                </div>
+        <UncontrolledTooltip placement="top" target="Sky">
+          Sky
+        </UncontrolledTooltip>
 
-                <UncontrolledTooltip
-                    placement="top"
-                    target="Grey"
-                >
-                    Grey
-                </UncontrolledTooltip>
-
-                <UncontrolledTooltip
-                    placement="top"
-                    target="Dark"
-                >
-                    Dark
-                </UncontrolledTooltip>
-
-                <UncontrolledTooltip
-                    placement="top"
-                    target="Purple"
-                >
-                    Purple
-                </UncontrolledTooltip>
-
-                <UncontrolledTooltip
-                    placement="top"
-                    target="White"
-                >
-                    White
-                </UncontrolledTooltip>
-
-                <UncontrolledTooltip
-                    placement="top"
-                    target="Sky"
-                >
-                    Sky
-                </UncontrolledTooltip>
-
-                <UncontrolledTooltip
-                    placement="top"
-                    target="Green"
-                >
-                    Green
-                </UncontrolledTooltip>
-
-            </Modal>
-
-        </React.Fragment>
-    );
+        <UncontrolledTooltip placement="top" target="Green">
+          Green
+        </UncontrolledTooltip>
+      </Modal>
+    </React.Fragment>
+  );
 };
 
 export default CourseDetail;

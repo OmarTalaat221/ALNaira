@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
 import * as Yup from "yup";
@@ -33,8 +33,7 @@ import {
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import TableContainer from '../../../components/Common/TableContainer';
-
+import TableContainer from "../../../components/Common/TableContainer";
 
 // Column
 import {
@@ -44,15 +43,15 @@ import {
   Rating,
   WalletBalances,
   JoiningDate,
-} from './Books_1CustCol';
+} from "./Books_1CustCol";
 import { ToastContainer } from "react-toastify";
 
-const Books_1 = props => {
-  document.title = "Customers | Matary - React Admin & Dashboard Template";
+const Books_1 = (props) => {
+  document.title = "Customers | ALNaierh  ";
 
   const dispatch = useDispatch();
 
-  const { customers } = useSelector(state => ({
+  const { customers } = useSelector((state) => ({
     customers: state.Ecommerce.customers,
   }));
 
@@ -66,13 +65,13 @@ const Books_1 = props => {
     enableReinitialize: true,
 
     initialValues: {
-      username: (customer && customer.username) || '',
-      phone: (customer && customer.phone) || '',
-      email: (customer && customer.email) || '',
-      address: (customer && customer.address) || '',
-      rating: (customer && customer.rating) || '',
-      walletBalance: (customer && customer.walletBalance) || '',
-      joiningDate: (customer && customer.joiningDate) || '',
+      username: (customer && customer.username) || "",
+      phone: (customer && customer.phone) || "",
+      email: (customer && customer.email) || "",
+      address: (customer && customer.address) || "",
+      rating: (customer && customer.rating) || "",
+      walletBalance: (customer && customer.walletBalance) || "",
+      joiningDate: (customer && customer.joiningDate) || "",
     },
     validationSchema: Yup.object({
       username: Yup.string().required("Please Enter Your Name"),
@@ -126,83 +125,85 @@ const Books_1 = props => {
     }
   }, [modal]);
 
-  const handleCustomerClick = useCallback((arg) => {
-    const customer = arg;
+  const handleCustomerClick = useCallback(
+    (arg) => {
+      const customer = arg;
 
-    setCustomer({
-      id: customer.id,
-      username: customer.username,
-      phone: customer.phone,
-      email: customer.email,
-      address: customer.address,
-      rating: customer.rating,
-      walletBalance: customer.walletBalance,
-      joiningDate: customer.joiningDate,
-    });
+      setCustomer({
+        id: customer.id,
+        username: customer.username,
+        phone: customer.phone,
+        email: customer.email,
+        address: customer.address,
+        rating: customer.rating,
+        walletBalance: customer.walletBalance,
+        joiningDate: customer.joiningDate,
+      });
 
-    setIsEdit(true);
-    toggle();
-  },[toggle]);
+      setIsEdit(true);
+      toggle();
+    },
+    [toggle]
+  );
 
   // Customber Column
   const columns = useMemo(
     () => [
-
       {
-        Header: '#',
+        Header: "#",
         Cell: () => {
           return <input type="checkbox" />;
-        }
+        },
       },
       {
-        Header: 'Username',
-        accessor: 'username',
+        Header: "Username",
+        accessor: "username",
         filterable: true,
         Cell: (cellProps) => {
           return <UserName {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Phone / Email',
-        accessor: 'phone',
+        Header: "Phone / Email",
+        accessor: "phone",
         filterable: true,
         Cell: (cellProps) => {
           return <PhoneEmail {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Address',
-        accessor: 'address',
+        Header: "Address",
+        accessor: "address",
         filterable: true,
         Cell: (cellProps) => {
           return <Address {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Rating',
-        accessor: 'rating',
+        Header: "Rating",
+        accessor: "rating",
         filterable: true,
         Cell: (cellProps) => {
           return <Rating {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Wallet Balances',
-        accessor: 'walletBalance',
+        Header: "Wallet Balances",
+        accessor: "walletBalance",
         filterable: true,
         Cell: (cellProps) => {
           return <WalletBalances {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Joining Date',
-        accessor: 'joiningDate',
+        Header: "Joining Date",
+        accessor: "joiningDate",
         Cell: (cellProps) => {
           return <JoiningDate {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Action',
+        Header: "Action",
         Cell: (cellProps) => {
           return (
             <div className="d-flex gap-3">
@@ -212,8 +213,7 @@ const Books_1 = props => {
                 onClick={() => {
                   const customerData = cellProps.row.original;
                   handleCustomerClick(customerData);
-                }
-                }
+                }}
               >
                 <i className="mdi mdi-pencil font-size-18" id="edittooltip" />
                 <UncontrolledTooltip placement="top" target="edittooltip">
@@ -235,7 +235,7 @@ const Books_1 = props => {
               </Link>
             </div>
           );
-        }
+        },
       },
     ],
     [handleCustomerClick]
@@ -301,7 +301,6 @@ const Books_1 = props => {
                     customPageSize={10}
                     className="custom-header-css"
                   />
-
                 </CardBody>
               </Card>
             </Col>
@@ -309,7 +308,6 @@ const Books_1 = props => {
         </Container>
       </div>
       <ToastContainer />
-
     </React.Fragment>
   );
 };

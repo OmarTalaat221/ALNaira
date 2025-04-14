@@ -8,7 +8,7 @@ import Dropzone from "react-dropzone";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const AddBook = () => {
-  document.title = "Add Book | Matary - React Admin & Dashboard Template";
+  document.title = "Add Book | ALNaierh  ";
 
   const [col1, setcol1] = useState(true);
   const [col2, setcol2] = useState(false);
@@ -25,8 +25,6 @@ const AddBook = () => {
     setcol1(false);
     setcol3(false);
   };
-
-
 
   const [selectedFiles, setselectedFiles] = useState([]);
 
@@ -111,7 +109,7 @@ const AddBook = () => {
                             className="form-control"
                           />
                         </div>
-                       
+
                         <Row>
                           <div className="col-md-6">
                             <div className="mb-3">

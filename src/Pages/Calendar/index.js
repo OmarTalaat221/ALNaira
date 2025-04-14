@@ -33,7 +33,7 @@ import {
   getCategories as onGetCategories,
   getEvents as onGetEvents,
   updateEvent as onUpdateEvent,
-  resetCalendar
+  resetCalendar,
 } from "../../store/actions";
 
 import DeleteModal from "./DeleteModal";
@@ -45,7 +45,7 @@ import DeleteModal from "./DeleteModal";
 import { useSelector, useDispatch } from "react-redux";
 
 const Calendar = (props) => {
-  document.title = "Calendar | Matary - React Admin & Dashboard Template";
+  document.title = "Calendar | ALNaierh  ";
   const dispatch = useDispatch();
 
   const [event, setEvent] = useState({});
@@ -104,14 +104,11 @@ const Calendar = (props) => {
       category: Yup.string().required("Please Enter Your Billing Name"),
     }),
     onSubmit: (values) => {
-
-
       const newEvent = {
         id: Math.floor(Math.random() * 100),
         title: values["title"],
         start: selectedDay ? selectedDay.date : new Date(),
-        className: values.category + " text-white"
-
+        className: values.category + " text-white",
       };
       // save new event
 
@@ -124,7 +121,7 @@ const Calendar = (props) => {
   const { events, categories, isEventUpdated } = useSelector((state) => ({
     events: state.Calendar.events,
     categories: state.Calendar.categories,
-    isEventUpdated: state.Calendar.isEventUpdated
+    isEventUpdated: state.Calendar.isEventUpdated,
   }));
 
   const [modal, setModal] = useState(false);
@@ -253,7 +250,10 @@ const Calendar = (props) => {
 
     const draggedEl = event.draggedEl;
     const draggedElclass = draggedEl.className;
-    if (draggedEl.classList.contains('external-event') && draggedElclass.indexOf("fc-event-draggable") === -1) {
+    if (
+      draggedEl.classList.contains("external-event") &&
+      draggedElclass.indexOf("fc-event-draggable") === -1
+    ) {
       const modifiedData = {
         id: Math.floor(Math.random() * 100),
         title: draggedEl.innerText,
@@ -273,7 +273,7 @@ const Calendar = (props) => {
       />
       <div className="page-content">
         <Container fluid={true}>
-          <Breadcrumbs title="Matary" breadcrumbItem="Calendar" />
+          <Breadcrumbs title="ALNaierh" breadcrumbItem="Calendar" />
 
           <Row>
             <Col className="col-12">
@@ -282,7 +282,10 @@ const Calendar = (props) => {
                   <Card className="h-100">
                     <CardBody>
                       <Button
-                        color="primary" className="w-100" onClick={toggleCategory}>
+                        color="primary"
+                        className="w-100"
+                        onClick={toggleCategory}
+                      >
                         <i className="mdi mdi-plus"></i>
                         Create New Event
                       </Button>
@@ -351,9 +354,7 @@ const Calendar = (props) => {
                           >
                             <Row form>
                               <Col className="col-12 mb-3">
-                                <Label className="form-label">
-                                  Event Name
-                                </Label>
+                                <Label className="form-label">Event Name</Label>
                                 <Input
                                   name="title"
                                   type="text"
@@ -363,13 +364,13 @@ const Calendar = (props) => {
                                   value={validation.values.title || ""}
                                   invalid={
                                     validation.touched.title &&
-                                      validation.errors.title
+                                    validation.errors.title
                                       ? true
                                       : false
                                   }
                                 />
                                 {validation.touched.title &&
-                                  validation.errors.title ? (
+                                validation.errors.title ? (
                                   <FormFeedback type="invalid">
                                     {validation.errors.title}
                                   </FormFeedback>
@@ -388,7 +389,7 @@ const Calendar = (props) => {
                                   value={validation.values.category || ""}
                                   invalid={
                                     validation.touched.category &&
-                                      validation.errors.category
+                                    validation.errors.category
                                       ? true
                                       : false
                                   }
@@ -402,7 +403,7 @@ const Calendar = (props) => {
                                   <option value="bg-warning">Warning</option>
                                 </Input>
                                 {validation.touched.category &&
-                                  validation.errors.category ? (
+                                validation.errors.category ? (
                                   <FormFeedback type="invalid">
                                     {validation.errors.category}
                                   </FormFeedback>
@@ -459,27 +460,23 @@ const Calendar = (props) => {
                           >
                             <Row form>
                               <Col className="col-12 mb-3">
-                                <Label className="form-label">
-                                  Event Name
-                                </Label>
+                                <Label className="form-label">Event Name</Label>
                                 <Input
                                   name="title"
                                   type="text"
                                   // value={event ? event.title : ""}
                                   onChange={categoryValidation.handleChange}
                                   onBlur={categoryValidation.handleBlur}
-                                  value={
-                                    categoryValidation.values.title || ""
-                                  }
+                                  value={categoryValidation.values.title || ""}
                                   invalid={
                                     categoryValidation.touched.title &&
-                                      categoryValidation.errors.title
+                                    categoryValidation.errors.title
                                       ? true
                                       : false
                                   }
                                 />
                                 {categoryValidation.touched.title &&
-                                  categoryValidation.errors.title ? (
+                                categoryValidation.errors.title ? (
                                   <FormFeedback type="invalid">
                                     {categoryValidation.errors.title}
                                   </FormFeedback>
@@ -500,7 +497,7 @@ const Calendar = (props) => {
                                   }
                                   invalid={
                                     categoryValidation.touched.category &&
-                                      categoryValidation.errors.category
+                                    categoryValidation.errors.category
                                       ? true
                                       : false
                                   }
@@ -514,7 +511,7 @@ const Calendar = (props) => {
                                   <option value="bg-warning">Warning</option>
                                 </Input>
                                 {categoryValidation.touched.category &&
-                                  categoryValidation.errors.category ? (
+                                categoryValidation.errors.category ? (
                                   <FormFeedback type="invalid">
                                     {categoryValidation.errors.category}
                                   </FormFeedback>

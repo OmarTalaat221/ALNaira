@@ -16,9 +16,9 @@ import {
   DropdownToggle,
   Input,
   CloseButton,
-  Spinner
+  Spinner,
 } from "reactstrap";
-import Select from 'react-select';
+import Select from "react-select";
 //Import Flatepicker
 import "flatpickr/dist/themes/material_blue.css";
 import Flatpickr from "react-flatpickr";
@@ -36,17 +36,17 @@ import ExamListTable from "./ExamTable/ExamTableList";
 // import CourseListTable from "../CourseTable/courseListTable";
 
 const Exam = () => {
-  document.title = "Courses | Matary - React Admin & Dashboard Template";
+  document.title = "Courses | ALNaierh  ";
 
   // console.log(course_id)
 
   const navigate = useNavigate();
   const location = useLocation();
   const [examdata, setexamdata] = useState({
-    exam_name: '',
-    timer: '',
-    end_date: '',
-    start_date: ''
+    exam_name: "",
+    timer: "",
+    end_date: "",
+    start_date: "",
   });
   const [courses, setcourses] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,7 +74,7 @@ const Exam = () => {
   const [deadLineChecked, setDeadLineChecked] = useState(false);
   // deadLineChecked
   console.log(location);
-  const [allExams, setAllExams] = useState(false)
+  const [allExams, setAllExams] = useState(false);
   const getِAllExams = () => {
     // const datasend = {
     //   ...examdata,
@@ -96,13 +96,13 @@ const Exam = () => {
   const getExams = () => {
     const datasend = {
       ...examdata,
-      course_id: location?.state?.coursedata?.course_id
+      course_id: location?.state?.coursedata?.course_id,
       // course_id:1
     };
 
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/select_exam.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/select_exam.php",
         datasend
       )
       .then((res) => {
@@ -115,7 +115,7 @@ const Exam = () => {
   const getcourses = () => {
     axios
       .get(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/courses/select_courses.php"
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/select_courses.php"
       )
       .then((res) => {
         // console.log(res);
@@ -128,19 +128,18 @@ const Exam = () => {
     setaddloading(true);
     const datasend = {
       ...examdata,
-      course_id: location?.state?.coursedata?.course_id
+      course_id: location?.state?.coursedata?.course_id,
     };
-    console.log(datasend);
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/insert_exam.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/add_exam.php",
         datasend
       )
       .then((res) => {
         console.log("res", res);
-        if (res.status == 'success') {
+        if (res.status == "success") {
           toast.success("exam has added successfully");
-        } else if (res.status == 'error') {
+        } else if (res.status == "error") {
           toast.error(res.message);
         } else {
           toast.error("SomeThing Went Error");
@@ -172,18 +171,18 @@ const Exam = () => {
     const data_send = {
       exam_id: selectedexam,
       courses_data,
-      timer: ExamdataNewTime
+      timer: ExamdataNewTime,
     };
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/assign_exam_to_course.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/assign_exam_to_course.php",
         JSON.stringify(data_send)
       )
       .then((res) => {
         console.log(res);
-        if (res.status == 'success') {
+        if (res.status == "success") {
           toast.success(res.message);
-        } else if (res.status == 'error') {
+        } else if (res.status == "error") {
           toast.error(res.message);
         } else {
           toast.error("Something Went Error");
@@ -198,7 +197,7 @@ const Exam = () => {
   useEffect(() => {
     getcourses();
     getExams();
-    getِAllExams()
+    getِAllExams();
   }, []);
   return (
     <React.Fragment>
@@ -249,7 +248,10 @@ const Exam = () => {
                   </div>
                   <div id="table-invoices-list">
                     {exams && exams.length ? (
-                      <ExamListTable exams={exams} course_id={location?.state?.coursedata?.course_id}/>
+                      <ExamListTable
+                        exams={exams}
+                        course_id={location?.state?.coursedata?.course_id}
+                      />
                     ) : (
                       <h4>No Exams</h4>
                     )}
@@ -267,7 +269,7 @@ const Exam = () => {
               padding: "15px",
               display: "flex",
               flexDirection: "column",
-              gap: "13px"
+              gap: "13px",
             }}
             onSubmit={(e) => {
               e.preventDefault();
@@ -286,7 +288,7 @@ const Exam = () => {
                 style={{
                   width: "100%",
                   padding: "10px",
-                  borderRadius: "4px"
+                  borderRadius: "4px",
                 }}
                 type="text"
                 name="exam_name"
@@ -298,7 +300,7 @@ const Exam = () => {
                 }}
               />
             </div>
-       
+
             <div className="checkedBoxes">
               <div className="inputField">
                 <label
@@ -312,7 +314,7 @@ const Exam = () => {
                   style={{
                     padding: "10px",
                     borderRadius: "4px",
-                    display: "none"
+                    display: "none",
                   }}
                   type="checkbox"
                   name="exam_istimed"
@@ -331,7 +333,7 @@ const Exam = () => {
                       sx={{ mb: 1 }}
                       alignItems="center"
                       style={{
-                        padding: "0.47rem 0.75rem"
+                        padding: "0.47rem 0.75rem",
                       }}
                     >
                       <Slider
@@ -362,7 +364,7 @@ const Exam = () => {
                     padding: "10px",
                     borderRadius: "4px",
 
-                    display: "none"
+                    display: "none",
                   }}
                   type="checkbox"
                   name="exam_isDeadLined"
@@ -380,7 +382,9 @@ const Exam = () => {
                         // console.log(moment(e.timeStamp).format('Y-M-D H:m:s'))
                         setexamdata({
                           ...examdata,
-                          start_date: moment(Date.now()).format('Y-M-D H:m:s')
+                          start_date: moment(e.target.value).format(
+                            "Y-M-D H:m:s"
+                          ),
                         });
                       }}
                       type="date"
@@ -401,7 +405,7 @@ const Exam = () => {
                     padding: "10px",
                     borderRadius: "4px",
 
-                    display: "none"
+                    display: "none",
                   }}
                   type="checkbox"
                   name="exam_end"
@@ -420,7 +424,9 @@ const Exam = () => {
                         // console.log(moment(Date.now()).format('Y-M-D H:m:s'));
                         setexamdata({
                           ...examdata,
-                          end_date: moment(Date.now()).format('Y-M-D H:m:s')
+                          end_date: moment(e.target.value).format(
+                            "Y-M-D H:m:s"
+                          ),
                         });
                       }}
                       type="date"
@@ -432,10 +438,10 @@ const Exam = () => {
             {addloading ? (
               <div
                 style={{
-                  textAlign: 'end'
+                  textAlign: "end",
                 }}
               >
-                <Spinner style={{ color: 'blue' }} />
+                <Spinner style={{ color: "blue" }} />
               </div>
             ) : (
               <button
@@ -456,7 +462,7 @@ const Exam = () => {
               padding: "15px",
               display: "flex",
               flexDirection: "column",
-              gap: "13px"
+              gap: "13px",
             }}
             onSubmit={(e) => {
               e.preventDefault();
@@ -499,7 +505,7 @@ const Exam = () => {
                 sx={{ mb: 1 }}
                 alignItems="center"
                 style={{
-                  padding: "0.47rem 0.75rem"
+                  padding: "0.47rem 0.75rem",
                 }}
               >
                 <Slider
@@ -529,16 +535,16 @@ const Exam = () => {
                   // console.log(item)
                   return {
                     label: `${item.course_name}(${item.university_name} / ${item.grade_name})`,
-                    value: item.course_id
+                    value: item.course_id,
                   };
                 })}
                 className="basic-multi-select"
                 classNamePrefix="select"
               />
             </div>
-            <div style={{ marginTop: '30px', textAlign: 'end' }}>
+            <div style={{ marginTop: "30px", textAlign: "end" }}>
               {assignloading ? (
-                <Spinner style={{ color: 'blue' }} />
+                <Spinner style={{ color: "blue" }} />
               ) : (
                 <button className="btn btn-success">assign</button>
               )}

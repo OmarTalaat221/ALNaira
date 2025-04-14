@@ -30,70 +30,82 @@ import Flatpickr from "react-flatpickr";
 import LessonsTableList from "../Lessons/LessonsTabel/LessonsTableList";
 import { useCallback } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import axios from 'axios';
+import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
-import './mcqquestion.css'
+import "./mcqquestion.css";
 import { Icon } from "@iconify/react";
 import { Loader } from "rsuite";
 import McqQuestionList from "./McqQuestionList/McqQuestionList";
+import { uploadFile } from "../../utils";
 const MCQQuestions = ({ CourseId, allunitdata }) => {
-  console.log(allunitdata);
   const [type, setType] = useState(false);
+  const location = useLocation();
+  console.log(location);
   const [videoLink, setVideoLink] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [img, setimg] = useState("");
   const [answersArray, setanswersArray] = useState([]);
   const [videos, setvideos] = useState([]);
   const [answerlist, setanswerlist] = useState([
-    { id: 0, answer: '', checked: false }
-  ])
+    { id: 0, answer: "", checked: false },
+  ]);
   const [numberOfPages, setNumberOfPages] = useState(false);
   const [loading, setLoading] = useState(false);
   const [book_url, setBookUrl] = useState(false);
   const [mcqquestions, setmcqquestions] = useState([]);
   const [addquestiondata, setaddquestiondata] = useState({
-    question_text: '',
-    help_video: '',
-    valid_answer: '',
-    question_image_url: '',
-    help_pdf: '',
-    unit_id: '0',
+    question_text: "",
+    help_video: "",
+    valid_answer: "",
+    question_image_url: "",
+    help_pdf: "",
+    unit_id: "0",
     pdf_page: "",
     video_time: "",
     help_text: "",
-  })
+  });
+
+  const [getLoading, setGetLoading] = useState(false);
 
   const getmcqQuestions = () => {
+    // alert("asd")
     const data_send = {
-      unit_id: allunitdata.unit_id
-    }
-    console.log(data_send, "ds")
-    axios.post("https://elmatary.com/El_Matary_Platform/platform/admin/mcq/select_unit_mcqs.php", JSON.stringify(data_send))
+      unit_id: location?.state?.unitdata?.unit_id,
+      course_id: location?.state?.unitdata?.course_id,
+    };
+
+    setGetLoading(true);
+    axios
+      .post(
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/select_questions.php",
+        JSON.stringify(data_send)
+      )
       .then((res) => {
-        console.log("res", res);
-        setmcqquestions(res.message);
+        setmcqquestions(res?.message);
       })
-  }
+      .finally(() => {
+        setGetLoading(false);
+      });
+  };
 
   const getvideos = () => {
-    axios.get("https://elmatary.com/El_Matary_Platform/platform/admin/videos/select_videos.php")
+    axios
+      .get(
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/videos/select_videos.php"
+      )
       .then((res) => {
-        // console.log(res);
         setvideos(res);
-        setaddquestiondata({ ...addquestiondata, help_video: res[0].video_id })
-      })
-  }
+        setaddquestiondata({ ...addquestiondata, help_video: res[0].video_id });
+      });
+  };
 
   useEffect(() => {
     getvideos();
-    getmcqQuestions()
-  }, [])
+    getmcqQuestions();
+  }, []);
 
-
-
-
-  // console.log(data)
+  //
   const [modal, setModal] = useState(false);
   const toggle = useCallback(() => {
     if (modal) {
@@ -108,8 +120,6 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
   const [book, setBook] = useState(false);
   const [uploadloading, setuploadloading] = useState(false);
 
-
-
   const [inputList, setinputList] = useState([
     { answer: "", explanation: "", id: 1 },
   ]);
@@ -122,76 +132,91 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
     setinputList(list);
   };
 
-  const handlesavetxt = (e, i) => {
+  const handlesavetxt = (e, i, id) => {
     // console.log(i)
     // console.log(txt)
-    // console.log(e);
+    // ;
     const list = [...answerlist];
-    list[i]['answer'] = e.target.value;
+    if (id == "answer") {
+      list[i]["answer"] = e.target.value;
+    } else if (id == "exp") {
+      list[i]["answer_exp"] = e.target.value;
+    }
     setanswersArray(list);
-  }
-
+  };
 
   const handleaddquestion = () => {
-    let answerslistarr = [...answerlist]
-    // console.log(answerslistarr)
+    let answerslistarr = [...answerlist];
+    //
     let answers = "";
     let valid_answer = "";
     for (let i = 0; i < answerslistarr.length; i++) {
       if (i == 0) {
         answers += answerslistarr[i].answer;
-      }
-      else {
-        answers += "******matary***" + answerslistarr[i].answer
+      } else {
+        answers += "******matary***" + answerslistarr[i].answer;
       }
       if (answerslistarr[i].checked) {
-        valid_answer = answerslistarr[i].answer
+        valid_answer = answerslistarr[i].answer;
       }
     }
-    // console.log(answers);
+    //
     const data_send = {
-      unit_id: allunitdata.unit_id,
+      unit_id: location?.state?.unitdata?.unit_id,
       question_text: addquestiondata.question_text,
-      answers,
-      valid_answer,
-      exam_id: '0',
-      course_id: allunitdata.course_id,
-      question_image_url: addquestiondata.question_image_url,
+      question_answers: answerslistarr
+        ?.map((item) => item?.answer + "/**exp**/" + item?.answer_exp)
+        ?.join("//CAMP//"),
+      question_valid_answer: valid_answer,
+      exam_id: "0",
+      course_id: location?.state?.unitdata?.course_id,
+      question_image: addquestiondata.question_image_url?.length
+        ? addquestiondata.question_image_url
+        : null,
       help_text: addquestiondata.help_text,
       help_pdf: addquestiondata.help_pdf,
       help_video: addquestiondata.help_video,
       pdf_page: addquestiondata.pdf_page,
       video_time: addquestiondata.video_time,
-    }
+      explain: addquestiondata.explain,
+    };
     console.log(addquestiondata);
-    axios.post("https://elmatary.com/El_Matary_Platform/platform/admin/mcq/insert_mcq.php", JSON.stringify(data_send))
+    axios
+      .post(
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/add_ques.php",
+        JSON.stringify(data_send)
+      )
       .then((res) => {
-        if (res.status == 'success') {
+        if (res.status == "success") {
           getmcqQuestions();
           toast.success("Question has added successfully");
-        }
-        else if (res.status == "error") {
+        } else if (res.status == "error") {
           toast.error("Question has not added");
-        }
-        else {
+        } else {
           toast.error("Something Went Error");
         }
-      }).catch(err => console.log(err))
-  }
+      })
+      .catch((err) => console.log(err));
+  };
 
-  const handleuploadimg = () => {
+  const handleuploadimg = async () => {
     setuploadloading(true);
+    const res = await uploadFile(img);
+    setaddquestiondata({ ...addquestiondata, question_image_url: res });
+    // setaddquestiondata({ ...addquestiondata, question_image_url: res });
     const formdata = new FormData();
     formdata.append("image", img);
-    axios.post("https://elmatary.com/El_Matary_Platform/platform/admin/image_uplouder.php", formdata)
-      .then((res) => {
-        console.log(res);
-        setaddquestiondata({ ...addquestiondata, question_image_url: res })
-      }).catch(err => console.log(err))
+    axios
+      .post(
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/image_uplouder.php",
+        formdata
+      )
+      .then((res) => {})
+      .catch((err) => console.log(err))
       .finally(() => {
         setuploadloading(false);
-      })
-  }
+      });
+  };
 
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
@@ -207,36 +232,40 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
       if (count) {
         setNumberOfPages(count);
       } else {
-        setNumberOfPages(false)
+        setNumberOfPages(false);
       }
-    }
-
+    };
   };
 
   const uploadPdf = async () => {
-    setLoading(true)
+    setLoading(true);
     const formData = new FormData();
     if (book) {
-      formData.append("file_attachment", book)
+      formData.append("file_attachment", book);
       console.log(book);
-      const url = await axios.post("https://elmatary.com/El_Matary_Platform/platform/admin/uploud_pdf.php", formData);
+      const url = await axios.post(
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/uploud_pdf.php",
+        formData
+      );
       console.log(url);
       if (url.status == "success") {
         setBookUrl(url.message);
-        setaddquestiondata({ ...addquestiondata, help_pdf: url.message })
+        setaddquestiondata({ ...addquestiondata, help_pdf: url.message });
         toast.success("File Uploaded Successfully");
       } else {
-        toast.error(url.message)
+        toast.error(url.message);
       }
     }
     setLoading(false);
-
-  }
+  };
 
   return (
     <React.Fragment>
       <Container fluid={true}>
-        <Breadcrumbs title="MCQ Questions" breadcrumbItem="MCQ Questions List" />
+        <Breadcrumbs
+          title="MCQ Questions"
+          breadcrumbItem="MCQ Questions List"
+        />
 
         <Row>
           <Col lg={12}>
@@ -269,21 +298,27 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
                           </button>
                         </div>
                       </Col>
-
                     </Row>
                   </div>
                 </div>
                 <div id="table-invoices-list">
-                  <McqQuestionList updatemcq={() => {
-                    getmcqQuestions();
-                  }} Units={mcqquestions} />
+                  {getLoading ? (
+                    <Loader />
+                  ) : (
+                    <McqQuestionList
+                      updatemcq={() => {
+                        getmcqQuestions();
+                      }}
+                      Units={
+                        mcqquestions && mcqquestions?.length ? mcqquestions : []
+                      }
+                    />
+                  )}
                 </div>
               </CardBody>
             </Card>
           </Col>
         </Row>
-
-
       </Container>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle} tag="h4">
@@ -301,7 +336,6 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
               <Col lg={12}>
                 <div className="custom-accordion" id="addcourse-accordion">
                   <Card>
-
                     <div className="p-4 border-top">
                       <form>
                         <div className="mb-3">
@@ -391,7 +425,6 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
                                   <div
                                     onClick={() => {
                                       setselectanswer(item.id);
-                                      console.log(item);
                                     }}
                                     className={
                                       selectanswer == item.id
@@ -421,7 +454,9 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
                             </Col>
                           </Col>
                         </Row>
-                        <button className="btn btn-success">Add Question</button>
+                        <button className="btn btn-success">
+                          Add Question
+                        </button>
                       </form>
                     </div>
                   </Card>
@@ -451,8 +486,8 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
           }}
           onSubmit={(e) => {
             e.preventDefault();
-            handleaddquestion()
-            setIsModalOpen(false)
+            handleaddquestion();
+            setIsModalOpen(false);
           }}
         >
           <CloseButton
@@ -474,7 +509,10 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
               placeholder="question text"
               required
               onChange={(e) => {
-                setaddquestiondata({ ...addquestiondata, question_text: e.target.value })
+                setaddquestiondata({
+                  ...addquestiondata,
+                  question_text: e.target.value,
+                });
                 // setexamdata({...examdata,exam_name:e.target.value})
               }}
             />
@@ -492,44 +530,76 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
               name="exam_img"
               id="exam_img"
               placeholder="question text"
-              required
+              // required
               onChange={(e) => {
                 setimg(e.target.files[0]);
                 // setaddquestiondata({...addquestiondata,question_text:e.target.value})
                 // setexamdata({...examdata,exam_name:e.target.value})
               }}
             />
-            {
-              uploadloading ? (
-                <Spinner />
-              ) : (
-                <img onClick={() => {
-                  handleuploadimg()
-                }} className="up_img" src={require("../../assets/images/upload.png")} alt="" />
-              )
-            }
+            {uploadloading ? (
+              <Loader />
+            ) : (
+              <img
+                onClick={() => {
+                  handleuploadimg();
+                }}
+                className="up_img"
+                src={require("../../assets/images/upload.png")}
+                alt=""
+              />
+            )}
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <Label className="form-label">ebook file</Label>
-            <div className="form-control" style={{ "display": "flex", width: "100%", justifyContent: "space-between", alignItems: "center" }}>  <input type="file" id="pdfInput" accept=".pdf" onChange={handleFileSelect} /> <span className="btn btn-primary" onClick={() => uploadPdf()}>
-              {!loading ? <Icon icon="solar:upload-bold-duotone" /> : <Loader size="sm" />}
-            </span></div>
-            <h4>{numberOfPages ? <span>numberOfPages : {numberOfPages}</span> : null}</h4>
-          </div>
+            <div
+              className="form-control"
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              {" "}
+              <input
+                type="file"
+                id="pdfInput"
+                accept=".pdf"
+                onChange={handleFileSelect}
+              />{" "}
+              <span className="btn btn-primary" onClick={() => uploadPdf()}>
+                {!loading ? (
+                  <Icon icon="solar:upload-bold-duotone" />
+                ) : (
+                  <Loader size="sm" />
+                )}
+              </span>
+            </div>
+            <h4>
+              {numberOfPages ? (
+                <span>numberOfPages : {numberOfPages}</span>
+              ) : null}
+            </h4>
+          </div> */}
 
-
-          <div className="inputField withtext">
+          {/* <div className="inputField withtext">
             <label htmlFor="exam_name">Help Video</label>
-            <select onChange={(e) => {
-              setaddquestiondata({ ...addquestiondata, help_video: e.target.value })
-            }} value={addquestiondata.help_video} className="form-control">
-              {
-                videos.map((item) => {
-                  return (
-                    <option value={item.video_id}>{item.video_title}</option>
-                  )
-                })
-              }
+            <select
+              onChange={(e) => {
+                setaddquestiondata({
+                  ...addquestiondata,
+                  help_video: e.target.value,
+                });
+              }}
+              value={addquestiondata.help_video}
+              className="form-control"
+            >
+              {videos.map((item) => {
+                return (
+                  <option value={item.video_id}>{item.video_title}</option>
+                );
+              })}
             </select>
           </div>
 
@@ -544,26 +614,14 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
               className="form-control"
               onChange={(e) => {
                 console.log("Help", e.target.value);
-                setaddquestiondata({ ...addquestiondata, pdf_page: e.target.value });
+                setaddquestiondata({
+                  ...addquestiondata,
+                  pdf_page: e.target.value,
+                });
               }}
             />
           </div>
 
-          <div className="mb-3">
-            <label className="form-label" htmlFor="coursename">
-              help text
-            </label>
-            <textarea
-              style={{ height: "100px" }}
-              id="help_text"
-              name="help_text"
-              type="text"
-              className="form-control"
-              onChange={(e) => {
-                setaddquestiondata({ ...addquestiondata, help_text: e.target.value })
-              }}
-            ></textarea>
-          </div>
           <div className="mb-3">
             <label className="form-label" htmlFor="coursename">
               help minute
@@ -574,45 +632,106 @@ const MCQQuestions = ({ CourseId, allunitdata }) => {
               type="text"
               className="form-control"
               onChange={(e) => {
-                setaddquestiondata({ ...addquestiondata, video_time: e.target.value })
+                setaddquestiondata({
+                  ...addquestiondata,
+                  video_time: e.target.value,
+                });
               }}
             />
-          </div>
+          </div> */}
 
           <div className="add_answer_question">
-            <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
               <span>Add Answer</span>
-              <span onClick={() => {
-                setanswerlist([...answerlist, { id: answerlist.length, answer: '' }])
-              }} style={{ cursor: 'pointer', fontSize: '26px' }}>+</span>
+              <span
+                onClick={() => {
+                  setanswerlist([
+                    ...answerlist,
+                    { id: answerlist.length, answer: "" },
+                  ]);
+                }}
+                style={{ cursor: "pointer", fontSize: "26px" }}
+              >
+                +
+              </span>
             </label>
-            {
-              answerlist.map((item, index) => {
-                return (
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <textarea onChange={(e) => {
-                      handlesavetxt(e, index)
-                    }} style={{ marginBottom: '10px', width: '90%' }} className="form-control"></textarea>
-                    <input onClick={() => {
+            {answerlist.map((item, index) => {
+              return (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <textarea
+                    value={item.answer_text}
+                    onChange={(e) => {
+                      handlesavetxt(e, index, "answer");
+                    }}
+                    style={{ marginBottom: "10px", width: "90%" }}
+                    className="form-control"
+                  ></textarea>
+                  <textarea
+                    value={item.answer_exp}
+                    onChange={(e) => {
+                      handlesavetxt(e, index, "exp");
+                    }}
+                    style={{ marginBottom: "10px", width: "90%" }}
+                    className="form-control"
+                  ></textarea>
+                  <input
+                    onClick={() => {
                       // setanswerlist([...ans]);
                       let answerarr = [...answerlist];
-                      setanswerlist(answerarr.map((it, index) => {
-                        if (item.id == it.id) {
-                          return { ...it, checked: true }
-                        }
-                        else return { ...it, checked: false }
-                      }));
+                      setanswerlist(
+                        answerarr.map((it, index) => {
+                          if (item.id == it.id) {
+                            return { ...it, checked: true };
+                          } else return { ...it, checked: false };
+                        })
+                      );
                       // for(let i=0;i<answerarr.length;i++){
                       //   if()
                       // }
-                      setaddquestiondata({ ...addquestiondata, valid_answer: item.answer })
-                    }} checked={item.checked} type="checkbox" name="" id="" />
-                  </div>
-                )
-              })
-            }
+                      setaddquestiondata({
+                        ...addquestiondata,
+                        valid_answer: item.answer,
+                      });
+                    }}
+                    checked={item.checked}
+                    type="checkbox"
+                    name=""
+                    id=""
+                  />
+                </div>
+              );
+            })}
           </div>
-
+          {/* <div className="mb-3">
+            <label className="form-label" htmlFor="coursename">
+              explain
+            </label>
+            <textarea
+              style={{ height: "100px" }}
+              id="explain"
+              name="explain"
+              type="text"
+              className="form-control"
+              onChange={(e) => {
+                setaddquestiondata({
+                  ...addquestiondata,
+                  explain: e.target.value,
+                });
+              }}
+            ></textarea>
+          </div> */}
           <button
             onClick={() => {
               // console.log("es")

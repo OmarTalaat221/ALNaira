@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import CopyToClipboard from "react-copy-to-clipboard";
 import {
   Container,
@@ -9,10 +9,10 @@ import {
   Collapse,
   Form,
   Modal,
-  CloseButton
+  CloseButton,
 } from "reactstrap";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
-import { ZIM } from 'zego-zim-web';
+import { ZIM } from "zego-zim-web";
 // Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import "./addquestion.css";
@@ -63,7 +63,7 @@ const Live = () => {
         window.location.pathname +
         "?roomID=" +
         channel_id +
-        "&role=Cohost"
+        "&role=Cohost",
     });
   }
   sharedLinks.push({
@@ -75,7 +75,7 @@ const Live = () => {
       window.location.pathname +
       "?roomID=" +
       channel_id +
-      "&role=Audience"
+      "&role=Audience",
   });
 
   const zpRef = useRef();
@@ -106,10 +106,10 @@ const Live = () => {
       scenario: {
         mode: ZegoUIKitPrebuilt.LiveStreaming,
         config: {
-          role: ZegoUIKitPrebuilt.Host
-        }
+          role: ZegoUIKitPrebuilt.Host,
+        },
       },
-      sharedLinks
+      sharedLinks,
     });
   };
 
@@ -124,14 +124,14 @@ const Live = () => {
 
   const getPolls = async () => {
     const polls = await axios.post(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/live_poll/select_live_poll_question.php",
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/live_poll/select_live_poll_question.php",
       { live_id: live_id }
     );
     setLivePolls(polls?.message);
   };
   const getPollResult = async () => {
     const polls = await axios.post(
-      "https://elmatary.com/El_Matary_Platform/platform/admin/live_poll/select_question_result.php",
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/live_poll/select_question_result.php",
       { question_id: selectedResultPoll }
     );
     console.log(polls, selectedResultPoll);
@@ -234,7 +234,7 @@ const Live = () => {
             padding: "15px",
             display: "flex",
             flexDirection: "column",
-            gap: "13px"
+            gap: "13px",
           }}
           onSubmit={(e) => {
             e.preventDefault();
@@ -296,7 +296,7 @@ const Live = () => {
                 width: "100%",
                 display: "flex",
                 gap: "10px",
-                alignItems: "center"
+                alignItems: "center",
               }}
               text={selectedPoll}
               onCopy={() => toast.success("Copied")}
@@ -306,14 +306,14 @@ const Live = () => {
                   width: "100%",
                   display: "flex",
                   justifyContent: "space-between",
-                  alignItems: "center"
+                  alignItems: "center",
                 }}
               >
                 <b
                   style={{
                     fontSize: "17px",
                     fontWeight: "700",
-                    color: "white"
+                    color: "white",
                   }}
                 >
                   ( You Selected Poll with id : {selectedPoll})
@@ -331,7 +331,7 @@ const Live = () => {
             padding: "15px",
             display: "flex",
             flexDirection: "column",
-            gap: "13px"
+            gap: "13px",
           }}
           onSubmit={(e) => {
             e.preventDefault();
@@ -366,24 +366,26 @@ const Live = () => {
             </select>
           </div>
           <ul style={{ listStyle: "none" }}>
-            {resultPoll && resultPoll.length
-              ? resultPoll.map((item, index) => {
-                  return (
-                    <li
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "30px",
-                        fontSize: "22px",
-                        flexWrap: "wrap"
-                      }}
-                    >
-                      <span>{item?.answer_text}</span> -{" "}
-                      <span>{item?.count + " Votes"}</span>
-                    </li>
-                  );
-                })
-              : <h4>No Votes</h4>}
+            {resultPoll && resultPoll.length ? (
+              resultPoll.map((item, index) => {
+                return (
+                  <li
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "30px",
+                      fontSize: "22px",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <span>{item?.answer_text}</span> -{" "}
+                    <span>{item?.count + " Votes"}</span>
+                  </li>
+                );
+              })
+            ) : (
+              <h4>No Votes</h4>
+            )}
           </ul>
         </form>
       </Modal>

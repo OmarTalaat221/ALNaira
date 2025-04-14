@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 //Simple bar
@@ -6,15 +6,14 @@ import SimpleBar from "simplebar-react";
 
 // MetisMenu
 import MetisMenu from "metismenujs";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import { withTranslation } from "react-i18next";
 import withRouter from "../../components/Common/withRouter";
 
-import SidebarData from './SidebarData';
+import SidebarData from "./SidebarData";
 
 const SidebarContent = (props) => {
-
   const ref = useRef();
 
   const activateParentDropdown = useCallback((item) => {
@@ -127,9 +126,9 @@ const SidebarContent = (props) => {
     activeMenu();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
     activeMenu();
   }, [activeMenu]);
 
@@ -151,31 +150,20 @@ const SidebarContent = (props) => {
               <React.Fragment key={key}>
                 {item.isMainMenu ? (
                   <li className="menu-title">{props.t(item.label)}</li>
-                ) : (
+                ) :
                   <li key={key}>
-                    <Link to={item.url ? item.url : "/#"}
-                      className={item.url ? "" : "has-arrow"}
+                    <Link
+                      to={item.url ? item.url : "/#"}
+                      className={item.url}
                     >
-                      <i
-                        className={item.icon}
-                      ></i>
-                      <span
-                        className="menu-item"
-                      >
-                        {props.t(item.label)}
-                      </span>
+                      <i className={item.icon}></i>
+                      <span className="menu-item">{props.t(item.label)}</span>
                       {item.issubMenubadge && (
-                        <span
-                          className={
-                            "badge rounded-pill " + item.bgcolor
-                          }
-                        >
+                        <span className={"badge rounded-pill " + item.bgcolor}>
                           {" "}
-                          {props.t(item.badgeValue)}
-                          {" "}
+                          {props.t(item.badgeValue)}{" "}
                         </span>
                       )}
-
                     </Link>
                     {item.subItem && (
                       <ul className="sub-menu">
@@ -183,9 +171,7 @@ const SidebarContent = (props) => {
                           <li key={key}>
                             <Link
                               to={item.link}
-                              className={
-                                item.subMenu && "has-arrow"
-                              }
+                              className={item.subMenu && "has-arrow"}
                             >
                               {props.t(item.sublabel)}
                             </Link>
@@ -203,7 +189,7 @@ const SidebarContent = (props) => {
                       </ul>
                     )}
                   </li>
-                )}
+                }
               </React.Fragment>
             ))}
           </ul>

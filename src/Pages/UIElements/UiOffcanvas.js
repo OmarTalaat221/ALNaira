@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Col,
   Row,
@@ -13,13 +13,13 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  CardHeader
+  CardHeader,
 } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const UiOffcanvas = () => {
-  document.title = "Offcanvas | Matary - React Admin & Dashboard Template";
+  document.title = "Offcanvas | ALNaierh  ";
 
   const [open, setOpen] = useState(false);
   const [isTop, setIsTop] = useState(false);
@@ -63,17 +63,28 @@ const UiOffcanvas = () => {
               <Card>
                 <CardHeader>
                   <h5 className="card-title">Demo</h5>
-                  <p className="card-title-desc">Use the buttons below to show and hide an offcanvas element via JavaScript that toggles the <code>.show</code> class on an element with the <code>.offcanvas</code> class.</p>
+                  <p className="card-title-desc">
+                    Use the buttons below to show and hide an offcanvas element
+                    via JavaScript that toggles the <code>.show</code> class on
+                    an element with the <code>.offcanvas</code> class.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div className="d-flex flex-wrap gap-2">
-                    <Link className="btn btn-primary" to="#offcanvasExample" role="button"
-                      onClick={toggleLeftCanvas}>
+                    <Link
+                      className="btn btn-primary"
+                      to="#offcanvasExample"
+                      role="button"
+                      onClick={toggleLeftCanvas}
+                    >
                       Link with href
                     </Link>
-                    <button className="btn btn-primary" type="button"
-                      onClick={toggleLeftCanvas}>
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={toggleLeftCanvas}
+                    >
                       Button with data-bs-target
                     </button>
                   </div>
@@ -85,16 +96,36 @@ const UiOffcanvas = () => {
               <Card>
                 <CardHeader>
                   <h5 className="card-title">Placement</h5>
-                  <p className="card-title-desc">Offcanvas Diffrent Placement Example: Left, Right & Bottom</p>
+                  <p className="card-title-desc">
+                    Offcanvas Diffrent Placement Example: Left, Right & Bottom
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div className="d-flex flex-wrap gap-2">
-                    <button className="btn btn-primary" type="button" onClick={toggleTopCanvas}>Toggle top offcanvas</button>
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={toggleTopCanvas}
+                    >
+                      Toggle top offcanvas
+                    </button>
 
-                    <button className="btn btn-primary" type="button" onClick={toggleRightCanvas}>Toggle right offcanvas</button>
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={toggleRightCanvas}
+                    >
+                      Toggle right offcanvas
+                    </button>
 
-                    <button className="btn btn-primary" type="button" onClick={toggleBottomCanvas}>Toggle bottom offcanvas</button>
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={toggleBottomCanvas}
+                    >
+                      Toggle bottom offcanvas
+                    </button>
                   </div>
                 </CardBody>
               </Card>
@@ -106,14 +137,38 @@ const UiOffcanvas = () => {
               <Card>
                 <CardHeader>
                   <h5 className="card-title">Backdrop</h5>
-                  <p className="card-title-desc">Scrolling the <code>&lt;body&gt;</code> element is disabled when an offcanvas and its backdrop are visible. Use the <code>data-bs-scroll</code> attribute to toggle <code>&lt;body&gt;</code> scrolling and <code>data-bs-backdrop</code> to toggle the backdrop.</p>
+                  <p className="card-title-desc">
+                    Scrolling the <code>&lt;body&gt;</code> element is disabled
+                    when an offcanvas and its backdrop are visible. Use the{" "}
+                    <code>data-bs-scroll</code> attribute to toggle{" "}
+                    <code>&lt;body&gt;</code> scrolling and{" "}
+                    <code>data-bs-backdrop</code> to toggle the backdrop.
+                  </p>
                 </CardHeader>
 
                 <CardBody>
                   <div className="d-flex flex-wrap gap-2">
-                    <button className="btn btn-primary" type="button" onClick={toggleEnableScroll}>Enable body scrolling</button>
-                    <button className="btn btn-primary" type="button" onClick={toggleBackdrop}>Enable backdrop (default)</button>
-                    <button className="btn btn-primary" type="button" onClick={toggleScrollBackDrop}>Enable both scrolling & backdrop</button>
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={toggleEnableScroll}
+                    >
+                      Enable body scrolling
+                    </button>
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={toggleBackdrop}
+                    >
+                      Enable backdrop (default)
+                    </button>
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={toggleScrollBackDrop}
+                    >
+                      Enable both scrolling & backdrop
+                    </button>
                   </div>
                 </CardBody>
               </Card>
@@ -129,16 +184,28 @@ const UiOffcanvas = () => {
         </OffcanvasHeader>
         <OffcanvasBody>
           <div>
-            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+            Some text as placeholder. In real life you can have the elements you
+            have chosen. Like, text, images, lists, etc.
           </div>
           <UncontrolledDropdown className="mt-3" id="dropdownMenuButton">
-            <DropdownToggle className="btn btn-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+            <DropdownToggle
+              className="btn btn-primary"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+            >
               Dropdown button <i className="mdi mdi-chevron-down"></i>
             </DropdownToggle>
             <DropdownMenu>
-              <li><DropdownItem>Action</DropdownItem></li>
-              <li><DropdownItem>Another action</DropdownItem></li>
-              <li><DropdownItem>Something else here</DropdownItem></li>
+              <li>
+                <DropdownItem>Action</DropdownItem>
+              </li>
+              <li>
+                <DropdownItem>Another action</DropdownItem>
+              </li>
+              <li>
+                <DropdownItem>Something else here</DropdownItem>
+              </li>
             </DropdownMenu>
           </UncontrolledDropdown>
         </OffcanvasBody>
@@ -155,7 +222,8 @@ const UiOffcanvas = () => {
           Offcanvas Top
         </OffcanvasHeader>
         <OffcanvasBody>
-          Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
         </OffcanvasBody>
       </Offcanvas>
 
@@ -170,7 +238,8 @@ const UiOffcanvas = () => {
           Offcanvas Right
         </OffcanvasHeader>
         <OffcanvasBody>
-          Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
         </OffcanvasBody>
       </Offcanvas>
 
@@ -185,7 +254,8 @@ const UiOffcanvas = () => {
           Offcanvas Bottom
         </OffcanvasHeader>
         <OffcanvasBody>
-          Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
         </OffcanvasBody>
       </Offcanvas>
 
@@ -197,7 +267,8 @@ const UiOffcanvas = () => {
         toggle={toggleEnableScroll}
         id="offcanvasScrolling"
       >
-        <OffcanvasHeader toggle={toggleEnableScroll}
+        <OffcanvasHeader
+          toggle={toggleEnableScroll}
           id="offcanvasScrollingLabel"
         >
           Colored with scrolling
@@ -215,12 +286,16 @@ const UiOffcanvas = () => {
         toggle={toggleBackdrop}
         id="offcanvasWithBackdrop"
       >
-        <OffcanvasHeader toggle={toggleBackdrop} id="offcanvasWithBackdropLabel">
+        <OffcanvasHeader
+          toggle={toggleBackdrop}
+          id="offcanvasWithBackdropLabel"
+        >
           Offcanvas with backdrop
         </OffcanvasHeader>
         <OffcanvasBody>
           <div>
-            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+            Some text as placeholder. In real life you can have the elements you
+            have chosen. Like, text, images, lists, etc.
           </div>
         </OffcanvasBody>
       </Offcanvas>
@@ -232,7 +307,10 @@ const UiOffcanvas = () => {
         toggle={toggleScrollBackDrop}
         id="offcanvasWithBothOptions"
       >
-        <OffcanvasHeader toggle={toggleScrollBackDrop} id="offcanvasWithBothOptionsLabel">
+        <OffcanvasHeader
+          toggle={toggleScrollBackDrop}
+          id="offcanvasWithBothOptionsLabel"
+        >
           Backdroped with scrolling
         </OffcanvasHeader>
         <OffcanvasBody>
@@ -241,7 +319,6 @@ const UiOffcanvas = () => {
           </div>
         </OffcanvasBody>
       </Offcanvas>
-
     </React.Fragment>
   );
 };

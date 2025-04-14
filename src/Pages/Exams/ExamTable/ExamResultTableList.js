@@ -8,7 +8,7 @@ import {
   DropdownMenu,
   DropdownToggle,
   Row,
-  UncontrolledDropdown
+  UncontrolledDropdown,
 } from "reactstrap";
 // import TableContainer from "./../../../../components/Common/TableContainer";
 // import { CourseData } from "../../../../CommonData/Data/Course";
@@ -24,7 +24,7 @@ const ResultExamListTable = () => {
   const [exams, setExams] = useState(false);
   const [tabs, setTabs] = useState([
     { id: 1, label: "Examined Students" },
-    { id: 2, label: "Not Examined Student" }
+    { id: 2, label: "Not Examined Student" },
   ]);
   const location = useLocation();
   const getExams = () => {
@@ -32,17 +32,17 @@ const ResultExamListTable = () => {
     axios
       .post(
         selected_tab == "Examined Students"
-          ? "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/select_exam_degrees.php"
-          : "https://elmatary.com/El_Matary_Platform/platform/admin/Exams/select_exam_unsolved_students.php",
+          ? "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/select_exam_degrees.php"
+          : "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/Exams/select_exam_unsolved_students.php",
         {
           course_id: location?.state?.course_id,
-          exam_id: location?.state?.course_id
+          exam_id: location?.state?.course_id,
         }
       )
       .then((res) => {
         console.log(res, {
           course_id: location?.state?.course_id,
-          exam_id: location?.state?.course_id
+          exam_id: location?.state?.course_id,
         });
         setExams(res.message);
       })
@@ -59,11 +59,11 @@ const ResultExamListTable = () => {
     {
       Header: "Student ID",
       accessor: "student_id",
-      Filter: false
+      Filter: false,
     },
     {
       Header: "student_name",
-      accessor: "student_name"
+      accessor: "student_name",
       //   Filter: false,
     },
     {
@@ -75,23 +75,23 @@ const ResultExamListTable = () => {
           </span>
         );
       },
-      Filter: false
+      Filter: false,
     },
     {
       Header: "student_phone",
-      accessor: "phone"
+      accessor: "phone",
       //   Filter: false,
     },
 
     {
       Header: "date",
       accessor: "date",
-      Filter: false
+      Filter: false,
     },
     {
       Header: "Score",
       accessor: "score",
-      Filter: false
+      Filter: false,
     },
   ];
 
@@ -99,7 +99,7 @@ const ResultExamListTable = () => {
     {
       Header: "Student ID",
       accessor: "student_id",
-      Filter: false
+      Filter: false,
     },
     {
       Header: "student_image",
@@ -110,16 +110,16 @@ const ResultExamListTable = () => {
           </span>
         );
       },
-      Filter: false
+      Filter: false,
     },
     {
       Header: "student_name",
-      accessor: "student_name"
+      accessor: "student_name",
       //   Filter: false,
     },
     {
       Header: "student_phone",
-      accessor: "phone"
+      accessor: "phone",
       //   Filter: false,
     },
 
@@ -144,7 +144,7 @@ const ResultExamListTable = () => {
                     console.log(cell.cell.row.original);
                     const examdata = { ...cell.cell.row.original };
                     navigate("/examquestion", {
-                      state: { examdata }
+                      state: { examdata },
                     });
                   }}
                 >
@@ -154,8 +154,8 @@ const ResultExamListTable = () => {
             </UncontrolledDropdown>
           </>
         );
-      }
-    }
+      },
+    },
   ];
 
   return (

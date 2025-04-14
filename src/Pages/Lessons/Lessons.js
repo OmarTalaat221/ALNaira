@@ -43,7 +43,7 @@ const Lessons = () => {
   const navigate = useNavigate();
   const localdata = localStorage.getItem("elmatary_admin");
   let adminData = localdata && JSON.parse(localdata);
-  document.title = "Courses | Matary - React Admin & Dashboard Template";
+  document.title = "Courses | ALNaierh  ";
 
   const location = useLocation();
   console.log(location);
@@ -75,7 +75,7 @@ const Lessons = () => {
   const [book, setBook] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  document.title = title + " | Matary - React Admin & Dashboard Template";
+  document.title = title + " | ALNaierh  ";
 
   const uploadPdf = async () => {
     setLoading(true);
@@ -86,7 +86,7 @@ const Lessons = () => {
       formData.append("course_id", location?.state?.coursedata?.course_id);
       // unitData
       const url = await axios.post(
-        "https://drelmatary.net/Matary_site/admin/videos/upload_videos_excel/upload_vid_new.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/videos/upload_videos_excel/upload_vid_new.php",
         formData
       );
       console.log(url);
@@ -189,7 +189,7 @@ const Lessons = () => {
   //     course_id: selectedCourse
   //   };
   //   try {
-  //     const units = await axios.post("https://elmatary.com/El_Matary_Platform/platform/admin/courses/select_course_units.php", send_data);
+  //     const units = await axios.post("https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/courses/select_course_units.php", send_data);
   //     setUnits([...units]);
   //   } catch (err) {
   //     console.log(err);
@@ -210,7 +210,7 @@ const Lessons = () => {
     };
     axios
       .post(
-        "https://elmatary.com/El_Matary_Platform/platform/admin/videos/update_videos_info.php",
+        "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/videos/update_videos_info.php",
         JSON.stringify(data_send)
       )
       .then((res) => {
@@ -500,7 +500,7 @@ const Lessons = () => {
     };
     console.log(data_send);
     const assign = await axios.post(
-      "https://drelmatary.net/Matary_site/admin/videos/assign_videos_to_unit.php",
+      "https://camp-coding.online/Teacher_App_2025/elnaira_jor/admin/videos/assign_videos_to_unit.php",
       data_send
     );
     console.log(assign);
@@ -765,12 +765,12 @@ const Lessons = () => {
                                 <Loader />
                               ) : allVideos && allVideos.length ? (
                                 allVideos.map((item) => {
-                                  return item.youtube_id
-                                    .toString()
-                                    .includes(searchValue) ? (
+                                  return item?.video_id
+                                    ?.toString()
+                                    ?.includes(searchValue) ? (
                                     <li
                                       onClick={() => {
-                                        setSelVideo(item.video_id);
+                                        setSelVideo(item?.video_id);
                                         setSearchValue(false);
                                       }}
                                     >

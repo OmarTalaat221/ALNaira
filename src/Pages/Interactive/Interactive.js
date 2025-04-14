@@ -42,7 +42,7 @@ import WrittenQuestions from "./writtenquestion";
 const Interactive = () => {
   const [title, setTitle] = useState("Flash Cards");
 
-  document.title = title + " | Matary - React Admin & Dashboard Template";
+  document.title = title + " | ALNaierh  ";
 
   const [type, setType] = useState("FlashCards");
 
